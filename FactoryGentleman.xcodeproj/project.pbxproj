@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25FC4F0A6A464F5A9FC7ABEE /* libPods-FactoryGentleman-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 42AB4DBDC6BB4624AE50B7D1 /* libPods-FactoryGentleman-iOS.a */; };
+		2978354B595944A2933D8732 /* libPods-FactoryGentleman-Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ED3EC466AC84D26A1B7AFC8 /* libPods-FactoryGentleman-Mac.a */; };
 		5BD363CB1830FEBE0024169A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD363CA1830FEBE0024169A /* XCTest.framework */; };
 		5BD363D11830FEBE0024169A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BD363CF1830FEBE0024169A /* InfoPlist.strings */; };
 		5BD363D81830FEE20024169A /* FactoryGentleman.m in Sources */ = {isa = PBXBuildFile; fileRef = F80325DD5910FD8B2987F384 /* FactoryGentleman.m */; };
@@ -15,10 +17,14 @@
 		5BD363E21830FF0B0024169A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD363E11830FF0B0024169A /* UIKit.framework */; };
 		5BD363E81830FF0B0024169A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BD363E61830FF0B0024169A /* InfoPlist.strings */; };
 		F80329ED2A321D976BAF86E0 /* FactoryGentlemanTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F803286EE7670541D26BABFD /* FactoryGentlemanTest.m */; };
+		F8032AE574DF0DAB94606D8F /* FactoryGentleman.m in Sources */ = {isa = PBXBuildFile; fileRef = F80325DD5910FD8B2987F384 /* FactoryGentleman.m */; };
 		F8032ED715818090C6532C52 /* FactoryGentlemanTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F803286EE7670541D26BABFD /* FactoryGentlemanTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3070F311A5D6497887EB49F0 /* Pods-FactoryGentleman-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FactoryGentleman-iOS.xcconfig"; path = "Pods/Pods-FactoryGentleman-iOS.xcconfig"; sourceTree = "<group>"; };
+		42AB4DBDC6BB4624AE50B7D1 /* libPods-FactoryGentleman-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FactoryGentleman-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DB1BB1CD6314F1ABB37C890 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		5BD363C81830FEBE0024169A /* FactoryGentleman-Mac.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FactoryGentleman-Mac.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD363CA1830FEBE0024169A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		5BD363CE1830FEBE0024169A /* FactoryGentleman-Mac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FactoryGentleman-Mac-Info.plist"; sourceTree = "<group>"; };
@@ -30,9 +36,11 @@
 		5BD363E51830FF0B0024169A /* FactoryGentleman-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FactoryGentleman-iOS-Info.plist"; sourceTree = "<group>"; };
 		5BD363E71830FF0B0024169A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5BD363EB1830FF0B0024169A /* FactoryGentleman-iOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FactoryGentleman-iOS-Prefix.pch"; sourceTree = "<group>"; };
+		5ED3EC466AC84D26A1B7AFC8 /* libPods-FactoryGentleman-Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FactoryGentleman-Mac.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F80321EAF0C43502C13E5D82 /* FactoryGentleman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactoryGentleman.h; sourceTree = "<group>"; };
 		F80325DD5910FD8B2987F384 /* FactoryGentleman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactoryGentleman.m; sourceTree = "<group>"; };
 		F803286EE7670541D26BABFD /* FactoryGentlemanTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactoryGentlemanTest.m; sourceTree = "<group>"; };
+		FB7925B639C14423A95D4F24 /* Pods-FactoryGentleman-Mac.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FactoryGentleman-Mac.xcconfig"; path = "Pods/Pods-FactoryGentleman-Mac.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +49,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BD363CB1830FEBE0024169A /* XCTest.framework in Frameworks */,
+				2978354B595944A2933D8732 /* libPods-FactoryGentleman-Mac.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,6 +60,7 @@
 				5BD363DE1830FF0B0024169A /* XCTest.framework in Frameworks */,
 				5BD363E21830FF0B0024169A /* UIKit.framework in Frameworks */,
 				5BD363E01830FF0B0024169A /* Foundation.framework in Frameworks */,
+				25FC4F0A6A464F5A9FC7ABEE /* libPods-FactoryGentleman-iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +73,8 @@
 				5BD363CA1830FEBE0024169A /* XCTest.framework */,
 				5BD363DF1830FF0B0024169A /* Foundation.framework */,
 				5BD363E11830FF0B0024169A /* UIKit.framework */,
+				5ED3EC466AC84D26A1B7AFC8 /* libPods-FactoryGentleman-Mac.a */,
+				42AB4DBDC6BB4624AE50B7D1 /* libPods-FactoryGentleman-iOS.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -162,6 +174,9 @@
 				F80323D0C8CA47CCD80C9E93 /* Products */,
 				F8032124CB9B50305732F172 /* Source */,
 				F803227E6A6380663AC820F9 /* Spec */,
+				4DB1BB1CD6314F1ABB37C890 /* Pods.xcconfig */,
+				FB7925B639C14423A95D4F24 /* Pods-FactoryGentleman-Mac.xcconfig */,
+				3070F311A5D6497887EB49F0 /* Pods-FactoryGentleman-iOS.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -172,9 +187,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5BD363D71830FEBE0024169A /* Build configuration list for PBXNativeTarget "FactoryGentleman-Mac" */;
 			buildPhases = (
+				4E7661CB571B498B8AB3CA99 /* Check Pods Manifest.lock */,
 				5BD363C41830FEBE0024169A /* Sources */,
 				5BD363C51830FEBE0024169A /* Frameworks */,
 				5BD363C61830FEBE0024169A /* Resources */,
+				42FB0CD631A54C67869F2890 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -189,9 +206,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5BD363EC1830FF0B0024169A /* Build configuration list for PBXNativeTarget "FactoryGentleman-iOS" */;
 			buildPhases = (
+				E7C3C1F95C5B43EEA0B1E5AF /* Check Pods Manifest.lock */,
 				5BD363D91830FF0B0024169A /* Sources */,
 				5BD363DA1830FF0B0024169A /* Frameworks */,
 				5BD363DB1830FF0B0024169A /* Resources */,
+				764D3F9CF5074E22B8E7F4C0 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -219,6 +238,8 @@
 			mainGroup = F8032FF22D757A04F68F92B2;
 			productRefGroup = F80323D0C8CA47CCD80C9E93 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+			);
 			projectRoot = "";
 			targets = (
 				5BD363C71830FEBE0024169A /* FactoryGentleman-Mac */,
@@ -246,6 +267,69 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		42FB0CD631A54C67869F2890 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-FactoryGentleman-Mac-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4E7661CB571B498B8AB3CA99 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		764D3F9CF5074E22B8E7F4C0 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-FactoryGentleman-iOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E7C3C1F95C5B43EEA0B1E5AF /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5BD363C41830FEBE0024169A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -261,6 +345,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F80329ED2A321D976BAF86E0 /* FactoryGentlemanTest.m in Sources */,
+				F8032AE574DF0DAB94606D8F /* FactoryGentleman.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +373,7 @@
 /* Begin XCBuildConfiguration section */
 		5BD363D51830FEBE0024169A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB7925B639C14423A95D4F24 /* Pods-FactoryGentleman-Mac.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -328,6 +414,7 @@
 		};
 		5BD363D61830FEBE0024169A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB7925B639C14423A95D4F24 /* Pods-FactoryGentleman-Mac.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -374,6 +461,7 @@
 		};
 		5BD363ED1830FF0B0024169A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3070F311A5D6497887EB49F0 /* Pods-FactoryGentleman-iOS.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
@@ -416,6 +504,7 @@
 		};
 		5BD363EE1830FF0B0024169A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3070F311A5D6497887EB49F0 /* Pods-FactoryGentleman-iOS.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
