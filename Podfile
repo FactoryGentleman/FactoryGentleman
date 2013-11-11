@@ -1,6 +1,7 @@
 def needed_pods
   pod 'Specta'
   pod 'Expecta'
+  pod 'OCMock'
 end
 
 target 'FactoryGentleman-iOS' do
