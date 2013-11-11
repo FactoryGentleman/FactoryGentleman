@@ -16,9 +16,9 @@
 		5BD363E01830FF0B0024169A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD363DF1830FF0B0024169A /* Foundation.framework */; };
 		5BD363E21830FF0B0024169A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD363E11830FF0B0024169A /* UIKit.framework */; };
 		5BD363E81830FF0B0024169A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BD363E61830FF0B0024169A /* InfoPlist.strings */; };
-		F80329ED2A321D976BAF86E0 /* FactoryGentlemanTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F803286EE7670541D26BABFD /* FactoryGentlemanTest.m */; };
+		F80329D1C4241BDAC8661BBC /* FactoryGentlemanSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F803242806A1ED72BA13336B /* FactoryGentlemanSpec.m */; };
 		F8032AE574DF0DAB94606D8F /* FactoryGentleman.m in Sources */ = {isa = PBXBuildFile; fileRef = F80325DD5910FD8B2987F384 /* FactoryGentleman.m */; };
-		F8032ED715818090C6532C52 /* FactoryGentlemanTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F803286EE7670541D26BABFD /* FactoryGentlemanTest.m */; };
+		F8032FDAB7035C1004E37EA7 /* FactoryGentlemanSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F803242806A1ED72BA13336B /* FactoryGentlemanSpec.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,8 +38,8 @@
 		5BD363EB1830FF0B0024169A /* FactoryGentleman-iOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FactoryGentleman-iOS-Prefix.pch"; sourceTree = "<group>"; };
 		5ED3EC466AC84D26A1B7AFC8 /* libPods-FactoryGentleman-Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FactoryGentleman-Mac.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F80321EAF0C43502C13E5D82 /* FactoryGentleman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactoryGentleman.h; sourceTree = "<group>"; };
+		F803242806A1ED72BA13336B /* FactoryGentlemanSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactoryGentlemanSpec.m; sourceTree = "<group>"; };
 		F80325DD5910FD8B2987F384 /* FactoryGentleman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactoryGentleman.m; sourceTree = "<group>"; };
-		F803286EE7670541D26BABFD /* FactoryGentlemanTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactoryGentlemanTest.m; sourceTree = "<group>"; };
 		FB7925B639C14423A95D4F24 /* Pods-FactoryGentleman-Mac.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FactoryGentleman-Mac.xcconfig"; path = "Pods/Pods-FactoryGentleman-Mac.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,7 +126,7 @@
 		F80321B3CB7256F86F959374 /* FactoryGentleman */ = {
 			isa = PBXGroup;
 			children = (
-				F803286EE7670541D26BABFD /* FactoryGentlemanTest.m */,
+				F803242806A1ED72BA13336B /* FactoryGentlemanSpec.m */,
 			);
 			path = FactoryGentleman;
 			sourceTree = "<group>";
@@ -336,7 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BD363D81830FEE20024169A /* FactoryGentleman.m in Sources */,
-				F8032ED715818090C6532C52 /* FactoryGentlemanTest.m in Sources */,
+				F80329D1C4241BDAC8661BBC /* FactoryGentlemanSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,8 +344,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F80329ED2A321D976BAF86E0 /* FactoryGentlemanTest.m in Sources */,
 				F8032AE574DF0DAB94606D8F /* FactoryGentleman.m in Sources */,
+				F8032FDAB7035C1004E37EA7 /* FactoryGentlemanSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
