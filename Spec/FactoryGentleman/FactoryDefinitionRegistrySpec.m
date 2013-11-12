@@ -19,7 +19,7 @@ SpecBegin(FactoryDefinitionRegistry)
         __block FactoryDefinition *registeredDefinition;
 
         before(^{
-            registeredDefinition = [[FactoryDefinition alloc] initWithFields:@{}];
+            registeredDefinition = [[FactoryDefinition alloc] initWithFieldDefinitions:@{}];
         });
 
         before(^{

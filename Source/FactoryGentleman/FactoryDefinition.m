@@ -2,12 +2,12 @@
 
 @implementation FactoryDefinition
 
-- (instancetype)initWithFields:(NSDictionary *)fields
+- (instancetype)initWithFieldDefinitions:(NSDictionary *)fieldDefinitions
 {
     self = [super init];
     if (self) {
-        NSParameterAssert(fields);
-        _fields = fields;
+        NSParameterAssert(fieldDefinitions);
+        _fieldDefinitions = fieldDefinitions;
     }
     return self;
 }

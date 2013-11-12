@@ -45,12 +45,12 @@
 
 - (FactoryDefinition *)definition
 {
-    NSMutableDictionary *fields = @{}.mutableCopy;
-    [self defineFields:fields];
-    return [[FactoryDefinition alloc] initWithFields:fields];
+    NSMutableDictionary *fieldDefinitions = @{}.mutableCopy;
+    [self defineFieldDefinitions:fieldDefinitions];
+    return [[FactoryDefinition alloc] initWithFieldDefinitions:fieldDefinitions];
 }
 
-- (void)defineFields:(NSMutableDictionary *)fields
+- (void)defineFieldDefinitions:(NSMutableDictionary *)fieldDefinitions
 {
 }
 

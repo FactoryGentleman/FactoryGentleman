@@ -14,7 +14,7 @@
 
 @implementation MutableObjectFactoryDefiner
 
-- (void)defineFields:(NSMutableDictionary *)fields
+- (void)defineFieldDefinitions:(NSMutableDictionary *)fields
 {
     [fields setObject:@12345 forKey:@"someField"];
 }
@@ -36,7 +36,7 @@ SpecBegin(FactoryDefiner)
     context(@"when mutable factory is defined", ^{
         it(@"registers a factory definition with fields given", ^{
             id factoryDefinitionArg = [OCMArg checkWithBlock:^BOOL(FactoryDefinition *definition) {
-                return [@12345 isEqual:definition.fields[@"someField"]];
+                return [@12345 isEqual:definition.fieldDefinitions[@"someField"]];
             }];
             [[factoryDefinitionRegistry expect] registerFactoryDefinition:factoryDefinitionArg forClass:definedClass];
 
