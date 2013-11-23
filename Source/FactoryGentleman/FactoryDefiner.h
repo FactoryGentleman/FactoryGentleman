@@ -8,10 +8,10 @@
 @end
 
 #define FactoryBegin(__CLASS__) \
-@interface __CLASS__##FactoryDefinition : FactoryDefiner \
+@interface __CLASS__##FactoryDefiner : FactoryDefiner \
 @property (nonatomic, retain) Class class; \
 @end \
-@implementation __CLASS__##FactoryDefinition \
+@implementation __CLASS__##FactoryDefiner \
 - (instancetype)init \
 { \
     self = [super initWithObjectClass:__CLASS__.class]; \

@@ -1,11 +1,17 @@
 #import "ObjectBuilder.h"
 
-#import "ExampleMutableObject.h"
+@interface ExampleMutableObject : NSObject
+@property (nonatomic) NSString *mutableStringProperty;
+@property (nonatomic) NSArray *mutableArrayProperty;
+@property (nonatomic) int mutableIntProperty;
+@end
+
+@implementation ExampleMutableObject
+@end
 
 SpecBegin(ObjectBuilder)
     __block ObjectBuilder *subject;
-
-    __block id (^buildObject)();
+    __block NSDictionary *overriddenFields;
 
     before(^{
         NSDictionary *definedFields = @{
@@ -17,46 +23,24 @@ SpecBegin(ObjectBuilder)
         FactoryDefinition *definition = [[FactoryDefinition alloc] initWithFieldDefinitions:definedFields];
         subject = [[ObjectBuilder alloc] initWithObjectClass:ExampleMutableObject.class
                                                   definition:definition];
+        overriddenFields = @{
+                @"mutableStringProperty" : ^{ return @"totally new value"; }
+        };
     });
 
-    sharedExamplesFor(@"mutable object builder", ^(NSDictionary *data) {
-        it(@"returns a new instance of the class", ^{
-            expect(buildObject()).to.beKindOf(ExampleMutableObject.class);
-        });
-
-        it(@"new instance has object values defined", ^{
-            expect([buildObject() mutableArrayProperty]).to.equal(@[ @"random string in array" ]);
-        });
-
-        it(@"new instance has primitive values defined", ^{
-            expect([buildObject() mutableIntProperty]).to.equal(3);
-        });
+    it(@"returns a new instance of the class", ^{
+        expect([subject buildWithFieldDefinitions:overriddenFields]).to.beKindOf(ExampleMutableObject.class);
     });
 
-    describe(@"-build", ^{
-        before(^{
-            buildObject = ^id {
-                return [subject build];
-            };
-        });
-
-        itBehavesLike(@"mutable object builder", nil);
+    it(@"new instance has object values defined", ^{
+        expect([[subject buildWithFieldDefinitions:overriddenFields] mutableArrayProperty]).to.equal(@[ @"random string in array" ]);
     });
 
-    describe(@"-buildWithFields:", ^{
-        before(^{
-            NSDictionary *overwrittenFields = @{
-                @"mutableStringProperty" : @"totally new value"
-            };
-            buildObject = ^id {
-                return [subject buildWithFields:overwrittenFields];
-            };
-        });
+    it(@"new instance has primitive values defined", ^{
+        expect([[subject buildWithFieldDefinitions:overriddenFields] mutableIntProperty]).to.equal(3);
+    });
 
-        itBehavesLike(@"mutable object builder", nil);
-
-        it(@"overrides defined fields with the fields given", ^{
-            expect([buildObject() mutableStringProperty]).to.equal(@"totally new value");
-        });
+    it(@"overrides defined fields with the field definitions given", ^{
+        expect([[subject buildWithFieldDefinitions:overriddenFields] mutableStringProperty]).to.equal(@"totally new value");
     });
 SpecEnd

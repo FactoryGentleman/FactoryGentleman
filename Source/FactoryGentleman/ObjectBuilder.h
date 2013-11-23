@@ -9,7 +9,6 @@
 - (instancetype)initWithObjectClass:(Class)objectClass
                          definition:(FactoryDefinition *)definition;
 
-- (id)build;
-- (id)buildWithFields:(NSDictionary *)fields;
+- (id)buildWithFieldDefinitions:(NSDictionary *)fieldDefinitions;
 
 @end

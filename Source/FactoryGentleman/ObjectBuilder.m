@@ -15,38 +15,25 @@
     return self;
 }
 
-- (id)build
-{
-    return [self buildWithFields:@{}];
-}
-
-- (id)buildWithFields:(NSDictionary *)fields
+- (id)buildWithFieldDefinitions:(NSDictionary *)fieldDefinitions
 {
     id object = [[self.objectClass alloc] init];
-    [self setFieldEvaluatorsOnObject:object];
-    [self setFields:fields
-           onObject:object];
+    [self setFieldDefinitions:self.definition.fieldDefinitions
+                     onObject:object];
+    [self setFieldDefinitions:fieldDefinitions
+                     onObject:object];
     return object;
 }
 
-- (void)setFieldEvaluatorsOnObject:(id)object
+- (void)setFieldDefinitions:(NSDictionary *)fieldDefinitions
+                   onObject:(id)object
 {
-    for (NSString *field in self.definition.fieldDefinitions) {
-        id (^evaluator)(void) = self.definition.fieldDefinitions[field];
-        [self setField:field
-                 value:evaluator()
+    for (NSString *fieldName in fieldDefinitions) {
+        id (^definition)(void) = fieldDefinitions[fieldName];
+        [self setField:fieldName
+                 value:definition()
               onObject:object];
     }
-}
-
-- (void)setFields:(NSDictionary *)fields
-         onObject:(id)object
-{
-    [fields enumerateKeysAndObjectsUsingBlock:^(NSString *field, id value, BOOL *stop) {
-        [self setField:field
-                 value:value
-              onObject:object];
-    }];
 }
 
 - (void)setField:(NSString *)field
@@ -55,12 +42,12 @@
 {
     SEL setter = [self setterForField:field];
     if ([object respondsToSelector:setter]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-            [object performSelector:setter
-                         withObject:value];
-#pragma clang diagnostic pop
-        }
+        #pragma clang diagnostic push
+        #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        [object performSelector:setter
+                     withObject:value];
+        #pragma clang diagnostic pop
+    }
 }
 
 - (SEL)setterForField:(NSString *)field
