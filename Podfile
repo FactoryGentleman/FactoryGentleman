@@ -1,3 +1,5 @@
+podspec
+
 def needed_pods
   pod 'Specta'
   pod 'Expecta'
