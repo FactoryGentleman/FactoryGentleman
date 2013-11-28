@@ -20,8 +20,11 @@
 - (void)defineFieldDefinitions:(NSMutableDictionary *)fieldDefinitions \
 { \
 
+#define assocField(__FIELD_NAME__, __CLASS__) \
+    field(__FIELD_NAME__, [FactoryGentleman buildForObjectClass:__CLASS__.class])
+
 #define field(__FIELD_NAME__, __FIELD_VALUE__) \
-    [fieldDefinitions setObject:^{return (__FIELD_VALUE__);} forKey:@#__FIELD_NAME__]; \
+    [fieldDefinitions setObject:^{return (__FIELD_VALUE__);} forKey:@#__FIELD_NAME__]
 
 #define FactoryEnd \
 } \
