@@ -2,6 +2,6 @@
 #import "User.h"
 
 FactoryBegin(User)
-    field(@"firstName", @"Bob")
-    field(@"lastName", @"Bradley")
+    field(firstName, @"Bob")
+    field(lastName, @"Bradley")
 FactoryEnd

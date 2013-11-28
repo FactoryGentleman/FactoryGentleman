@@ -21,7 +21,7 @@
 { \
 
 #define field(__FIELD_NAME__, __FIELD_VALUE__) \
-    [fieldDefinitions setObject:^{return (__FIELD_VALUE__);} forKey:__FIELD_NAME__]; \
+    [fieldDefinitions setObject:^{return (__FIELD_VALUE__);} forKey:@#__FIELD_NAME__]; \
 
 #define FactoryEnd \
 } \

@@ -21,7 +21,7 @@ SpecBegin(User)
 
     context(@"has no first name", ^{
         before(^{
-            subject = FGBuildWith(User, field(@"firstName", nil));
+            subject = FGBuildWith(User, field(firstName, nil));
         });
 
         it(@"is NOT valid", ^{
@@ -35,7 +35,7 @@ SpecBegin(User)
 
     context(@"has no last name", ^{
         before(^{
-            subject = FGBuildWith(User, field(@"lastName", nil));
+            subject = FGBuildWith(User, field(lastName, nil));
         });
 
         it(@"is NOT valid", ^{
