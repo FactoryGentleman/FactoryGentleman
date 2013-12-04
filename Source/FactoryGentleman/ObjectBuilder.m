@@ -18,11 +18,16 @@
 - (id)buildWithFieldDefinitions:(NSDictionary *)fieldDefinitions
 {
     id object = [[self.objectClass alloc] init];
-    [self setFieldDefinitions:self.definition.fieldDefinitions
-                     onObject:object];
-    [self setFieldDefinitions:fieldDefinitions
+    [self setFieldDefinitions:[self combinedFieldDefinitionsWith:fieldDefinitions]
                      onObject:object];
     return object;
+}
+
+- (NSDictionary *)combinedFieldDefinitionsWith:(NSDictionary *)fieldDefinitions
+{
+    NSMutableDictionary *combinedFieldDefinitions = [self.definition.fieldDefinitions mutableCopy];
+    [combinedFieldDefinitions addEntriesFromDictionary:fieldDefinitions];
+    return combinedFieldDefinitions;
 }
 
 - (void)setFieldDefinitions:(NSDictionary *)fieldDefinitions
