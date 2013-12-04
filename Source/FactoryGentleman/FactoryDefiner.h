@@ -30,7 +30,7 @@
     [fieldDefinitions setObject:^{return (__FIELD_VALUE__);} forKey:f(__FIELD_NAME__)]
 
 #define initWith(__INITIALIZER__, ...) \
-    initializerDefinition = [InitializerDefinition definitionWithSelector:@selector(__INITIALIZER__), ##__VA_ARGS__];
+    initializerDefinition = [InitializerDefinition definitionWithSelector:@selector(__INITIALIZER__), ##__VA_ARGS__]
 
 #define f(__FIELD_NAME__) @#__FIELD_NAME__
 
