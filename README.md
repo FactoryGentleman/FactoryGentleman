@@ -71,11 +71,11 @@ Create an implementation file (*.m) with the factory definition:
 #import "FactoryDefiner.h"
 
 FactoryBegin(User)
-    field(firstName, @"Bob")
-    field(lastName, @"Bradley")
-    field(friendCount, @10)
-    field(title, @"Mr")
-    field(maidenName, @"Macallister")
+    field(firstName, @"Bob");
+    field(lastName, @"Bradley");
+    field(friendCount, @10);
+    field(title, @"Mr");
+    field(maidenName, @"Macallister");
 FactoryEnd
 ```
 
@@ -123,12 +123,12 @@ You can define objects with immutable (i.e. readonly) properties via listing ini
 
 ```objective-c
 FactoryBegin(User)
-    field(firstName, @"Bob")
-    field(lastName, @"Bradley")
-    field(friendCount, @10)
-    field(title, @"Mr")
-    field(maidenName, @"Macallister")
-    initWith(initWithFirstName:lastName:, f(firstName), f(lastName))
+    field(firstName, @"Bob");
+    field(lastName, @"Bradley");
+    field(friendCount, @10);
+    field(title, @"Mr");
+    field(maidenName, @"Macallister");
+    initWith(initWithFirstName:lastName:, f(firstName), f(lastName));
 FactoryEnd
 ```
 
@@ -138,22 +138,23 @@ You can define associative objects (objects that themselves have a factory defin
 
 ```objective-c
 FactoryBegin(User)
-    field(firstName, @"Bob")
-    field(lastName, @"Bradley")
-    field(friendCount, @10)
-    field(title, @"Mr")
-    field(maidenName, @"Macallister")
-    assocField(address, Address)
+    field(firstName, @"Bob");
+    field(lastName, @"Bradley");
+    field(friendCount, @10);
+    field(title, @"Mr");
+    field(maidenName, @"Macallister");
+    assocField(address, Address);
 FactoryEnd
 ```
 
 ## How to install
 
-Add `pod "OHAttributedLabel"` to your Podfile
+Add `pod "FactoryGentleman"` to your Podfile
 
 ## Authors
 
-[Michael England](https://github.com/michaelengland) @ [SoundCloud](https://github.com/soundcloud)
+  - [Michael England](https://github.com/michaelengland) @ [SoundCloud](https://github.com/soundcloud)
+  - [Slavko Krucaj](https://github.com/SlavkoKrucaj) @ [SoundCloud](https://github.com/soundcloud)
 
 ## License
 
