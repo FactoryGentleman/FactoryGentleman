@@ -9,8 +9,6 @@
 {
     self = [super init];
     if (self) {
-        NSParameterAssert(firstName);
-        NSParameterAssert(lastName);
         _firstName = firstName;
         _lastName = lastName;
     }

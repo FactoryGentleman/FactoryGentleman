@@ -1,8 +1,8 @@
 #import "Address.h"
 
 @interface User : NSObject
-@property (nonatomic) NSString *firstName;
-@property (nonatomic) NSString *lastName;
+@property (nonatomic, readonly) NSString *firstName;
+@property (nonatomic, readonly) NSString *lastName;
 @property (nonatomic) Address *address;
 
 - (instancetype)initWithFirstName:(NSString *)firstName
