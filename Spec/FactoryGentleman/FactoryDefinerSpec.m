@@ -9,14 +9,27 @@
 @end
 
 @interface MutableObjectFactoryDefiner : FactoryDefiner
-
++ (FactoryDefinition *)theDefinition;
 @end
 
 @implementation MutableObjectFactoryDefiner
 
-- (void)defineFieldDefinitions:(NSMutableDictionary *)fieldDefinitions
++ (FactoryDefinition *)theDefinition
 {
-    [fieldDefinitions setObject:@12345 forKey:@"someField"];
+    static dispatch_once_t once;
+    static FactoryDefinition *sharedDefinition;
+    dispatch_once(&once, ^{
+        InitializerDefinition *initializerDefinition = [[InitializerDefinition alloc] initWithSelector:@selector(init)
+                                                                                            fieldNames:@[]];
+        sharedDefinition = [[FactoryDefinition alloc] initWithInitializerDefinition:initializerDefinition
+                                                                   fieldDefinitions:@{}];
+    });
+    return sharedDefinition;
+}
+
+- (FactoryDefinition *)definition
+{
+    return [self.class theDefinition];
 }
 
 @end
@@ -35,10 +48,8 @@ SpecBegin(FactoryDefiner)
 
     context(@"when mutable factory is defined", ^{
         it(@"registers a factory definition with field definitions given", ^{
-            id factoryDefinitionArg = [OCMArg checkWithBlock:^BOOL(FactoryDefinition *definition) {
-                return [@12345 isEqual:definition.fieldDefinitions[@"someField"]];
-            }];
-            [[factoryDefinitionRegistry expect] registerFactoryDefinition:factoryDefinitionArg forClass:definedClass];
+            [[factoryDefinitionRegistry expect] registerFactoryDefinition:MutableObjectFactoryDefiner.theDefinition
+                                                                 forClass:definedClass];
 
             [subject registerDefinitions];
 
