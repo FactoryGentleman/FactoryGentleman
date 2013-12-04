@@ -1,6 +1,7 @@
 #import "FactoryDefiner.h"
 
 #import "FactoryDefinitionRegistry.h"
+#import "FactoryDefinition.h"
 
 @interface FactoryDefiner ()
 @property (nonatomic, readonly) Class objectClass;
@@ -45,13 +46,8 @@
 
 - (FactoryDefinition *)definition
 {
-    NSMutableDictionary *fieldDefinitions = [[NSMutableDictionary alloc] init];
-    [self defineFieldDefinitions:fieldDefinitions];
-    return [[FactoryDefinition alloc] initWithFieldDefinitions:fieldDefinitions];
-}
-
-- (void)defineFieldDefinitions:(NSMutableDictionary *)fieldDefinitions
-{
+    NSAssert(NO, @"Override in subclass");
+    return nil;
 }
 
 @end

@@ -23,6 +23,7 @@
 		F803246118E11AA911A35E7C /* AddressFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F80322B6710F0DB670F8AA92 /* AddressFactory.m */; };
 		F803251DF105C4904596DA76 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = F80323ABFB4959EFA006938C /* Address.m */; };
 		F8032542F2C20D90E6FC3510 /* FactoryDefinitionRegistrySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032E280A2D8D32BF8170B0 /* FactoryDefinitionRegistrySpec.m */; };
+		F80325BDF00A08453F8A45B9 /* InitializerDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = F803224032DA8BC2204510D9 /* InitializerDefinition.m */; };
 		F803268FE04F4570F6DD5474 /* FactoryDefinitionRegistrySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032E280A2D8D32BF8170B0 /* FactoryDefinitionRegistrySpec.m */; };
 		F80326DCED8183A6DA01E6DF /* FactoryDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = F803258EA10C03D7AF00814F /* FactoryDefinition.m */; };
 		F80326FB605095132940CAB4 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F803282B7E256FFAE5860E40 /* User.m */; };
@@ -37,10 +38,13 @@
 		F8032ABD3980447A2B363063 /* FactoryGentleman.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032792DF35461EB84AB7D2 /* FactoryGentleman.m */; };
 		F8032B2A017B7EE2286392BD /* FactoryDefiner.m in Sources */ = {isa = PBXBuildFile; fileRef = F80323E4EE6B3173A13D2427 /* FactoryDefiner.m */; };
 		F8032C36AC6E5D97B553FF81 /* AddressSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F803284AE0FB711A7F6D492C /* AddressSpec.m */; };
+		F8032CBA3B97DE5DC8A0C56E /* InitializerDefinitionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F803213DD3CBDACD8EC1F272 /* InitializerDefinitionSpec.m */; };
 		F8032D9F9500DD83FF4E05EF /* UserSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032CED40773AEF0E335082 /* UserSpec.m */; };
 		F8032E56E035B5FF00A7174F /* ObjectBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = F80326692E4A0E90C7992A92 /* ObjectBuilder.m */; };
+		F8032E851DE37327A678003C /* InitializerDefinitionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F803213DD3CBDACD8EC1F272 /* InitializerDefinitionSpec.m */; };
 		F8032ECB76A9091BF16C9DFA /* UserSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032CED40773AEF0E335082 /* UserSpec.m */; };
 		F8032F0E8F7816FA9080C036 /* UserFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032DDD114FD64AAFE9607C /* UserFactory.m */; };
+		F8032FB25728AF348300C9C8 /* InitializerDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = F803224032DA8BC2204510D9 /* InitializerDefinition.m */; };
 		F8032FC1F7E80C0D7A3BD1A2 /* FactoryDefinitionRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = F803275983A2D0CE41DEEC20 /* FactoryDefinitionRegistry.m */; };
 		F8032FDA488F2799CA505D14 /* FactoryGentleman.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032792DF35461EB84AB7D2 /* FactoryGentleman.m */; };
 /* End PBXBuildFile section */
@@ -62,6 +66,8 @@
 		5BD363EB1830FF0B0024169A /* FactoryGentleman-iOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FactoryGentleman-iOS-Prefix.pch"; sourceTree = "<group>"; };
 		5ED3EC466AC84D26A1B7AFC8 /* libPods-FactoryGentleman-Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FactoryGentleman-Mac.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8032090C714E2BBE6F64943 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		F803213DD3CBDACD8EC1F272 /* InitializerDefinitionSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitializerDefinitionSpec.m; sourceTree = "<group>"; };
+		F803224032DA8BC2204510D9 /* InitializerDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitializerDefinition.m; sourceTree = "<group>"; };
 		F80322A14C1056A3C96A31BE /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
 		F80322B6710F0DB670F8AA92 /* AddressFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressFactory.m; sourceTree = "<group>"; };
 		F80323ABFB4959EFA006938C /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
@@ -73,6 +79,7 @@
 		F80325C8A100CE3181A56232 /* Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helpers.h; sourceTree = "<group>"; };
 		F80325F3425CA86BE221DAE5 /* FactoryGentleman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactoryGentleman.h; sourceTree = "<group>"; };
 		F80326692E4A0E90C7992A92 /* ObjectBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectBuilder.m; sourceTree = "<group>"; };
+		F80326CE89FC2BE0DACEFAEB /* InitializerDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitializerDefinition.h; sourceTree = "<group>"; };
 		F803275983A2D0CE41DEEC20 /* FactoryDefinitionRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactoryDefinitionRegistry.m; sourceTree = "<group>"; };
 		F8032792DF35461EB84AB7D2 /* FactoryGentleman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactoryGentleman.m; sourceTree = "<group>"; };
 		F803282B7E256FFAE5860E40 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
@@ -208,6 +215,7 @@
 				F8032E280A2D8D32BF8170B0 /* FactoryDefinitionRegistrySpec.m */,
 				F8032F1736CE0338C9B98006 /* FactoryDefinerSpec.m */,
 				F8032C2695EC435C553E0DD6 /* ObjectBuilderSpec.m */,
+				F803213DD3CBDACD8EC1F272 /* InitializerDefinitionSpec.m */,
 			);
 			path = FactoryGentleman;
 			sourceTree = "<group>";
@@ -225,6 +233,8 @@
 				F80326692E4A0E90C7992A92 /* ObjectBuilder.m */,
 				F8032792DF35461EB84AB7D2 /* FactoryGentleman.m */,
 				F80325F3425CA86BE221DAE5 /* FactoryGentleman.h */,
+				F803224032DA8BC2204510D9 /* InitializerDefinition.m */,
+				F80326CE89FC2BE0DACEFAEB /* InitializerDefinition.h */,
 			);
 			path = FactoryGentleman;
 			sourceTree = "<group>";
@@ -435,6 +445,8 @@
 				F8032D9F9500DD83FF4E05EF /* UserSpec.m in Sources */,
 				F803270D1309D857C818123F /* UserFactory.m in Sources */,
 				F80329A98AE11ACB3B8824A5 /* AddressFactory.m in Sources */,
+				F8032FB25728AF348300C9C8 /* InitializerDefinition.m in Sources */,
+				F8032CBA3B97DE5DC8A0C56E /* InitializerDefinitionSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,6 +468,8 @@
 				F8032ECB76A9091BF16C9DFA /* UserSpec.m in Sources */,
 				F8032F0E8F7816FA9080C036 /* UserFactory.m in Sources */,
 				F803246118E11AA911A35E7C /* AddressFactory.m in Sources */,
+				F80325BDF00A08453F8A45B9 /* InitializerDefinition.m in Sources */,
+				F8032E851DE37327A678003C /* InitializerDefinitionSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

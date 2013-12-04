@@ -20,7 +20,10 @@ SpecBegin(ObjectBuilder)
                 @"mutableArrayProperty" : ^{ return @[ @"random string in array" ]; },
                 @"nonExistentProperty" : ^{ return @"this will never work"; }
         };
-        FactoryDefinition *definition = [[FactoryDefinition alloc] initWithFieldDefinitions:definedFields];
+        InitializerDefinition *initializerDefinition = [[InitializerDefinition alloc] initWithSelector:@selector(init)
+                                                                                            fieldNames:@[]];
+        FactoryDefinition *definition = [[FactoryDefinition alloc] initWithInitializerDefinition:initializerDefinition
+                                                                                fieldDefinitions:definedFields];
         subject = [[ObjectBuilder alloc] initWithObjectClass:ExampleMutableObject.class
                                                   definition:definition];
         overriddenFields = @{
