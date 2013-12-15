@@ -5,6 +5,12 @@
 SpecBegin(User)
     __block User *subject;
 
+    it(@"has unique resourceID factory", ^{
+        subject = FGBuild(User);
+        User *anotherUser = FGBuild(User);
+        expect(subject.resourceId).toNot.equal(anotherUser.resourceId);
+    });
+
     context(@"has first name, last name & valid address", ^{
         before(^{
             subject = FGBuild(User);

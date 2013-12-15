@@ -3,6 +3,10 @@
 #import "User.h"
 
 FactoryBegin(User)
+    __block int currentId = 0;
+    fieldBy(resourceId, ^{
+        return @(++currentId);
+    });
     field(firstName, @"Bob");
     field(lastName, @"Bradley");
     assocField(address, Address);

@@ -3,6 +3,7 @@
 @interface User : NSObject
 @property (nonatomic, readonly) NSString *firstName;
 @property (nonatomic, readonly) NSString *lastName;
+@property (nonatomic) NSNumber *resourceId;
 @property (nonatomic) Address *address;
 
 - (instancetype)initWithFirstName:(NSString *)firstName
