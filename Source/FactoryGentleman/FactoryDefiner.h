@@ -27,7 +27,10 @@
     field(__FIELD_NAME__, [FactoryGentleman buildForObjectClass:__CLASS__.class])
 
 #define field(__FIELD_NAME__, __FIELD_VALUE__) \
-    [fieldDefinitions setObject:^{return (__FIELD_VALUE__);} forKey:f(__FIELD_NAME__)]
+    [fieldDefinitions setObject:^{return (__FIELD_VALUE__); } forKey:f(__FIELD_NAME__)]
+
+#define fieldBy(__FIELD_NAME__, __FIELD_BLOCK__) \
+    [fieldDefinitions setObject:(__FIELD_BLOCK__) forKey:f(__FIELD_NAME__)]
 
 #define initWith(__INITIALIZER__, ...) \
     initializerDefinition = [InitializerDefinition definitionWithSelector:@selector(__INITIALIZER__), ##__VA_ARGS__]
