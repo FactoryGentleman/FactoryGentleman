@@ -6,7 +6,8 @@
 
 + (id)buildForObjectClass:(Class)objectClass
 {
-    return [[self objectBuilderForClass:objectClass] buildWithFieldDefinitions:[[NSDictionary alloc] init]];
+    return [[[ObjectBuilder alloc] initWithObjectClass:objectClass
+                                            definition:[self definitionForObjectClass:objectClass]] build];
 }
 
 + (id)buildForObjectClass:(Class)objectClass
@@ -14,13 +15,11 @@
 {
     NSMutableDictionary *fieldDefinitions = [[NSMutableDictionary alloc] init];
     fieldDefiner(fieldDefinitions);
-    return [[self objectBuilderForClass:objectClass] buildWithFieldDefinitions:fieldDefinitions];
-}
-
-+ (ObjectBuilder *)objectBuilderForClass:(Class)class
-{
-    return [[ObjectBuilder alloc] initWithObjectClass:class
-                                           definition:[self definitionForObjectClass:class]];
+    FactoryDefinition *overriddenDefinition = [[FactoryDefinition alloc] initWithInitializerDefinition:nil
+                                                                                      fieldDefinitions:fieldDefinitions];
+    FactoryDefinition *definition = [[self definitionForObjectClass:objectClass] mergedWithDefinition:overriddenDefinition];
+    return [[[ObjectBuilder alloc] initWithObjectClass:objectClass
+                                            definition:definition] build];
 }
 
 + (FactoryDefinition *)definitionForObjectClass:(Class)objectClass
