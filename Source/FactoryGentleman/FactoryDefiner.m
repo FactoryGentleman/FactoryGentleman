@@ -1,7 +1,6 @@
 #import "FactoryDefiner.h"
 
 #import "FactoryDefinitionRegistry.h"
-#import "FactoryDefinition.h"
 
 @interface FactoryDefiner ()
 @property (nonatomic, readonly) Class objectClass;

@@ -7,8 +7,6 @@
 {
     self = [super init];
     if (self) {
-        NSParameterAssert(selector);
-        NSParameterAssert(fieldNames);
         _selector = selector;
         _fieldNames = fieldNames;
     }

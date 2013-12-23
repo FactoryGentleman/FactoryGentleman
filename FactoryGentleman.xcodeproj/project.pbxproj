@@ -21,10 +21,12 @@
 		F803222CB288A9D1A8F78A60 /* AddressSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F803284AE0FB711A7F6D492C /* AddressSpec.m */; };
 		F8032324C17DB6D87733BF3F /* ObjectBuilderSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032C2695EC435C553E0DD6 /* ObjectBuilderSpec.m */; };
 		F803246118E11AA911A35E7C /* AddressFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F80322B6710F0DB670F8AA92 /* AddressFactory.m */; };
+		F803249217B8070F4DD9CE76 /* FactoryDefinitionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032F93EF903F2DE003C805 /* FactoryDefinitionSpec.m */; };
 		F803251DF105C4904596DA76 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = F80323ABFB4959EFA006938C /* Address.m */; };
 		F8032542F2C20D90E6FC3510 /* FactoryDefinitionRegistrySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032E280A2D8D32BF8170B0 /* FactoryDefinitionRegistrySpec.m */; };
 		F80325BDF00A08453F8A45B9 /* InitializerDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = F803224032DA8BC2204510D9 /* InitializerDefinition.m */; };
 		F803268FE04F4570F6DD5474 /* FactoryDefinitionRegistrySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032E280A2D8D32BF8170B0 /* FactoryDefinitionRegistrySpec.m */; };
+		F80326C37B34F1E5DB7B2F92 /* FactoryDefinitionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032F93EF903F2DE003C805 /* FactoryDefinitionSpec.m */; };
 		F80326DCED8183A6DA01E6DF /* FactoryDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = F803258EA10C03D7AF00814F /* FactoryDefinition.m */; };
 		F80326FB605095132940CAB4 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F803282B7E256FFAE5860E40 /* User.m */; };
 		F803270D1309D857C818123F /* UserFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032DDD114FD64AAFE9607C /* UserFactory.m */; };
@@ -90,6 +92,7 @@
 		F8032DDD114FD64AAFE9607C /* UserFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserFactory.m; sourceTree = "<group>"; };
 		F8032E280A2D8D32BF8170B0 /* FactoryDefinitionRegistrySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactoryDefinitionRegistrySpec.m; sourceTree = "<group>"; };
 		F8032F1736CE0338C9B98006 /* FactoryDefinerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactoryDefinerSpec.m; sourceTree = "<group>"; };
+		F8032F93EF903F2DE003C805 /* FactoryDefinitionSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactoryDefinitionSpec.m; sourceTree = "<group>"; };
 		FB7925B639C14423A95D4F24 /* Pods-FactoryGentleman-Mac.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FactoryGentleman-Mac.xcconfig"; path = "Pods/Pods-FactoryGentleman-Mac.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -216,6 +219,7 @@
 				F8032F1736CE0338C9B98006 /* FactoryDefinerSpec.m */,
 				F8032C2695EC435C553E0DD6 /* ObjectBuilderSpec.m */,
 				F803213DD3CBDACD8EC1F272 /* InitializerDefinitionSpec.m */,
+				F8032F93EF903F2DE003C805 /* FactoryDefinitionSpec.m */,
 			);
 			path = FactoryGentleman;
 			sourceTree = "<group>";
@@ -447,6 +451,7 @@
 				F80329A98AE11ACB3B8824A5 /* AddressFactory.m in Sources */,
 				F8032FB25728AF348300C9C8 /* InitializerDefinition.m in Sources */,
 				F8032CBA3B97DE5DC8A0C56E /* InitializerDefinitionSpec.m in Sources */,
+				F803249217B8070F4DD9CE76 /* FactoryDefinitionSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,6 +475,7 @@
 				F803246118E11AA911A35E7C /* AddressFactory.m in Sources */,
 				F80325BDF00A08453F8A45B9 /* InitializerDefinition.m in Sources */,
 				F8032E851DE37327A678003C /* InitializerDefinitionSpec.m in Sources */,
+				F80326C37B34F1E5DB7B2F92 /* FactoryDefinitionSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

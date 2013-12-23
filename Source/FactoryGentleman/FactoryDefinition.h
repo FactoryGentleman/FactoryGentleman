@@ -7,4 +7,9 @@
 - (instancetype)init __attribute__((unavailable("init not available ")));
 - (instancetype)initWithInitializerDefinition:(InitializerDefinition *)initializerDefinition
                              fieldDefinitions:(NSDictionary *)fieldDefinitions;
+
+- (instancetype)mergedWithDefinition:(FactoryDefinition *)otherDefinition;
+
+- (NSDictionary *)initializerFieldDefinitions;
+- (NSDictionary *)setterFieldDefinitions;
 @end

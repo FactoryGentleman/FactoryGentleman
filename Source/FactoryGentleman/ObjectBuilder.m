@@ -17,17 +17,14 @@
     return self;
 }
 
-- (id)buildWithFieldDefinitions:(NSDictionary *)fieldDefinitions
+- (id)build
 {
-
-    id object = [self createObjectInstanceWithFieldDefinitions:[self initializerFieldDefinitionsWith:fieldDefinitions]];
-    [self setFieldDefinitions:[self setterFieldDefinitionsWith:fieldDefinitions]
-                     onObject:object];
-
+    id object = [self createObjectInstance];
+    [self setFieldDefinitionsOnObject:object];
     return object;
 }
 
-- (id)createObjectInstanceWithFieldDefinitions:(NSDictionary *)fieldDefinitions
+- (id)createObjectInstance
 {
     __strong id alloced = [self.objectClass alloc];
 
@@ -37,7 +34,8 @@
     [inv setSelector:self.definition.initializerDefinition.selector];
     [inv setTarget:alloced];
 
-    [[self evaluatedFieldsFromDefinitions:fieldDefinitions] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    NSArray *initializerFields = [self evaluatedFieldsFromDefinitions:[self.definition initializerFieldDefinitions]];
+    [initializerFields enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         if (obj != self.nilObject) {
             [inv setArgument:&obj atIndex:idx + 2];
         }
@@ -51,7 +49,7 @@
 - (NSArray *)evaluatedFieldsFromDefinitions:(NSDictionary *)fieldDefinitions
 {
     NSMutableArray *evaluatedFields = [[NSMutableArray alloc] init];
-    for (NSString *fieldName in self.definition.initializerDefinition.fieldNames) {
+    for (NSString *fieldName in fieldDefinitions) {
         id (^definition)(void) = fieldDefinitions[fieldName];
         if (definition) {
             id value = definition();
@@ -77,42 +75,10 @@
     return nilObject;
 }
 
-- (NSDictionary *)initializerFieldDefinitionsWith:(NSDictionary *)fieldDefinitions
+- (void)setFieldDefinitionsOnObject:(id)object
 {
-    NSDictionary *combinedFieldDefinitions = [self combinedFieldDefinitionsWith:fieldDefinitions];
-    NSMutableDictionary *initializerFieldDefinitions = [[NSMutableDictionary alloc] init];
-    for (NSString *fieldName in combinedFieldDefinitions) {
-        if ([self.definition.initializerDefinition.fieldNames containsObject:fieldName]) {
-            initializerFieldDefinitions[fieldName] = combinedFieldDefinitions[fieldName];
-        }
-    }
-    return initializerFieldDefinitions;
-}
-
-- (NSDictionary *)setterFieldDefinitionsWith:(NSDictionary *)fieldDefinitions
-{
-    NSDictionary *combinedFieldDefinitions = [self combinedFieldDefinitionsWith:fieldDefinitions];
-    NSMutableDictionary *setterFieldDefinitions = [[NSMutableDictionary alloc] init];
-    for (NSString *fieldName in combinedFieldDefinitions) {
-        if (![self.definition.initializerDefinition.fieldNames containsObject:fieldName]) {
-            setterFieldDefinitions[fieldName] = combinedFieldDefinitions[fieldName];
-        }
-    }
-    return setterFieldDefinitions;
-}
-
-- (NSDictionary *)combinedFieldDefinitionsWith:(NSDictionary *)fieldDefinitions
-{
-    NSMutableDictionary *combinedFieldDefinitions = [self.definition.fieldDefinitions mutableCopy];
-    [combinedFieldDefinitions addEntriesFromDictionary:fieldDefinitions];
-    return combinedFieldDefinitions;
-}
-
-- (void)setFieldDefinitions:(NSDictionary *)fieldDefinitions
-                   onObject:(id)object
-{
-    for (NSString *fieldName in fieldDefinitions) {
-        id (^definition)(void) = fieldDefinitions[fieldName];
+    for (NSString *fieldName in [self.definition setterFieldDefinitions]) {
+        id (^definition)(void) = [self.definition setterFieldDefinitions][fieldName];
         [self setField:fieldName
                  value:definition()
               onObject:object];
