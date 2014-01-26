@@ -78,24 +78,25 @@
 - (void)setFieldDefinitionsOnObject:(id)object
 {
     for (NSString *fieldName in [self.definition setterFieldDefinitions]) {
-        id (^definition)(void) = [self.definition setterFieldDefinitions][fieldName];
         [self setField:fieldName
-                 value:definition()
+                 value:[self.definition setterFieldDefinitions][fieldName]
               onObject:object];
     }
 }
 
 - (void)setField:(NSString *)field
-           value:(id)value
+           value:(id (^)())fieldDefinition
         onObject:(id)object
 {
     SEL setter = [self setterForField:field];
-    if ([object respondsToSelector:setter]) {
-        #pragma clang diagnostic push
-        #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        [object performSelector:setter
-                     withObject:value];
-        #pragma clang diagnostic pop
+    NSMethodSignature *methodSignature = [object methodSignatureForSelector:setter];
+    if (methodSignature) {
+        id fieldValue = fieldDefinition();
+        NSInvocation *inv = [NSInvocation invocationWithMethodSignature:methodSignature];
+        [inv setSelector:setter];
+        [inv setTarget:object];
+        [inv setArgument:&fieldValue atIndex:2];
+        [inv invoke];
     }
 }
 
