@@ -1,5 +1,7 @@
 #import "ObjectBuilder.h"
 
+#import "Value.h"
+
 @interface ExampleMutableObject : NSObject
 @property (nonatomic) NSArray *mutableArrayProperty;
 @property (nonatomic) int mutableIntProperty;
@@ -37,7 +39,10 @@ SpecBegin(ObjectBuilder)
     context(@"when building mutable objects", ^{
         before(^{
             NSDictionary *definedFields = @{
-                    @"mutableIntProperty"    : ^{ return 3; },
+                    @"mutableIntProperty"    : ^{
+                        int intValue = 3;
+                        return [Value value:&intValue withObjCType:@encode(__typeof__(intValue))];
+                    },
                     @"mutableArrayProperty"  : ^{ return @[ @"random string in array" ]; },
                     @"nonExistentProperty"   : ^{ return @"this will never work"; }
             };
@@ -66,7 +71,10 @@ SpecBegin(ObjectBuilder)
         before(^{
             NSDictionary *definedFields = @{
                     @"immutableStringProperty" : ^{ return @"some cool string"; },
-                    @"immutableFloatProperty"  : ^{ return 3.5f; }
+                    @"immutableFloatProperty"  : ^{
+                        float floatValue = 3.5f;
+                        return [Value value:&floatValue withObjCType:@encode(__typeof__(floatValue))];
+                    }
             };
 
             SEL initializer = @selector(initWithImmutableStringProperty:immutableFloatProperty:);
