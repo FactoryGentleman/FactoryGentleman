@@ -9,6 +9,8 @@ FactoryBegin(User)
     });
     field(firstName, @"Bob");
     field(lastName, @"Bradley");
+    NSUInteger friendCount = 3;
+    field(friendCount, value(friendCount));
     assocField(address, Address);
     initWith(initWithFirstName:lastName:, f(firstName), f(lastName));
 FactoryEnd

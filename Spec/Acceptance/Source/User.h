@@ -5,10 +5,12 @@
 @property (nonatomic, readonly) NSString *lastName;
 @property (nonatomic) NSNumber *resourceId;
 @property (nonatomic) Address *address;
+@property (nonatomic) NSUInteger friendCount;
 
 - (instancetype)initWithFirstName:(NSString *)firstName
                          lastName:(NSString *)lastName;
 
+- (BOOL)isLonely;
 - (BOOL)isValid;
 - (NSString *)fullName;
 - (NSString *)envelopeAddress;
