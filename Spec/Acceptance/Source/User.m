@@ -15,6 +15,11 @@
     return self;
 }
 
+- (BOOL)isLonely
+{
+    return self.friendCount == 0;
+}
+
 - (BOOL)isValid
 {
     return [self isValidName] &&

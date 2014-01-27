@@ -1,4 +1,5 @@
 #import "FactoryDefinition.h"
+#import "Value.h"
 
 @interface FactoryDefiner : NSObject
 - (instancetype)init __attribute__((unavailable("init not available ")));
@@ -36,6 +37,8 @@
     initializerDefinition = [InitializerDefinition definitionWithSelector:@selector(__INITIALIZER__), ##__VA_ARGS__]
 
 #define f(__FIELD_NAME__) @#__FIELD_NAME__
+
+#define value(__VALUE__) [Value value:&__VALUE__ withObjCType:@encode(__typeof__(__VALUE__))]
 
 #define FactoryEnd \
     return [[FactoryDefinition alloc] initWithInitializerDefinition:initializerDefinition \

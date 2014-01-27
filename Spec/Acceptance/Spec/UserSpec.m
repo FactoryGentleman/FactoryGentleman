@@ -101,4 +101,23 @@ SpecBegin(User)
             expect([subject envelopeAddress]).to.equal(@"");
         });
     });
+
+    context(@"when has friends", ^{
+        before(^{
+            NSUInteger friendCount = 2;
+            subject = FGBuildWith(User, field(friendCount, value(friendCount)); );
+        });
+
+        it(@"is NOT lonely", ^{
+            expect([subject isLonely]).to.beFalsy();
+        });
+    });
+
+    context(@"when has NO friends", ^{
+        it(@"is lonely", ^{
+            NSUInteger friendCount = 0;
+            subject = FGBuildWith(User, field(friendCount, value(friendCount)); );
+            expect([subject isLonely]).to.beTruthy();
+        });
+    });
 SpecEnd
