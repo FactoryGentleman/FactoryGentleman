@@ -2,6 +2,8 @@
 
 #import <objc/message.h>
 
+#import "Value.h"
+
 @implementation ObjectBuilder
 
 - (instancetype)initWithObjectClass:(Class)objectClass
@@ -34,45 +36,26 @@
     [inv setSelector:self.definition.initializerDefinition.selector];
     [inv setTarget:alloced];
 
-    NSArray *initializerFields = [self evaluatedFieldsFromDefinitions:[self.definition initializerFieldDefinitions]];
-    [initializerFields enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        if (obj != self.nilObject) {
-            [inv setArgument:&obj atIndex:idx + 2];
+    NSDictionary *initializerFieldDefinitions = [self.definition initializerFieldDefinitions];
+    NSUInteger index = 2;
+    for (NSString *fieldName in initializerFieldDefinitions) {
+        id (^definition)(void) = initializerFieldDefinitions[fieldName];
+        if (definition) {
+            id value = definition();
+            if ([value isKindOfClass:Value.class]) {
+                [self setValueFromValue:value
+                                  index:index
+                             invocation:inv];
+            } else if (value) {
+                [inv setArgument:&value atIndex:index];
+            }
         }
-    }];
+        index++;
+    }
 
     [inv invoke];
 
     return alloced;
-}
-
-- (NSArray *)evaluatedFieldsFromDefinitions:(NSDictionary *)fieldDefinitions
-{
-    NSMutableArray *evaluatedFields = [[NSMutableArray alloc] init];
-    for (NSString *fieldName in fieldDefinitions) {
-        id (^definition)(void) = fieldDefinitions[fieldName];
-        if (definition) {
-            id value = definition();
-            if (value) {
-                [evaluatedFields addObject:value];
-            } else {
-                [evaluatedFields addObject:self.nilObject];
-            }
-        } else {
-            [evaluatedFields addObject:self.nilObject];
-        }
-    }
-    return evaluatedFields;
-}
-
-- (id)nilObject
-{
-    static dispatch_once_t once;
-    static id nilObject;
-    dispatch_once(&once, ^{
-        nilObject = [[NSObject alloc] init];
-    });
-    return nilObject;
 }
 
 - (void)setFieldDefinitionsOnObject:(id)object
@@ -90,14 +73,35 @@
 {
     SEL setter = [self setterForField:field];
     NSMethodSignature *methodSignature = [object methodSignatureForSelector:setter];
-    if (methodSignature) {
-        id fieldValue = fieldDefinition();
+    if (methodSignature && fieldDefinition) {
         NSInvocation *inv = [NSInvocation invocationWithMethodSignature:methodSignature];
         [inv setSelector:setter];
         [inv setTarget:object];
-        [inv setArgument:&fieldValue atIndex:2];
+
+        id fieldValue = fieldDefinition();
+        if ([fieldValue isKindOfClass:Value.class]) {
+            [self setValueFromValue:fieldValue
+                              index:2
+                         invocation:inv];
+        } else if (fieldValue) {
+            [inv setArgument:&fieldValue atIndex:2];
+        }
+
         [inv invoke];
     }
+}
+
+- (void)setValueFromValue:(Value *)value
+                    index:(NSUInteger)index
+               invocation:(NSInvocation *)inv
+{
+    NSUInteger size;
+    const char *type = [[value wrappedValue] objCType];
+    NSGetSizeAndAlignment(type, &size, NULL);
+    void *actualValue = malloc(size);
+    [[value wrappedValue] getValue:actualValue];
+    [inv setArgument:actualValue atIndex:index];
+    free(actualValue);
 }
 
 - (SEL)setterForField:(NSString *)field
