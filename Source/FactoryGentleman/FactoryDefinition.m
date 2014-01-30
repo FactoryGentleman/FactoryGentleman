@@ -1,9 +1,10 @@
 #import "FactoryDefinition.h"
+#import "FieldDefinition.h"
 
 @implementation FactoryDefinition
 
 - (instancetype)initWithInitializerDefinition:(InitializerDefinition *)initializerDefinition
-                             fieldDefinitions:(NSDictionary *)fieldDefinitions;
+                             fieldDefinitions:(NSArray *)fieldDefinitions;
 {
     self = [super init];
     if (self) {
@@ -17,7 +18,7 @@
 - (instancetype)mergedWithDefinition:(FactoryDefinition *)otherDefinition
 {
     InitializerDefinition *initializerDefinition = [self mergedInitializerDefinitionWith:otherDefinition.initializerDefinition];
-    NSDictionary *fieldDefinitions = [self mergedFieldDefinitionsWith:otherDefinition.fieldDefinitions];
+    NSArray *fieldDefinitions = [self mergedFieldDefinitionsWith:otherDefinition.fieldDefinitions];
     return [[FactoryDefinition alloc] initWithInitializerDefinition:initializerDefinition
                                                    fieldDefinitions:fieldDefinitions];
 }
@@ -31,30 +32,29 @@
     }
 }
 
-- (NSDictionary *)mergedFieldDefinitionsWith:(NSDictionary *)otherFieldDefinitions
+- (NSArray *)mergedFieldDefinitionsWith:(NSArray *)otherFieldDefinitions
 {
-    NSMutableDictionary *combinedFieldDefinitions = [self.fieldDefinitions mutableCopy];
-    [combinedFieldDefinitions addEntriesFromDictionary:otherFieldDefinitions];
-    return combinedFieldDefinitions;
+    NSSet *mergedDefinitions = [[NSSet setWithArray:otherFieldDefinitions] setByAddingObjectsFromArray:self.fieldDefinitions];
+    return [mergedDefinitions allObjects];
 }
 
-- (NSDictionary *)initializerFieldDefinitions
+- (NSArray *)initializerFieldDefinitions
 {
-    NSMutableDictionary *initializerFieldDefinitions = [[NSMutableDictionary alloc] init];
-    for (NSString *fieldName in self.fieldDefinitions) {
-        if ([self.initializerDefinition.fieldNames containsObject:fieldName]) {
-            initializerFieldDefinitions[fieldName] = self.fieldDefinitions[fieldName];
+    NSMutableArray *initializerFieldDefinitions = [[NSMutableArray alloc] init];
+    for (FieldDefinition *fieldDefinition in self.fieldDefinitions) {
+        if ([self.initializerDefinition.fieldNames containsObject:fieldDefinition.name]) {
+            [initializerFieldDefinitions addObject:fieldDefinition];
         }
     }
     return initializerFieldDefinitions;
 }
 
-- (NSDictionary *)setterFieldDefinitions
+- (NSArray *)setterFieldDefinitions
 {
-    NSMutableDictionary *setterFieldDefinitions = [[NSMutableDictionary alloc] init];
-    for (NSString *fieldName in self.fieldDefinitions) {
-        if (![self.initializerDefinition.fieldNames containsObject:fieldName]) {
-            setterFieldDefinitions[fieldName] = self.fieldDefinitions[fieldName];
+    NSMutableArray *setterFieldDefinitions = [[NSMutableArray alloc] init];
+    for (FieldDefinition *fieldDefinition in self.fieldDefinitions) {
+        if (![self.initializerDefinition.fieldNames containsObject:fieldDefinition.name]) {
+            [setterFieldDefinitions addObject:fieldDefinition];
         }
     }
     return setterFieldDefinitions;

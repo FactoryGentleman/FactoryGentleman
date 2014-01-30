@@ -2,14 +2,14 @@
 
 @interface FactoryDefinition : NSObject
 @property (nonatomic, readonly) InitializerDefinition *initializerDefinition;
-@property (nonatomic, readonly) NSDictionary *fieldDefinitions;
+@property (nonatomic, readonly) NSArray *fieldDefinitions;
 
 - (instancetype)init __attribute__((unavailable("init not available ")));
 - (instancetype)initWithInitializerDefinition:(InitializerDefinition *)initializerDefinition
-                             fieldDefinitions:(NSDictionary *)fieldDefinitions;
+                             fieldDefinitions:(NSArray *)fieldDefinitions;
 
 - (instancetype)mergedWithDefinition:(FactoryDefinition *)otherDefinition;
 
-- (NSDictionary *)initializerFieldDefinitions;
-- (NSDictionary *)setterFieldDefinitions;
+- (NSArray *)initializerFieldDefinitions;
+- (NSArray *)setterFieldDefinitions;
 @end

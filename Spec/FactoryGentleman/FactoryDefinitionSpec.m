@@ -1,68 +1,63 @@
 #import "FactoryDefinition.h"
 
+#import "FieldDefinition.h"
+
 SpecBegin(FactoryDefinition)
     __block FactoryDefinition *subject;
     __block InitializerDefinition *originalInitializer;
-    __block id (^original)();
-    __block id (^originalBoth)();
+    __block FieldDefinition *originalDefinition;
+    __block FieldDefinition *originalBothDefinition;
 
     before(^{
-        original = ^id {
-            return nil;
-        };
-        originalBoth = ^id {
-            return nil;
-        };
+        originalDefinition = [FieldDefinition withFieldName:@"original" definition:^id { return nil; }];
+        originalBothDefinition = [FieldDefinition withFieldName:@"both" definition:^id { return nil; }];
+
         originalInitializer = [[InitializerDefinition alloc] initWithSelector:@selector(initWithObjectClass:)
                                                                 fieldNames:@[@"original"]];
+
         subject = [[FactoryDefinition alloc] initWithInitializerDefinition:originalInitializer
-                                                          fieldDefinitions:@{
-                                                                  @"original" : original,
-                                                                  @"both" : originalBoth
-                                                          }];
+                                                          fieldDefinitions:@[
+                                                                  originalDefinition,
+                                                                  originalBothDefinition
+                                                          ]];
     });
 
     describe(@"-mergedWithDefinition:", ^{
-        __block FactoryDefinition *givenDefinition;
-        __block NSDictionary *fieldDefinitions;
-        __block id (^given)();
-        __block id (^givenBoth)();
+        __block FactoryDefinition *givenFactoryDefinition;
+        __block NSArray *fieldDefinitions;
+
+        __block FieldDefinition *givenDefinition;
+        __block FieldDefinition *givenBothDefinition;
 
         before(^{
-            given = ^id {
-                return nil;
-            };
-            givenBoth = ^id {
-                return nil;
-            };
-            fieldDefinitions = @{
-                    @"given" : given,
-                    @"both" : givenBoth
-            };
-            givenDefinition = [[FactoryDefinition alloc] initWithInitializerDefinition:nil
-                                                                      fieldDefinitions:fieldDefinitions];
+            givenDefinition = [FieldDefinition withFieldName:@"given" definition:^id { return nil; }];
+            givenBothDefinition = [FieldDefinition withFieldName:@"both" definition:^id { return nil; }];
+
+            fieldDefinitions = @[ givenDefinition, givenBothDefinition ];
+            givenFactoryDefinition = [[FactoryDefinition alloc] initWithInitializerDefinition:nil
+                                                                             fieldDefinitions:fieldDefinitions];
         });
 
         it(@"new definition contains original fields", ^{
-            expect([subject mergedWithDefinition:givenDefinition].fieldDefinitions[@"original"]).to.equal(original);
+            expect([subject mergedWithDefinition:givenFactoryDefinition].fieldDefinitions).to.contain(originalDefinition);
         });
         
         it(@"new definition contains given fields", ^{
-            expect([subject mergedWithDefinition:givenDefinition].fieldDefinitions[@"given"]).to.equal(given);
+            expect([subject mergedWithDefinition:givenFactoryDefinition].fieldDefinitions).to.contain(givenDefinition);
         });
 
         it(@"new definition chooses given fields over original", ^{
-            expect([subject mergedWithDefinition:givenDefinition].fieldDefinitions[@"both"]).to.equal(givenBoth);
+            expect([subject mergedWithDefinition:givenFactoryDefinition].fieldDefinitions).to.contain(givenBothDefinition);
         });
 
         context(@"when given definition has NO initializer", ^{
             before(^{
-                givenDefinition = [[FactoryDefinition alloc] initWithInitializerDefinition:nil
-                                                                          fieldDefinitions:fieldDefinitions];
+                givenFactoryDefinition = [[FactoryDefinition alloc] initWithInitializerDefinition:nil
+                                                                                 fieldDefinitions:fieldDefinitions];
             });
 
             it(@"new definition chooses original initializer", ^{
-                expect([subject mergedWithDefinition:givenDefinition].initializerDefinition).to.equal(originalInitializer);
+                expect([subject mergedWithDefinition:givenFactoryDefinition].initializerDefinition).to.equal(originalInitializer);
             });
         });
 
@@ -72,25 +67,25 @@ SpecBegin(FactoryDefinition)
             before(^{
                 givenInitializer = [[InitializerDefinition alloc] initWithSelector:@selector(init)
                                                                         fieldNames:@[]];
-                givenDefinition = [[FactoryDefinition alloc] initWithInitializerDefinition:givenInitializer
-                                                                          fieldDefinitions:fieldDefinitions];
+                givenFactoryDefinition = [[FactoryDefinition alloc] initWithInitializerDefinition:givenInitializer
+                                                                                 fieldDefinitions:fieldDefinitions];
             });
 
             it(@"new definition chooses original intiializer", ^{
-                expect([subject mergedWithDefinition:givenDefinition].initializerDefinition).to.equal(givenInitializer);
+                expect([subject mergedWithDefinition:givenFactoryDefinition].initializerDefinition).to.equal(givenInitializer);
             });
         });
     });
 
     describe(@"-initializerFieldDefinitions", ^{
         it(@"returns the field definitions used by the initializer", ^{
-            expect([subject initializerFieldDefinitions]).to.equal(@{ @"original" : original });
+            expect([subject initializerFieldDefinitions]).to.equal(@[ originalDefinition ]);
         });
     });
 
     describe(@"-setterFieldDefinitions", ^{
         it(@"returns the field definitions NOT used by the initializer", ^{
-            expect([subject setterFieldDefinitions]).to.equal(@{ @"both" : originalBoth });
+            expect([subject setterFieldDefinitions]).to.equal(@[ originalBothDefinition ]);
         });
     });
 SpecEnd

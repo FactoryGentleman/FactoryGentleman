@@ -1,4 +1,5 @@
 #import "FactoryDefinition.h"
+#import "FieldDefinition.h"
 #import "Value.h"
 
 @interface FactoryDefiner : NSObject
@@ -22,16 +23,18 @@
 { \
     InitializerDefinition *initializerDefinition = [[InitializerDefinition alloc] initWithSelector:@selector(init) \
                                                                                         fieldNames:@[]]; \
-    NSMutableDictionary *fieldDefinitions = [[NSMutableDictionary alloc] init]; \
+    NSMutableArray *fieldDefinitions = [[NSMutableArray alloc] init]; \
 
 #define assocField(__FIELD_NAME__, __CLASS__) \
     field(__FIELD_NAME__, [FactoryGentleman buildForObjectClass:__CLASS__.class])
 
 #define field(__FIELD_NAME__, __FIELD_VALUE__) \
-    [fieldDefinitions setObject:^{return (__FIELD_VALUE__); } forKey:f(__FIELD_NAME__)]
+    [fieldDefinitions addObject:[FieldDefinition withFieldName:f(__FIELD_NAME__) \
+                                                    definition:^id { return (__FIELD_VALUE__); }]]
 
 #define fieldBy(__FIELD_NAME__, __FIELD_BLOCK__) \
-    [fieldDefinitions setObject:(__FIELD_BLOCK__) forKey:f(__FIELD_NAME__)]
+    [fieldDefinitions addObject:[FieldDefinition withFieldName:f(__FIELD_NAME__) \
+                                                    definition:(__FIELD_BLOCK__)]]
 
 #define initWith(__INITIALIZER__, ...) \
     initializerDefinition = [InitializerDefinition definitionWithSelector:@selector(__INITIALIZER__), ##__VA_ARGS__]
