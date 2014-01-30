@@ -11,9 +11,9 @@
 }
 
 + (id)buildForObjectClass:(Class)objectClass
-         withFieldDefiner:(void (^)(NSMutableDictionary *fieldDefinitions))fieldDefiner
+         withFieldDefiner:(void (^)(NSMutableArray *fieldDefinitions))fieldDefiner
 {
-    NSMutableDictionary *fieldDefinitions = [[NSMutableDictionary alloc] init];
+    NSMutableArray *fieldDefinitions = [[NSMutableArray alloc] init];
     fieldDefiner(fieldDefinitions);
     FactoryDefinition *overriddenDefinition = [[FactoryDefinition alloc] initWithInitializerDefinition:nil
                                                                                       fieldDefinitions:fieldDefinitions];

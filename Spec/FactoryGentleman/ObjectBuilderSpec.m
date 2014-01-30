@@ -1,6 +1,7 @@
 #import "ObjectBuilder.h"
 
 #import "Value.h"
+#import "FieldDefinition.h"
 
 @interface ExampleMutableObject : NSObject
 @property (nonatomic) NSArray *mutableArrayProperty;
@@ -38,14 +39,20 @@ SpecBegin(ObjectBuilder)
 
     context(@"when building mutable objects", ^{
         before(^{
-            NSDictionary *definedFields = @{
-                    @"mutableIntProperty"    : ^{
-                        int intValue = 3;
-                        return [Value value:&intValue withObjCType:@encode(__typeof__(intValue))];
-                    },
-                    @"mutableArrayProperty"  : ^{ return @[ @"random string in array" ]; },
-                    @"nonExistentProperty"   : ^{ return @"this will never work"; }
+            Value *(^intProperty)() = ^{
+                int intValue = 3;
+                return [Value value:&intValue
+                       withObjCType:@encode(__typeof__ (intValue))];
             };
+            NSArray *(^arrayProperty)() = ^{ return @[@"random string in array"]; };
+            NSArray *(^nonExistentProperty)() = ^{ return @[@"this will never work"]; };
+
+            NSArray *definedFields = @[
+                [FieldDefinition withFieldName:@"mutableIntProperty" definition:intProperty],
+                [FieldDefinition withFieldName:@"mutableArrayProperty" definition:arrayProperty],
+                [FieldDefinition withFieldName:@"nonExistentProperty" definition:nonExistentProperty]
+            ];
+
             InitializerDefinition *initializerDefinition = [[InitializerDefinition alloc] initWithSelector:@selector(init)
                                                                                                 fieldNames:@[]];
             FactoryDefinition *definition = [[FactoryDefinition alloc] initWithInitializerDefinition:initializerDefinition
@@ -69,13 +76,17 @@ SpecBegin(ObjectBuilder)
 
     context(@"when building immutable objects", ^{
         before(^{
-            NSDictionary *definedFields = @{
-                    @"immutableStringProperty" : ^{ return @"some cool string"; },
-                    @"immutableFloatProperty"  : ^{
-                        float floatValue = 3.5f;
-                        return [Value value:&floatValue withObjCType:@encode(__typeof__(floatValue))];
-                    }
+            id (^stringProperty)() = ^id { return @"some cool string"; };
+            id (^floatProperty)() = ^id {
+                float floatValue = 3.5f;
+                return [Value value:&floatValue
+                       withObjCType:@encode(__typeof__ (floatValue))];
             };
+
+            NSArray *definedFields = @[
+                    [FieldDefinition withFieldName:@"immutableStringProperty" definition:stringProperty],
+                    [FieldDefinition withFieldName:@"immutableFloatProperty" definition:floatProperty]
+            ];
 
             SEL initializer = @selector(initWithImmutableStringProperty:immutableFloatProperty:);
             NSArray *fieldNames = @[ @"immutableStringProperty", @"immutableFloatProperty" ];

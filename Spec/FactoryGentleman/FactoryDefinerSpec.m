@@ -22,7 +22,7 @@
         InitializerDefinition *initializerDefinition = [[InitializerDefinition alloc] initWithSelector:@selector(init)
                                                                                             fieldNames:@[]];
         sharedDefinition = [[FactoryDefinition alloc] initWithInitializerDefinition:initializerDefinition
-                                                                   fieldDefinitions:@{}];
+                                                                   fieldDefinitions:@[]];
     });
     return sharedDefinition;
 }

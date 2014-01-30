@@ -3,6 +3,7 @@
 #import <objc/message.h>
 
 #import "Value.h"
+#import "FieldDefinition.h"
 
 @implementation ObjectBuilder
 
@@ -36,10 +37,10 @@
     [inv setSelector:self.definition.initializerDefinition.selector];
     [inv setTarget:alloced];
 
-    NSDictionary *initializerFieldDefinitions = [self.definition initializerFieldDefinitions];
+    NSArray *initializerFieldDefinitions = [self.definition initializerFieldDefinitions];
     NSUInteger index = 2;
-    for (NSString *fieldName in initializerFieldDefinitions) {
-        id (^definition)(void) = initializerFieldDefinitions[fieldName];
+    for (FieldDefinition *fieldDefinition in initializerFieldDefinitions) {
+        id (^definition)(void) = fieldDefinition.definition;
         if (definition) {
             id value = definition();
             if ([value isKindOfClass:Value.class]) {
@@ -60,9 +61,9 @@
 
 - (void)setFieldDefinitionsOnObject:(id)object
 {
-    for (NSString *fieldName in [self.definition setterFieldDefinitions]) {
-        [self setField:fieldName
-                 value:[self.definition setterFieldDefinitions][fieldName]
+    for (FieldDefinition *fieldDefinition in [self.definition setterFieldDefinitions]) {
+        [self setField:fieldDefinition.name
+                 value:fieldDefinition.definition
               onObject:object];
     }
 }
