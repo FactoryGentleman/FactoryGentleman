@@ -1,18 +1,18 @@
-#import "FactoryDefiner.h"
+#import "FGFactoryDefiner.h"
 
-#import "FactoryDefinitionRegistry.h"
+#import "FGFactoryDefinitionRegistry.h"
 
-@interface FactoryDefiner ()
+@interface FGFactoryDefiner ()
 @property (nonatomic, readonly) Class objectClass;
-@property (nonatomic, readonly) FactoryDefinitionRegistry *factoryDefinitionRegistry;
+@property (nonatomic, readonly) FGFactoryDefinitionRegistry *factoryDefinitionRegistry;
 @end
 
-@implementation FactoryDefiner
+@implementation FGFactoryDefiner
 
 + (void)initialize
 {
     Class selfClass = (Class) self;
-    if (selfClass != FactoryDefiner.class) {
+    if (selfClass != FGFactoryDefiner.class) {
         [[self new] registerDefinitions];
     }
 }
@@ -20,11 +20,11 @@
 - (instancetype)initWithObjectClass:(Class)objectClass
 {
     return [self initWithObjectClass:objectClass
-           factoryDefinitionRegistry:[FactoryDefinitionRegistry sharedInstance]];
+           factoryDefinitionRegistry:[FGFactoryDefinitionRegistry sharedInstance]];
 }
 
 - (instancetype)initWithObjectClass:(Class)objectClass
-          factoryDefinitionRegistry:(FactoryDefinitionRegistry *)factoryDefinitionRegistry
+          factoryDefinitionRegistry:(FGFactoryDefinitionRegistry *)factoryDefinitionRegistry
 {
     self = [super init];
     if (self) {
@@ -43,7 +43,7 @@
                              forClass:self.objectClass];
 }
 
-- (FactoryDefinition *)definition
+- (FGFactoryDefinition *)definition
 {
     NSAssert(NO, @"Override in subclass");
     return nil;

@@ -1,7 +1,7 @@
-#import "ObjectBuilder.h"
+#import "FGObjectBuilder.h"
 
-#import "Value.h"
-#import "FieldDefinition.h"
+#import "FGValue.h"
+#import "FGFieldDefinition.h"
 
 @interface ExampleMutableObject : NSObject
 @property (nonatomic) NSArray *mutableArrayProperty;
@@ -34,30 +34,30 @@
 
 @end
 
-SpecBegin(ObjectBuilder)
-    __block ObjectBuilder *subject;
+SpecBegin(FGObjectBuilder)
+    __block FGObjectBuilder *subject;
 
     context(@"when building mutable objects", ^{
         before(^{
-            Value *(^intProperty)() = ^{
+            FGValue *(^intProperty)() = ^{
                 int intValue = 3;
-                return [Value value:&intValue
-                       withObjCType:@encode(__typeof__ (intValue))];
+                return [FGValue value:&intValue
+                         withObjCType:@encode(__typeof__ (intValue))];
             };
             NSArray *(^arrayProperty)() = ^{ return @[@"random string in array"]; };
             NSArray *(^nonExistentProperty)() = ^{ return @[@"this will never work"]; };
 
             NSArray *definedFields = @[
-                [FieldDefinition withFieldName:@"mutableIntProperty" definition:intProperty],
-                [FieldDefinition withFieldName:@"mutableArrayProperty" definition:arrayProperty],
-                [FieldDefinition withFieldName:@"nonExistentProperty" definition:nonExistentProperty]
+                [FGFieldDefinition withFieldName:@"mutableIntProperty" definition:intProperty],
+                [FGFieldDefinition withFieldName:@"mutableArrayProperty" definition:arrayProperty],
+                [FGFieldDefinition withFieldName:@"nonExistentProperty" definition:nonExistentProperty]
             ];
 
-            InitializerDefinition *initializerDefinition = [[InitializerDefinition alloc] initWithSelector:@selector(init)
+            FGInitializerDefinition *initializerDefinition = [[FGInitializerDefinition alloc] initWithSelector:@selector(init)
                                                                                                 fieldNames:@[]];
-            FactoryDefinition *definition = [[FactoryDefinition alloc] initWithInitializerDefinition:initializerDefinition
+            FGFactoryDefinition *definition = [[FGFactoryDefinition alloc] initWithInitializerDefinition:initializerDefinition
                                                                                     fieldDefinitions:definedFields];
-            subject = [[ObjectBuilder alloc] initWithObjectClass:ExampleMutableObject.class
+            subject = [[FGObjectBuilder alloc] initWithObjectClass:ExampleMutableObject.class
                                                       definition:definition];
         });
 
@@ -79,22 +79,22 @@ SpecBegin(ObjectBuilder)
             id (^stringProperty)() = ^id { return @"some cool string"; };
             id (^floatProperty)() = ^id {
                 float floatValue = 3.5f;
-                return [Value value:&floatValue
-                       withObjCType:@encode(__typeof__ (floatValue))];
+                return [FGValue value:&floatValue
+                         withObjCType:@encode(__typeof__ (floatValue))];
             };
 
             NSArray *definedFields = @[
-                    [FieldDefinition withFieldName:@"immutableStringProperty" definition:stringProperty],
-                    [FieldDefinition withFieldName:@"immutableFloatProperty" definition:floatProperty]
+                    [FGFieldDefinition withFieldName:@"immutableStringProperty" definition:stringProperty],
+                    [FGFieldDefinition withFieldName:@"immutableFloatProperty" definition:floatProperty]
             ];
 
             SEL initializer = @selector(initWithImmutableStringProperty:immutableFloatProperty:);
             NSArray *fieldNames = @[ @"immutableStringProperty", @"immutableFloatProperty" ];
-            InitializerDefinition *initializerDefinition = [[InitializerDefinition alloc] initWithSelector:initializer
+            FGInitializerDefinition *initializerDefinition = [[FGInitializerDefinition alloc] initWithSelector:initializer
                                                                                                 fieldNames:fieldNames];
-            FactoryDefinition *definition = [[FactoryDefinition alloc] initWithInitializerDefinition:initializerDefinition
+            FGFactoryDefinition *definition = [[FGFactoryDefinition alloc] initWithInitializerDefinition:initializerDefinition
                                                                                     fieldDefinitions:definedFields];
-            subject = [[ObjectBuilder alloc] initWithObjectClass:ExampleImmutableObject.class
+            subject = [[FGObjectBuilder alloc] initWithObjectClass:ExampleImmutableObject.class
                                                       definition:definition];
         });
 

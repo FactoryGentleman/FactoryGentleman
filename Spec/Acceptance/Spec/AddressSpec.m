@@ -1,4 +1,4 @@
-#import "FactoryGentleman.h"
+#import "FGFactoryGentleman.h"
 
 #import "Address.h"
 
@@ -17,7 +17,7 @@ SpecBegin(Address)
 
     context(@"has no house number", ^{
         before(^{
-            subject = FGBuildWith(Address,  field(houseNumber, nil); );
+            subject = FGBuildWith(Address,  FGField(houseNumber, nil); );
         });
 
         it(@"is NOT valid", ^{
@@ -27,7 +27,7 @@ SpecBegin(Address)
 
     context(@"has no street", ^{
         before(^{
-            subject = FGBuildWith(Address, field(street, nil); );
+            subject = FGBuildWith(Address, FGField(street, nil); );
         });
 
         it(@"is NOT valid", ^{
@@ -37,7 +37,7 @@ SpecBegin(Address)
 
     context(@"has no city", ^{
         before(^{
-            subject = FGBuildWith(Address, field(city, nil); );
+            subject = FGBuildWith(Address, FGField(city, nil); );
         });
 
         it(@"is NOT valid", ^{

@@ -1,9 +1,9 @@
-#import "FactoryGentleman.h"
+#import "FGFactoryGentleman.h"
 
 #import "Address.h"
 
-FactoryBegin(Address)
-    field(houseNumber, @"123");
-    field(street, @"Important Street");
-    field(city, @"New York City");
-FactoryEnd
+FGFactoryBegin(Address)
+    FGField(houseNumber, @"123");
+    FGField(street, @"Important Street");
+    FGField(city, @"New York City");
+FGFactoryEnd

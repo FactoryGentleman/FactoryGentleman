@@ -1,10 +1,10 @@
-#import "FactoryDefinitionRegistry.h"
+#import "FGFactoryDefinitionRegistry.h"
 
-@interface FactoryDefinitionRegistry ()
+@interface FGFactoryDefinitionRegistry ()
 @property NSMutableDictionary *factories;
 @end
 
-@implementation FactoryDefinitionRegistry
+@implementation FGFactoryDefinitionRegistry
 
 - (instancetype)init
 {
@@ -19,7 +19,7 @@
 
 + (instancetype)sharedInstance
 {
-    static FactoryDefinitionRegistry *sharedInstance;
+    static FGFactoryDefinitionRegistry *sharedInstance;
     static dispatch_once_t once;
     dispatch_once(&once, ^{
         sharedInstance = [[self alloc] init];
@@ -29,7 +29,7 @@
 
 #pragma mark Retrieval
 
-- (FactoryDefinition *)factoryDefinitionForObjectClass:(Class)objectClass
+- (FGFactoryDefinition *)factoryDefinitionForObjectClass:(Class)objectClass
 {
     return [self.factories objectForKey:[self keyForObjectClass:objectClass]];
 }

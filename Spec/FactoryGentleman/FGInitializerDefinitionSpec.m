@@ -1,16 +1,16 @@
-#import "InitializerDefinition.h"
+#import "FGInitializerDefinition.h"
 
 #import "User.h"
 
-SpecBegin(InitializerDefinition)
-    __block InitializerDefinition *subject;
+SpecBegin(FGInitializerDefinition)
+    __block FGInitializerDefinition *subject;
     __block SEL selector;
 
     describe(@"+definitionWithSelector:,...", ^{
         context(@"when given an initializer with no field names", ^{
             before(^{
                 selector = @selector(init);
-                subject = [InitializerDefinition definitionWithSelector:selector];
+                subject = [FGInitializerDefinition definitionWithSelector:selector];
             });
 
             it(@"creates a definition with the given selector", ^{
@@ -29,7 +29,7 @@ SpecBegin(InitializerDefinition)
                 selector = @selector(initWithFirstName:lastName:);
                 firstFieldName = @"first";
                 secondFieldName = @"second";
-                subject = [InitializerDefinition definitionWithSelector:selector, firstFieldName, secondFieldName];
+                subject = [FGInitializerDefinition definitionWithSelector:selector, firstFieldName, secondFieldName];
             });
 
             it(@"creates a definition with the given selector", ^{

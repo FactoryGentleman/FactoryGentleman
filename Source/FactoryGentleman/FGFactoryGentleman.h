@@ -1,7 +1,7 @@
-#import "FactoryDefiner.h"
-#import "FactoryDefinitionRegistry.h"
+#import "FGFactoryDefiner.h"
+#import "FGFactoryDefinitionRegistry.h"
 
-@interface FactoryGentleman : NSObject
+@interface FGFactoryGentleman : NSObject
 + (id)buildForObjectClass:(Class)objectClass;
 
 + (id)buildForObjectClass:(Class)objectClass
@@ -9,9 +9,9 @@
 @end
 
 #define FGBuild(__OBJECT_CLASS__) \
-[FactoryGentleman buildForObjectClass:__OBJECT_CLASS__.class]
+[FGFactoryGentleman buildForObjectClass:__OBJECT_CLASS__.class]
 
 #define FGBuildWith(__OBJECT_CLASS__, __EXTRA_DEFINITIONS__) \
-[FactoryGentleman buildForObjectClass:__OBJECT_CLASS__.class withFieldDefiner:^(NSMutableArray *fieldDefinitions) { \
+[FGFactoryGentleman buildForObjectClass:__OBJECT_CLASS__.class withFieldDefiner:^(NSMutableArray *fieldDefinitions) { \
 __EXTRA_DEFINITIONS__ \
 }]

@@ -1,10 +1,10 @@
-#import "FieldDefinition.h"
+#import "FGFieldDefinition.h"
 
-@implementation FieldDefinition
+@implementation FGFieldDefinition
 
 + (instancetype)withFieldName:(NSString *)name definition:(id (^)())definition
 {
-    return [[FieldDefinition alloc] initWithFieldName:name definition:definition];
+    return [[FGFieldDefinition alloc] initWithFieldName:name definition:definition];
 }
 
 - (id)initWithFieldName:(NSString *)fieldName definition:(id (^)())definition
@@ -23,10 +23,12 @@
 
 - (BOOL)isEqual:(id)other
 {
-    if (other == self)
+    if (other == self) {
         return YES;
-    if (!other || ![[other class] isEqual:[self class]])
+    }
+    if (!other || ![[other class] isEqual:[self class]]) {
         return NO;
+    }
 
     return [self.name isEqualToString:[other name]];
 }

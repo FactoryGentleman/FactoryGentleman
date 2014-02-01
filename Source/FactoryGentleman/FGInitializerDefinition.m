@@ -1,6 +1,6 @@
-#import "InitializerDefinition.h"
+#import "FGInitializerDefinition.h"
 
-@implementation InitializerDefinition
+@implementation FGInitializerDefinition
 
 - (instancetype)initWithSelector:(SEL)selector
                       fieldNames:(NSArray *)fieldNames
@@ -18,7 +18,7 @@
     va_list args;
     va_start(args, selector);
     NSMutableArray *fieldNames = [[NSMutableArray alloc] init];
-    for (int i = 0 ; i < [self numberOfArgsForSelector:selector]; i++) {
+    for (int i = 0; i < [self numberOfArgsForSelector:selector]; i++) {
         [fieldNames addObject:va_arg(args, NSString *)];
     }
     va_end(args);

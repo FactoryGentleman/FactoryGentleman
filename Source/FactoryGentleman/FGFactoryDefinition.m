@@ -1,9 +1,9 @@
-#import "FactoryDefinition.h"
-#import "FieldDefinition.h"
+#import "FGFactoryDefinition.h"
+#import "FGFieldDefinition.h"
 
-@implementation FactoryDefinition
+@implementation FGFactoryDefinition
 
-- (instancetype)initWithInitializerDefinition:(InitializerDefinition *)initializerDefinition
+- (instancetype)initWithInitializerDefinition:(FGInitializerDefinition *)initializerDefinition
                              fieldDefinitions:(NSArray *)fieldDefinitions
 {
     self = [super init];
@@ -15,15 +15,15 @@
     return self;
 }
 
-- (instancetype)mergedWithDefinition:(FactoryDefinition *)otherDefinition
+- (instancetype)mergedWithDefinition:(FGFactoryDefinition *)otherDefinition
 {
-    InitializerDefinition *initializerDefinition = [self mergedInitializerDefinitionWith:otherDefinition.initializerDefinition];
+    FGInitializerDefinition *initializerDefinition = [self mergedInitializerDefinitionWith:otherDefinition.initializerDefinition];
     NSArray *fieldDefinitions = [self mergedFieldDefinitionsWith:otherDefinition.fieldDefinitions];
-    return [[FactoryDefinition alloc] initWithInitializerDefinition:initializerDefinition
-                                                   fieldDefinitions:fieldDefinitions];
+    return [[FGFactoryDefinition alloc] initWithInitializerDefinition:initializerDefinition
+                                                     fieldDefinitions:fieldDefinitions];
 }
 
-- (InitializerDefinition *)mergedInitializerDefinitionWith:(InitializerDefinition *)otherInitializerDefinition
+- (FGInitializerDefinition *)mergedInitializerDefinitionWith:(FGInitializerDefinition *)otherInitializerDefinition
 {
     if (otherInitializerDefinition) {
         return otherInitializerDefinition;
@@ -41,7 +41,7 @@
 - (NSArray *)initializerFieldDefinitions
 {
     NSMutableArray *initializerFieldDefinitions = [[NSMutableArray alloc] init];
-    for (FieldDefinition *fieldDefinition in self.fieldDefinitions) {
+    for (FGFieldDefinition *fieldDefinition in self.fieldDefinitions) {
         if ([self.initializerDefinition.fieldNames containsObject:fieldDefinition.name]) {
             [initializerFieldDefinitions addObject:fieldDefinition];
         }
@@ -52,7 +52,7 @@
 - (NSArray *)setterFieldDefinitions
 {
     NSMutableArray *setterFieldDefinitions = [[NSMutableArray alloc] init];
-    for (FieldDefinition *fieldDefinition in self.fieldDefinitions) {
+    for (FGFieldDefinition *fieldDefinition in self.fieldDefinitions) {
         if (![self.initializerDefinition.fieldNames containsObject:fieldDefinition.name]) {
             [setterFieldDefinitions addObject:fieldDefinition];
         }

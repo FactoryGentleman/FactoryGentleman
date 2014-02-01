@@ -1,14 +1,14 @@
-#import "ObjectBuilder.h"
+#import "FGObjectBuilder.h"
 
 #import <objc/message.h>
 
-#import "Value.h"
-#import "FieldDefinition.h"
+#import "FGValue.h"
+#import "FGFieldDefinition.h"
 
-@implementation ObjectBuilder
+@implementation FGObjectBuilder
 
 - (instancetype)initWithObjectClass:(Class)objectClass
-                         definition:(FactoryDefinition *)definition
+                         definition:(FGFactoryDefinition *)definition
 {
     self = [super init];
     if (self) {
@@ -39,11 +39,11 @@
 
     NSArray *initializerFieldDefinitions = [self.definition initializerFieldDefinitions];
     NSUInteger index = 2;
-    for (FieldDefinition *fieldDefinition in initializerFieldDefinitions) {
+    for (FGFieldDefinition *fieldDefinition in initializerFieldDefinitions) {
         id (^definition)(void) = fieldDefinition.definition;
         if (definition) {
             id value = definition();
-            if ([value isKindOfClass:Value.class]) {
+            if ([value isKindOfClass:FGValue.class]) {
                 [self setValueFromValue:value
                                   index:index
                              invocation:inv];
@@ -61,7 +61,7 @@
 
 - (void)setFieldDefinitionsOnObject:(id)object
 {
-    for (FieldDefinition *fieldDefinition in [self.definition setterFieldDefinitions]) {
+    for (FGFieldDefinition *fieldDefinition in [self.definition setterFieldDefinitions]) {
         [self setField:fieldDefinition.name
                  value:fieldDefinition.definition
               onObject:object];
@@ -80,7 +80,7 @@
         [inv setTarget:object];
 
         id fieldValue = fieldDefinition();
-        if ([fieldValue isKindOfClass:Value.class]) {
+        if ([fieldValue isKindOfClass:FGValue.class]) {
             [self setValueFromValue:fieldValue
                               index:2
                          invocation:inv];
@@ -92,7 +92,7 @@
     }
 }
 
-- (void)setValueFromValue:(Value *)value
+- (void)setValueFromValue:(FGValue *)value
                     index:(NSUInteger)index
                invocation:(NSInvocation *)inv
 {
@@ -113,8 +113,8 @@
 
 - (NSString *)camelcaseForField:(NSString *)field
 {
-    return [field stringByReplacingCharactersInRange:NSMakeRange(0,1)
-                                          withString:[[field  substringToIndex:1] capitalizedString]];
+    return [field stringByReplacingCharactersInRange:NSMakeRange(0, 1)
+                                          withString:[[field substringToIndex:1] capitalizedString]];
 }
 
 @end

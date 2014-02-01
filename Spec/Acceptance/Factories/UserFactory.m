@@ -1,16 +1,16 @@
-#import "FactoryGentleman.h"
+#import "FGFactoryGentleman.h"
 
 #import "User.h"
 
-FactoryBegin(User)
+FGFactoryBegin(User)
     __block int currentId = 0;
-    fieldBy(resourceId, ^{
+    FGFieldBy(resourceId, ^{
         return @(++currentId);
     });
-    field(firstName, @"Bob");
-    field(lastName, @"Bradley");
+    FGField(firstName, @"Bob");
+    FGField(lastName, @"Bradley");
     NSUInteger friendCount = 3;
-    field(friendCount, value(friendCount));
-    assocField(address, Address);
-    initWith(initWithFirstName:lastName:, f(firstName), f(lastName));
-FactoryEnd
+    FGField(friendCount, FGValue(friendCount));
+    FGAssocField(address, Address);
+    FGInitWith(initWithFirstName:lastName:, FGF(firstName), FGF(lastName));
+FGFactoryEnd

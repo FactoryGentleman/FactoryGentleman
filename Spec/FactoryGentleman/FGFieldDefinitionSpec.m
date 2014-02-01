@@ -1,18 +1,18 @@
-#import "FieldDefinition.h"
+#import "FGFieldDefinition.h"
 
-SpecBegin(FieldDefinitionSpec)
-    __block FieldDefinition *subject;
+SpecBegin(FGFieldDefinitionSpec)
+    __block FGFieldDefinition *subject;
     __block id (^definition)();
     before(^{
         definition = ^id{ return nil; };
-        subject = [FieldDefinition withFieldName:@"fieldDefinition" definition:definition];
+        subject = [FGFieldDefinition withFieldName:@"fieldDefinition" definition:definition];
     });
 
     describe(@"instantiate", ^{
         context(@"when fieldName missing", ^{
             it(@"should raise assertion", ^{
                 expect(^{
-                    [FieldDefinition withFieldName:nil definition:^id {
+                    [FGFieldDefinition withFieldName:nil definition:^id {
                         return nil;
                     }];
                 }).to.raise(@"NSInternalInconsistencyException");
@@ -22,21 +22,21 @@ SpecBegin(FieldDefinitionSpec)
         context(@"when fieldName missing", ^{
             it(@"should raise assertion", ^{
                 expect(^{
-                    [FieldDefinition withFieldName:@"fieldDefinition" definition:nil];
+                    [FGFieldDefinition withFieldName:@"fieldDefinition" definition:nil];
                 }).to.raise(@"NSInternalInconsistencyException");
             });
         });
     });
 
     describe(@"equality", ^{
-        __block FieldDefinition *otherFieldDefinition;
+        __block FGFieldDefinition *otherFieldDefinition;
 
         context(@"when field names equal", ^{
             before(^{
-                otherFieldDefinition = [FieldDefinition withFieldName:@"fieldDefinition"
-                                                           definition:^{
-                                                               return @"abc";
-                                                           }];
+                otherFieldDefinition = [FGFieldDefinition withFieldName:@"fieldDefinition"
+                                                             definition:^{
+                                                                 return @"abc";
+                                                             }];
             });
 
             it(@"should be equal", ^{
@@ -47,10 +47,10 @@ SpecBegin(FieldDefinitionSpec)
         context(@"when field names different", ^{
             context(@"when block not equal", ^{
                 before(^{
-                    otherFieldDefinition = [FieldDefinition withFieldName:@"notEqual"
-                                                               definition:^{
-                                                                   return @"abc";
-                                                               }];
+                    otherFieldDefinition = [FGFieldDefinition withFieldName:@"notEqual"
+                                                                 definition:^{
+                                                                     return @"abc";
+                                                                 }];
                 });
 
                 it(@"should not be equal", ^{
@@ -60,8 +60,8 @@ SpecBegin(FieldDefinitionSpec)
 
             context(@"and blocks equal", ^{
                 before(^{
-                    otherFieldDefinition = [FieldDefinition withFieldName:@"notEqual"
-                                                               definition:definition];
+                    otherFieldDefinition = [FGFieldDefinition withFieldName:@"notEqual"
+                                                                 definition:definition];
                 });
                 
                 it(@"should not be equal", ^{

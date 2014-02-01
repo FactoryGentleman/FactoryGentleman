@@ -1,47 +1,47 @@
-#import "FactoryDefiner.h"
+#import "FGFactoryDefiner.h"
 
-#import "FactoryDefinitionRegistry.h"
+#import "FGFactoryDefinitionRegistry.h"
 
-@interface FactoryDefiner (Spec)
+@interface FGFactoryDefiner (Spec)
 - (instancetype)initWithObjectClass:(Class)objectClass
-          factoryDefinitionRegistry:(FactoryDefinitionRegistry *)factoryDefinitionRegistry;
+          factoryDefinitionRegistry:(FGFactoryDefinitionRegistry *)factoryDefinitionRegistry;
 - (void)registerDefinitions;
 @end
 
-@interface MutableObjectFactoryDefiner : FactoryDefiner
-+ (FactoryDefinition *)theDefinition;
+@interface MutableObjectFactoryDefiner : FGFactoryDefiner
++ (FGFactoryDefinition *)theDefinition;
 @end
 
 @implementation MutableObjectFactoryDefiner
 
-+ (FactoryDefinition *)theDefinition
++ (FGFactoryDefinition *)theDefinition
 {
     static dispatch_once_t once;
-    static FactoryDefinition *sharedDefinition;
+    static FGFactoryDefinition *sharedDefinition;
     dispatch_once(&once, ^{
-        InitializerDefinition *initializerDefinition = [[InitializerDefinition alloc] initWithSelector:@selector(init)
+        FGInitializerDefinition *initializerDefinition = [[FGInitializerDefinition alloc] initWithSelector:@selector(init)
                                                                                             fieldNames:@[]];
-        sharedDefinition = [[FactoryDefinition alloc] initWithInitializerDefinition:initializerDefinition
+        sharedDefinition = [[FGFactoryDefinition alloc] initWithInitializerDefinition:initializerDefinition
                                                                    fieldDefinitions:@[]];
     });
     return sharedDefinition;
 }
 
-- (FactoryDefinition *)definition
+- (FGFactoryDefinition *)definition
 {
     return [self.class theDefinition];
 }
 
 @end
 
-SpecBegin(FactoryDefiner)
-    __block FactoryDefiner *subject;
+SpecBegin(FGFactoryDefiner)
+    __block FGFactoryDefiner *subject;
     __block Class definedClass;
     __block id factoryDefinitionRegistry;
 
     before(^{
         definedClass = NSString.class;
-        factoryDefinitionRegistry = [OCMockObject mockForClass:FactoryDefinitionRegistry.class];
+        factoryDefinitionRegistry = [OCMockObject mockForClass:FGFactoryDefinitionRegistry.class];
         subject = [[MutableObjectFactoryDefiner alloc] initWithObjectClass:definedClass
                                                  factoryDefinitionRegistry:factoryDefinitionRegistry];
     });

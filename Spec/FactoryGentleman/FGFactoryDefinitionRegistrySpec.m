@@ -1,11 +1,11 @@
-#import "FactoryDefinitionRegistry.h"
+#import "FGFactoryDefinitionRegistry.h"
 
-SpecBegin(FactoryDefinitionRegistry)
-    __block FactoryDefinitionRegistry *subject;
+SpecBegin(FGFactoryDefinitionRegistry)
+    __block FGFactoryDefinitionRegistry *subject;
     __block Class requestedClass;
 
     before(^{
-        subject = [[FactoryDefinitionRegistry alloc] init];
+        subject = [[FGFactoryDefinitionRegistry alloc] init];
         requestedClass = NSString.class;
     });
 
@@ -16,12 +16,12 @@ SpecBegin(FactoryDefinitionRegistry)
     });
 
     context(@"when factory definition registered for requested class", ^{
-        __block FactoryDefinition *registeredDefinition;
+        __block FGFactoryDefinition *registeredDefinition;
 
         before(^{
-            InitializerDefinition *initializerDefinition = [[InitializerDefinition alloc] initWithSelector:@selector(init)
+            FGInitializerDefinition *initializerDefinition = [[FGInitializerDefinition alloc] initWithSelector:@selector(init)
                                                                                                 fieldNames:@[]];
-            registeredDefinition = [[FactoryDefinition alloc] initWithInitializerDefinition:initializerDefinition
+            registeredDefinition = [[FGFactoryDefinition alloc] initWithInitializerDefinition:initializerDefinition
                                                                            fieldDefinitions:@[]];
         });
 

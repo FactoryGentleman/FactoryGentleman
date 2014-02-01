@@ -1,22 +1,26 @@
-#import "FactoryDefinition.h"
+#import "FGFactoryDefinition.h"
 
-#import "FieldDefinition.h"
-#import "FactoryDefiner.h"
+#import "FGFieldDefinition.h"
+#import "FGFactoryDefiner.h"
 
-SpecBegin(FactoryDefinition)
-    __block FactoryDefinition *subject;
-    __block InitializerDefinition *originalInitializer;
-    __block FieldDefinition *originalDefinition;
-    __block FieldDefinition *originalBothDefinition;
+SpecBegin(FGFactoryDefinition)
+    __block FGFactoryDefinition *subject;
+    __block FGInitializerDefinition *originalInitializer;
+    __block FGFieldDefinition *originalDefinition;
+    __block FGFieldDefinition *originalBothDefinition;
 
     before(^{
-        originalDefinition = [FieldDefinition withFieldName:@"original" definition:^id { return nil; }];
-        originalBothDefinition = [FieldDefinition withFieldName:@"both" definition:^id { return nil; }];
+        originalDefinition = [FGFieldDefinition withFieldName:@"original" definition:^id {
+            return nil;
+        }];
+        originalBothDefinition = [FGFieldDefinition withFieldName:@"both" definition:^id {
+            return nil;
+        }];
 
-        originalInitializer = [[InitializerDefinition alloc] initWithSelector:@selector(initWithObjectClass:)
+        originalInitializer = [[FGInitializerDefinition alloc] initWithSelector:@selector(initWithObjectClass:)
                                                                 fieldNames:@[@"original"]];
 
-        subject = [[FactoryDefinition alloc] initWithInitializerDefinition:originalInitializer
+        subject = [[FGFactoryDefinition alloc] initWithInitializerDefinition:originalInitializer
                                                           fieldDefinitions:@[
                                                                   originalDefinition,
                                                                   originalBothDefinition
@@ -24,18 +28,22 @@ SpecBegin(FactoryDefinition)
     });
 
     describe(@"-mergedWithDefinition:", ^{
-        __block FactoryDefinition *givenFactoryDefinition;
+        __block FGFactoryDefinition *givenFactoryDefinition;
         __block NSArray *fieldDefinitions;
 
-        __block FieldDefinition *givenDefinition;
-        __block FieldDefinition *givenBothDefinition;
+        __block FGFieldDefinition *givenDefinition;
+        __block FGFieldDefinition *givenBothDefinition;
 
         before(^{
-            givenDefinition = [FieldDefinition withFieldName:@"given" definition:^id { return nil; }];
-            givenBothDefinition = [FieldDefinition withFieldName:@"both" definition:^id { return nil; }];
+            givenDefinition = [FGFieldDefinition withFieldName:@"given" definition:^id {
+                return nil;
+            }];
+            givenBothDefinition = [FGFieldDefinition withFieldName:@"both" definition:^id {
+                return nil;
+            }];
 
             fieldDefinitions = @[ givenDefinition, givenBothDefinition ];
-            givenFactoryDefinition = [[FactoryDefinition alloc] initWithInitializerDefinition:nil
+            givenFactoryDefinition = [[FGFactoryDefinition alloc] initWithInitializerDefinition:nil
                                                                              fieldDefinitions:fieldDefinitions];
         });
 
@@ -53,7 +61,7 @@ SpecBegin(FactoryDefinition)
 
         context(@"when given definition has NO initializer", ^{
             before(^{
-                givenFactoryDefinition = [[FactoryDefinition alloc] initWithInitializerDefinition:nil
+                givenFactoryDefinition = [[FGFactoryDefinition alloc] initWithInitializerDefinition:nil
                                                                                  fieldDefinitions:fieldDefinitions];
             });
 
@@ -63,12 +71,12 @@ SpecBegin(FactoryDefinition)
         });
 
         context(@"when given definition has initializer", ^{
-            __block InitializerDefinition *givenInitializer;
+            __block FGInitializerDefinition *givenInitializer;
 
             before(^{
-                givenInitializer = [[InitializerDefinition alloc] initWithSelector:@selector(init)
+                givenInitializer = [[FGInitializerDefinition alloc] initWithSelector:@selector(init)
                                                                         fieldNames:@[]];
-                givenFactoryDefinition = [[FactoryDefinition alloc] initWithInitializerDefinition:givenInitializer
+                givenFactoryDefinition = [[FGFactoryDefinition alloc] initWithInitializerDefinition:givenInitializer
                                                                                  fieldDefinitions:fieldDefinitions];
             });
 
