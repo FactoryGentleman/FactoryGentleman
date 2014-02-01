@@ -22,7 +22,7 @@ SpecBegin(FactoryDefinitionRegistry)
             InitializerDefinition *initializerDefinition = [[InitializerDefinition alloc] initWithSelector:@selector(init)
                                                                                                 fieldNames:@[]];
             registeredDefinition = [[FactoryDefinition alloc] initWithInitializerDefinition:initializerDefinition
-                                                                           fieldDefinitions:@{}];
+                                                                           fieldDefinitions:@[]];
         });
 
         before(^{

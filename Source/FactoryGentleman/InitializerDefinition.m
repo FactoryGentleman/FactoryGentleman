@@ -26,7 +26,7 @@
                                fieldNames:fieldNames];
 }
 
-+ (int)numberOfArgsForSelector:(SEL)selector
++ (NSUInteger)numberOfArgsForSelector:(SEL)selector
 {
     NSString *selectorString = NSStringFromSelector(selector);
     return [selectorString componentsSeparatedByString:@":"].count - 1;

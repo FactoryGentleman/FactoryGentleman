@@ -4,7 +4,7 @@
 @implementation FactoryDefinition
 
 - (instancetype)initWithInitializerDefinition:(InitializerDefinition *)initializerDefinition
-                             fieldDefinitions:(NSArray *)fieldDefinitions;
+                             fieldDefinitions:(NSArray *)fieldDefinitions
 {
     self = [super init];
     if (self) {

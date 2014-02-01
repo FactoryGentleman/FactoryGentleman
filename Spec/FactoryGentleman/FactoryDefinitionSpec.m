@@ -1,6 +1,7 @@
 #import "FactoryDefinition.h"
 
 #import "FieldDefinition.h"
+#import "FactoryDefiner.h"
 
 SpecBegin(FactoryDefinition)
     __block FactoryDefinition *subject;

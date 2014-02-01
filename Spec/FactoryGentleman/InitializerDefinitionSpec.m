@@ -1,5 +1,7 @@
 #import "InitializerDefinition.h"
 
+#import "User.h"
+
 SpecBegin(InitializerDefinition)
     __block InitializerDefinition *subject;
     __block SEL selector;
