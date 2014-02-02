@@ -11,15 +11,14 @@
 }
 
 + (id)buildForObjectClass:(Class)objectClass
-         withFieldDefiner:(void (^)(NSMutableArray *fieldDefinitions))fieldDefiner
+       withFactoryDefiner:(FGFactoryDefinition *(^)())factoryDefiner
 {
-    NSMutableArray *fieldDefinitions = [[NSMutableArray alloc] init];
-    fieldDefiner(fieldDefinitions);
-    FGFactoryDefinition *overriddenDefinition = [[FGFactoryDefinition alloc] initWithInitializerDefinition:nil
-                                                                                          fieldDefinitions:fieldDefinitions];
-    FGFactoryDefinition *definition = [[self definitionForObjectClass:objectClass] mergedWithDefinition:overriddenDefinition];
-    return [[[FGObjectBuilder alloc] initWithObjectClass:objectClass
-                                              definition:definition] build];
+    FGFactoryDefinition *overriddenDefinition = factoryDefiner();
+    FGFactoryDefinition *baseDefinition = [self definitionForObjectClass:objectClass];
+    FGFactoryDefinition *finalDefinition = [baseDefinition mergedWithDefinition:overriddenDefinition];
+    FGObjectBuilder *builder = [[FGObjectBuilder alloc] initWithObjectClass:objectClass
+                                                                 definition:finalDefinition];
+    return [builder build];
 }
 
 + (FGFactoryDefinition *)definitionForObjectClass:(Class)objectClass

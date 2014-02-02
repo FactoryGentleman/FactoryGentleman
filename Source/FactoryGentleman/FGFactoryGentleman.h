@@ -5,13 +5,18 @@
 + (id)buildForObjectClass:(Class)objectClass;
 
 + (id)buildForObjectClass:(Class)objectClass
-         withFieldDefiner:(void (^)(NSMutableArray *fieldDefinitions))fieldDefiner;
+       withFactoryDefiner:(FGFactoryDefinition *(^)())factoryDefiner;
 @end
 
 #define FGBuild(__OBJECT_CLASS__) \
 [FGFactoryGentleman buildForObjectClass:__OBJECT_CLASS__.class]
 
-#define FGBuildWith(__OBJECT_CLASS__, __EXTRA_DEFINITIONS__) \
-[FGFactoryGentleman buildForObjectClass:__OBJECT_CLASS__.class withFieldDefiner:^(NSMutableArray *fieldDefinitions) { \
-__EXTRA_DEFINITIONS__ \
+#define FGBuildWith(__OBJECT_CLASS__, __EXTRA_DEFINITION_BLOCK__) \
+[FGFactoryGentleman buildForObjectClass:__OBJECT_CLASS__.class withFactoryDefiner:^FGFactoryDefinition *{ \
+    __block FGInitializerDefinition *initializerDefinition = nil; \
+    __block NSMutableArray *fieldDefinitions = [[NSMutableArray alloc] init]; \
+    void (^defineBlock)() = __EXTRA_DEFINITION_BLOCK__; \
+    defineBlock(); \
+    return [[FGFactoryDefinition alloc] initWithInitializerDefinition:initializerDefinition \
+                                                     fieldDefinitions:fieldDefinitions]; \
 }]

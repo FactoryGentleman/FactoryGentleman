@@ -31,7 +31,9 @@ SpecBegin(User)
 
     context(@"has first name, last name & no address", ^{
         before(^{
-            subject = FGBuildWith(User, FGField(address, nil); );
+            subject = FGBuildWith(User, ^{
+                FGField(address, nil);
+            });
         });
 
         it(@"is NOT valid", ^{
@@ -49,8 +51,12 @@ SpecBegin(User)
 
     context(@"has first name, last name & invalid address", ^{
         before(^{
-            Address *address = FGBuildWith(Address, FGField(street, nil); );
-            subject = FGBuildWith(User, FGField(address, address); );
+            Address *address = FGBuildWith(Address, ^{
+                FGField(street, nil);
+            });
+            subject = FGBuildWith(User, ^{
+                FGField(address, address);
+            });
         });
 
         it(@"is NOT valid", ^{
@@ -68,7 +74,9 @@ SpecBegin(User)
 
     context(@"has no first name", ^{
         before(^{
-            subject = FGBuildWith(User, FGField(firstName, nil); );
+            subject = FGBuildWith(User, ^{
+                FGField(firstName, nil);
+            });
         });
 
         it(@"is NOT valid", ^{
@@ -86,7 +94,9 @@ SpecBegin(User)
 
     context(@"has no last name", ^{
         before(^{
-            subject = FGBuildWith(User, FGField(lastName, nil); );
+            subject = FGBuildWith(User, ^{
+                FGField(lastName, nil);
+            });
         });
 
         it(@"is NOT valid", ^{
@@ -105,7 +115,9 @@ SpecBegin(User)
     context(@"when has friends", ^{
         before(^{
             NSUInteger friendCount = 2;
-            subject = FGBuildWith(User, FGField(friendCount, FGValue(friendCount)); );
+            subject = FGBuildWith(User, ^{
+                FGField(friendCount, FGValue(friendCount));
+            });
         });
 
         it(@"is NOT lonely", ^{
@@ -116,7 +128,9 @@ SpecBegin(User)
     context(@"when has NO friends", ^{
         it(@"is lonely", ^{
             NSUInteger friendCount = 0;
-            subject = FGBuildWith(User, FGField(friendCount, FGValue(friendCount)); );
+            subject = FGBuildWith(User, ^{
+                FGField(friendCount, FGValue(friendCount));
+            });
             expect([subject isLonely]).to.beTruthy();
         });
     });
