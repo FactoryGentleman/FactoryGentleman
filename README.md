@@ -16,7 +16,7 @@ SpecBegin(SomeClass)
         User *user = [[User alloc] init];
         user.firstName = @"Bill";
         user.lastName = @"Smith";
-        user.friendCount = @7;
+        user.friendCount = 7;
         user.title = @"Mr";
         user.maidenName = @"Bloggs";
         subject = [[SomeClass alloc] initWithUser:user];
@@ -73,7 +73,8 @@ Create an implementation file (*.m) with the factory definition:
 FactoryBegin(User)
     field(firstName, @"Bob");
     field(lastName, @"Bradley");
-    field(friendCount, @10);
+    int friends = 10;
+    field(friendCount, FGValue(friends));
     field(title, @"Mr");
     field(maidenName, @"Macallister");
 FactoryEnd
@@ -107,7 +108,9 @@ SpecBegin(User)
 
     context(@"when user has no first name", ^{
         before(^{
-            subject = FGBuildWith(User, field(firstName, nil););
+            subject = FGBuildWith(User, ^{
+              field(firstName, nil);
+            });
         });
 
         it(@"is NOT valid", ^{
@@ -125,7 +128,8 @@ You can define objects with immutable (i.e. readonly) properties via listing ini
 FactoryBegin(User)
     field(firstName, @"Bob");
     field(lastName, @"Bradley");
-    field(friendCount, @10);
+    int friends = 10;
+    field(friendCount, FGValue(friends);
     field(title, @"Mr");
     field(maidenName, @"Macallister");
     initWith(initWithFirstName:lastName:, f(firstName), f(lastName));
