@@ -9,10 +9,6 @@
 /* Begin PBXBuildFile section */
 		25FC4F0A6A464F5A9FC7ABEE /* libPods-FactoryGentleman-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 42AB4DBDC6BB4624AE50B7D1 /* libPods-FactoryGentleman-iOS.a */; };
 		2978354B595944A2933D8732 /* libPods-FactoryGentleman-Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ED3EC466AC84D26A1B7AFC8 /* libPods-FactoryGentleman-Mac.a */; };
-		44ACD5CA6D57930008D62C3A /* FGFieldDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 44ACDEDBDE9E48DDE246113E /* FGFieldDefinition.m */; };
-		44ACDAC4E21192B7EE522620 /* FGFieldDefinitionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 44ACD2A850EA7345D932E888 /* FGFieldDefinitionSpec.m */; };
-		44ACDD015CB45C306C4827BF /* FGFieldDefinitionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 44ACD2A850EA7345D932E888 /* FGFieldDefinitionSpec.m */; };
-		44ACDD9AFE92A82C78BD5D52 /* FGFieldDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 44ACDEDBDE9E48DDE246113E /* FGFieldDefinition.m */; };
 		5BD363CB1830FEBE0024169A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD363CA1830FEBE0024169A /* XCTest.framework */; };
 		5BD363D11830FEBE0024169A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BD363CF1830FEBE0024169A /* InfoPlist.strings */; };
 		5BD363DE1830FF0B0024169A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD363CA1830FEBE0024169A /* XCTest.framework */; };
@@ -60,9 +56,6 @@
 /* Begin PBXFileReference section */
 		3070F311A5D6497887EB49F0 /* Pods-FactoryGentleman-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FactoryGentleman-iOS.xcconfig"; path = "Pods/Pods-FactoryGentleman-iOS.xcconfig"; sourceTree = "<group>"; };
 		42AB4DBDC6BB4624AE50B7D1 /* libPods-FactoryGentleman-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FactoryGentleman-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		44ACD1F647E1CDCC6B58646D /* FGFieldDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGFieldDefinition.h; sourceTree = "<group>"; };
-		44ACD2A850EA7345D932E888 /* FGFieldDefinitionSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGFieldDefinitionSpec.m; sourceTree = "<group>"; };
-		44ACDEDBDE9E48DDE246113E /* FGFieldDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGFieldDefinition.m; sourceTree = "<group>"; };
 		4DB1BB1CD6314F1ABB37C890 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		5BD363C81830FEBE0024169A /* FactoryGentleman-Mac.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FactoryGentleman-Mac.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD363CA1830FEBE0024169A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -231,7 +224,6 @@
 				F8032C2695EC435C553E0DD6 /* FGObjectBuilderSpec.m */,
 				F803213DD3CBDACD8EC1F272 /* FGInitializerDefinitionSpec.m */,
 				F8032F93EF903F2DE003C805 /* FGFactoryDefinitionSpec.m */,
-				44ACD2A850EA7345D932E888 /* FGFieldDefinitionSpec.m */,
 			);
 			path = FactoryGentleman;
 			sourceTree = "<group>";
@@ -253,8 +245,6 @@
 				F80326CE89FC2BE0DACEFAEB /* FGInitializerDefinition.h */,
 				F8032CD8AAA638736CA9D347 /* FGValue.m */,
 				F8032313B8D8794B42538B0C /* FGValue.h */,
-				44ACDEDBDE9E48DDE246113E /* FGFieldDefinition.m */,
-				44ACD1F647E1CDCC6B58646D /* FGFieldDefinition.h */,
 			);
 			path = FactoryGentleman;
 			sourceTree = "<group>";
@@ -469,8 +459,6 @@
 				F8032CBA3B97DE5DC8A0C56E /* FGInitializerDefinitionSpec.m in Sources */,
 				F803249217B8070F4DD9CE76 /* FGFactoryDefinitionSpec.m in Sources */,
 				F80320413DB004C88B1CC618 /* FGValue.m in Sources */,
-				44ACD5CA6D57930008D62C3A /* FGFieldDefinition.m in Sources */,
-				44ACDAC4E21192B7EE522620 /* FGFieldDefinitionSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,8 +484,6 @@
 				F8032E851DE37327A678003C /* FGInitializerDefinitionSpec.m in Sources */,
 				F80326C37B34F1E5DB7B2F92 /* FGFactoryDefinitionSpec.m in Sources */,
 				F80326C0FA1D64503420102A /* FGValue.m in Sources */,
-				44ACDD9AFE92A82C78BD5D52 /* FGFieldDefinition.m in Sources */,
-				44ACDD015CB45C306C4827BF /* FGFieldDefinitionSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

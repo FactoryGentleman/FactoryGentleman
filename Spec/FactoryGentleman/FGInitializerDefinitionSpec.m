@@ -37,7 +37,7 @@ SpecBegin(FGInitializerDefinition)
             });
 
             it(@"creates a definition with an array of the given field names", ^{
-                NSArray *expectedFieldNames = @[ firstFieldName, secondFieldName ];
+                NSOrderedSet *expectedFieldNames = [NSOrderedSet orderedSetWithArray:@[ firstFieldName, secondFieldName ]];
                 expect(subject.fieldNames).to.equal(expectedFieldNames);
             });
         });

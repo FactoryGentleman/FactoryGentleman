@@ -20,9 +20,9 @@ SpecBegin(FGFactoryDefinitionRegistry)
 
         before(^{
             FGInitializerDefinition *initializerDefinition = [[FGInitializerDefinition alloc] initWithSelector:@selector(init)
-                                                                                                fieldNames:@[]];
+                                                                                                    fieldNames:[NSOrderedSet orderedSet]];
             registeredDefinition = [[FGFactoryDefinition alloc] initWithInitializerDefinition:initializerDefinition
-                                                                           fieldDefinitions:@[]];
+                                                                             fieldDefinitions:@{}];
         });
 
         before(^{

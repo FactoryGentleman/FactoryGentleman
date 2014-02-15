@@ -1,10 +1,8 @@
 #import "FGFactoryDefinition.h"
-#import "FGFieldDefinition.h"
 #import "FGValue.h"
 
 @interface FGFactoryDefiner : NSObject
 - (instancetype)init __attribute__((unavailable("init not available ")));
-
 - (instancetype)initWithObjectClass:(Class)objectClass;
 
 - (FGFactoryDefinition *)definition;
@@ -23,19 +21,17 @@
 - (FGFactoryDefinition *)definition \
 { \
     FGInitializerDefinition *initializerDefinition = [[FGInitializerDefinition alloc] initWithSelector:@selector(init) \
-                                                                                            fieldNames:@[]]; \
-    NSMutableArray *fieldDefinitions = [[NSMutableArray alloc] init]; \
+                                                                                            fieldNames:[NSOrderedSet orderedSet]]; \
+    NSMutableDictionary *fieldDefinitions = [[NSMutableDictionary alloc] init]; \
 
 #define FGAssocField(__FIELD_NAME__, __CLASS__) \
     FGField(__FIELD_NAME__, [FGFactoryGentleman buildForObjectClass:__CLASS__.class])
 
 #define FGField(__FIELD_NAME__, __FIELD_VALUE__) \
-    [fieldDefinitions addObject:[FGFieldDefinition withFieldName:FGF(__FIELD_NAME__) \
-                                                      definition:^id { return (__FIELD_VALUE__); }]]
+    [fieldDefinitions setObject:^id { return (__FIELD_VALUE__); } forKey:FGF(__FIELD_NAME__)]
 
 #define FGFieldBy(__FIELD_NAME__, __FIELD_BLOCK__) \
-    [fieldDefinitions addObject:[FGFieldDefinition withFieldName:FGF(__FIELD_NAME__) \
-                                                      definition:(__FIELD_BLOCK__)]]
+    [fieldDefinitions setObject:__FIELD_BLOCK__ forKey:FGF(__FIELD_NAME__)]
 
 #define FGInitWith(__INITIALIZER__, ...) \
     initializerDefinition = [FGInitializerDefinition definitionWithSelector:@selector(__INITIALIZER__), ##__VA_ARGS__]

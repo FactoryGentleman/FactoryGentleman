@@ -3,7 +3,7 @@
 @implementation FGInitializerDefinition
 
 - (instancetype)initWithSelector:(SEL)selector
-                      fieldNames:(NSArray *)fieldNames
+                      fieldNames:(NSOrderedSet *)fieldNames
 {
     self = [super init];
     if (self) {
@@ -17,7 +17,7 @@
 {
     va_list args;
     va_start(args, selector);
-    NSMutableArray *fieldNames = [[NSMutableArray alloc] init];
+    NSMutableOrderedSet *fieldNames = [[NSMutableOrderedSet alloc] init];
     for (int i = 0; i < [self numberOfArgsForSelector:selector]; i++) {
         [fieldNames addObject:va_arg(args, NSString *)];
     }

@@ -3,7 +3,6 @@
 #import <objc/message.h>
 
 #import "FGValue.h"
-#import "FGFieldDefinition.h"
 
 @implementation FGObjectBuilder
 
@@ -37,12 +36,10 @@
     [inv setSelector:self.definition.initializerDefinition.selector];
     [inv setTarget:alloced];
 
-    NSArray *initializerFieldDefinitions = [self.definition initializerFieldDefinitions];
     NSUInteger index = 2;
-    for (FGFieldDefinition *fieldDefinition in initializerFieldDefinitions) {
-        id (^definition)(void) = fieldDefinition.definition;
-        if (definition) {
-            id value = definition();
+    for (FGFieldDefinition fieldDefinition in [self.definition initializerFieldDefinitions]) {
+        if (![[NSNull null] isEqual:fieldDefinition]) {
+            id value = fieldDefinition();
             if ([value isKindOfClass:FGValue.class]) {
                 [self setValueFromValue:value
                                   index:index
@@ -61,9 +58,10 @@
 
 - (void)setFieldDefinitionsOnObject:(id)object
 {
-    for (FGFieldDefinition *fieldDefinition in [self.definition setterFieldDefinitions]) {
-        [self setField:fieldDefinition.name
-                 value:fieldDefinition.definition
+    NSDictionary *setterFieldDefinitions = [self.definition setterFieldDefinitions];
+    for (NSString *setterFieldName in setterFieldDefinitions) {
+        [self setField:setterFieldName
+                 value:[setterFieldDefinitions objectForKey:setterFieldName]
               onObject:object];
     }
 }

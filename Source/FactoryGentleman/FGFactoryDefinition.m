@@ -1,10 +1,9 @@
 #import "FGFactoryDefinition.h"
-#import "FGFieldDefinition.h"
 
 @implementation FGFactoryDefinition
 
 - (instancetype)initWithInitializerDefinition:(FGInitializerDefinition *)initializerDefinition
-                             fieldDefinitions:(NSArray *)fieldDefinitions
+                             fieldDefinitions:(NSDictionary *)fieldDefinitions
 {
     self = [super init];
     if (self) {
@@ -18,7 +17,7 @@
 - (instancetype)mergedWithDefinition:(FGFactoryDefinition *)otherDefinition
 {
     FGInitializerDefinition *initializerDefinition = [self mergedInitializerDefinitionWith:otherDefinition.initializerDefinition];
-    NSArray *fieldDefinitions = [self mergedFieldDefinitionsWith:otherDefinition.fieldDefinitions];
+    NSDictionary *fieldDefinitions = [self mergedFieldDefinitionsWith:otherDefinition.fieldDefinitions];
     return [[FGFactoryDefinition alloc] initWithInitializerDefinition:initializerDefinition
                                                      fieldDefinitions:fieldDefinitions];
 }
@@ -32,29 +31,33 @@
     }
 }
 
-- (NSArray *)mergedFieldDefinitionsWith:(NSArray *)otherFieldDefinitions
+- (NSDictionary *)mergedFieldDefinitionsWith:(NSDictionary *)otherFieldDefinitions
 {
-    NSSet *mergedDefinitions = [[NSSet setWithArray:otherFieldDefinitions] setByAddingObjectsFromArray:self.fieldDefinitions];
-    return [mergedDefinitions allObjects];
+    NSMutableDictionary *mergedFieldDefinitions = [self.fieldDefinitions mutableCopy];
+    [mergedFieldDefinitions addEntriesFromDictionary:otherFieldDefinitions];
+    return [mergedFieldDefinitions copy];
 }
 
-- (NSArray *)initializerFieldDefinitions
+- (NSOrderedSet *)initializerFieldDefinitions
 {
-    NSMutableArray *initializerFieldDefinitions = [[NSMutableArray alloc] init];
-    for (FGFieldDefinition *fieldDefinition in self.fieldDefinitions) {
-        if ([self.initializerDefinition.fieldNames containsObject:fieldDefinition.name]) {
-            [initializerFieldDefinitions addObject:fieldDefinition];
+    NSMutableOrderedSet *initializerFieldDefinitions = [[NSMutableOrderedSet alloc] init];
+    for (NSString *initializerFieldName in self.initializerDefinition.fieldNames) {
+        id initializerDefinition = [self.fieldDefinitions objectForKey:initializerFieldName];
+        if (initializerDefinition) {
+            [initializerFieldDefinitions addObject:initializerDefinition];
+        } else {
+            [initializerFieldDefinitions addObject:[NSNull null]];
         }
     }
     return initializerFieldDefinitions;
 }
 
-- (NSArray *)setterFieldDefinitions
+- (NSDictionary *)setterFieldDefinitions
 {
-    NSMutableArray *setterFieldDefinitions = [[NSMutableArray alloc] init];
-    for (FGFieldDefinition *fieldDefinition in self.fieldDefinitions) {
-        if (![self.initializerDefinition.fieldNames containsObject:fieldDefinition.name]) {
-            [setterFieldDefinitions addObject:fieldDefinition];
+    NSMutableDictionary *setterFieldDefinitions = [[NSMutableDictionary alloc] init];
+    for (NSString *fieldName in self.fieldDefinitions) {
+        if (![self.initializerDefinition.fieldNames containsObject:fieldName]) {
+            [setterFieldDefinitions setObject:[self.fieldDefinitions objectForKey:fieldName] forKey:fieldName];
         }
     }
     return setterFieldDefinitions;

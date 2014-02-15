@@ -20,9 +20,9 @@
     static FGFactoryDefinition *sharedDefinition;
     dispatch_once(&once, ^{
         FGInitializerDefinition *initializerDefinition = [[FGInitializerDefinition alloc] initWithSelector:@selector(init)
-                                                                                            fieldNames:@[]];
+                                                                                                fieldNames:[NSOrderedSet orderedSet]];
         sharedDefinition = [[FGFactoryDefinition alloc] initWithInitializerDefinition:initializerDefinition
-                                                                   fieldDefinitions:@[]];
+                                                                     fieldDefinitions:@{}];
     });
     return sharedDefinition;
 }
