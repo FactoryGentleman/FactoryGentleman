@@ -12,5 +12,8 @@ FGFactoryBegin(User)
     NSUInteger friendCount = 3;
     FGField(friendCount, FGValue(friendCount));
     FGAssocField(address, Address);
+    FGTrait(homeless, ^{
+        FGField(address, nil);
+    });
     FGInitWith(initWithFirstName:lastName:, FGF(firstName), FGF(lastName));
 FGFactoryEnd

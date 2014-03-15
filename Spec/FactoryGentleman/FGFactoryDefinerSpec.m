@@ -5,53 +5,81 @@
 @interface FGFactoryDefiner (Spec)
 - (instancetype)initWithObjectClass:(Class)objectClass
           factoryDefinitionRegistry:(FGFactoryDefinitionRegistry *)factoryDefinitionRegistry;
-- (void)registerDefinitions;
 @end
 
 @interface MutableObjectFactoryDefiner : FGFactoryDefiner
-+ (FGFactoryDefinition *)theDefinition;
+@property (nonatomic) BOOL hasRegistered;
 @end
 
 @implementation MutableObjectFactoryDefiner
 
-+ (FGFactoryDefinition *)theDefinition
+- (instancetype)initWithFactoryDefinitionRegistry:(FGFactoryDefinitionRegistry *)factoryDefinitionRegistry
 {
-    static dispatch_once_t once;
-    static FGFactoryDefinition *sharedDefinition;
-    dispatch_once(&once, ^{
-        FGInitializerDefinition *initializerDefinition = [[FGInitializerDefinition alloc] initWithSelector:@selector(init)
-                                                                                                fieldNames:[NSOrderedSet orderedSet]];
-        sharedDefinition = [[FGFactoryDefinition alloc] initWithInitializerDefinition:initializerDefinition
-                                                                     fieldDefinitions:@{}];
-    });
-    return sharedDefinition;
+    self = [super initWithObjectClass:[NSString class]
+            factoryDefinitionRegistry:factoryDefinitionRegistry];
+    if (self) {
+        _hasRegistered = NO;
+    }
+    return self;
 }
 
-- (FGFactoryDefinition *)definition
+- (void)registerDefinitions
 {
-    return [self.class theDefinition];
+    self.hasRegistered = YES;
 }
 
 @end
 
 SpecBegin(FGFactoryDefiner)
-    __block FGFactoryDefiner *subject;
+    __block MutableObjectFactoryDefiner *subject;
     __block Class definedClass;
     __block id factoryDefinitionRegistry;
 
     before(^{
-        definedClass = NSString.class;
-        factoryDefinitionRegistry = [OCMockObject mockForClass:FGFactoryDefinitionRegistry.class];
+        definedClass = [NSString class];
+        factoryDefinitionRegistry = [OCMockObject niceMockForClass:[FGFactoryDefinitionRegistry class]];
         subject = [[MutableObjectFactoryDefiner alloc] initWithObjectClass:definedClass
                                                  factoryDefinitionRegistry:factoryDefinitionRegistry];
     });
 
     context(@"when mutable factory is defined", ^{
         it(@"registers a factory definition with field definitions given", ^{
-            [[factoryDefinitionRegistry expect] registerFactoryDefinition:MutableObjectFactoryDefiner.theDefinition
-                                                                 forClass:definedClass];
-
             [subject registerDefinitions];
+
+            expect(subject.hasRegistered).to.beTruthy();
+        });
+    });
+
+    describe(@"-registerBaseDefinition:traitDefiners:", ^{
+        __block FGFactoryDefinition *baseDefinition;
+        __block FGFactoryDefinition *traitDefinition;
+        __block NSDictionary *traitDefiners;
+
+        before(^{
+            baseDefinition = [[FGFactoryDefinition alloc] initWithInitializerDefinition:nil
+                                                                       fieldDefinitions:@{}];
+            traitDefinition = [[FGFactoryDefinition alloc] initWithInitializerDefinition:nil
+                                                                       fieldDefinitions:@{}];
+            traitDefiners = @{ @"foo" : ^{ return traitDefinition; } };
+        });
+
+        it(@"registers the definition", ^{
+            [[factoryDefinitionRegistry expect] registerFactoryDefinition:baseDefinition
+                                                                 forClass:[NSString class]];
+
+            [subject registerBaseDefinition:baseDefinition
+                              traitDefiners:traitDefiners];
+
+            [factoryDefinitionRegistry verify];
+        });
+
+        it(@"registers the definition", ^{
+            [[factoryDefinitionRegistry expect] registerFactoryDefinition:traitDefinition
+                                                                 forClass:[NSString class]
+                                                                    trait:@"foo"];
+
+            [subject registerBaseDefinition:baseDefinition
+                              traitDefiners:traitDefiners];
 
             [factoryDefinitionRegistry verify];
         });

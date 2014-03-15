@@ -10,7 +10,7 @@
 {
     self = [super init];
     if (self) {
-        _factories = @{}.mutableCopy;
+        _factories = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
@@ -34,13 +34,35 @@
     return [self.factories objectForKey:[self keyForObjectClass:objectClass]];
 }
 
+- (FGFactoryDefinition *)factoryDefinitionForObjectClass:(Class)objectClass
+                                                   trait:(NSString *)trait
+{
+    return [self.factories objectForKey:[self keyForObjectClass:objectClass
+                                                          trait:trait]];
+}
+
 #pragma mark Registration
 
 - (void)registerFactoryDefinition:(id)factoryDefinition
-                         forClass:(Class)class
+                         forClass:(Class)objectClass
 {
     [self.factories setObject:factoryDefinition
-                       forKey:[self keyForObjectClass:class]];
+                       forKey:[self keyForObjectClass:objectClass]];
+}
+
+- (void)registerFactoryDefinition:(FGFactoryDefinition *)factoryDefinition
+                         forClass:(Class)objectClass
+                            trait:(NSString *)trait
+{
+    [self.factories setObject:factoryDefinition
+                       forKey:[self keyForObjectClass:objectClass
+                                                trait:trait]];
+}
+
+- (NSString *)keyForObjectClass:(Class)objectClass
+                          trait:(NSString *)trait
+{
+    return [[self keyForObjectClass:objectClass] stringByAppendingString:trait];
 }
 
 - (NSString *)keyForObjectClass:(Class)objectClass

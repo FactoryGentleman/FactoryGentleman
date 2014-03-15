@@ -29,11 +29,9 @@ SpecBegin(User)
         });
     });
 
-    context(@"has first name, last name & no address", ^{
+    context(@"when homeless", ^{
         before(^{
-            subject = FGBuildWith(User, ^{
-                FGField(address, nil);
-            });
+            subject = FGBuildTrait(User, homeless);
         });
 
         it(@"is NOT valid", ^{
@@ -126,12 +124,19 @@ SpecBegin(User)
     });
 
     context(@"when has NO friends", ^{
-        it(@"is lonely", ^{
+        before(^{
             NSUInteger friendCount = 0;
-            subject = FGBuildWith(User, ^{
+            subject = FGBuildTraitWith(User, homeless, ^{
                 FGField(friendCount, FGValue(friendCount));
             });
+        });
+
+        it(@"is lonely", ^{
             expect([subject isLonely]).to.beTruthy();
+        });
+
+        it(@"has no envelope address", ^{
+            expect([subject envelopeAddress]).to.equal(@"");
         });
     });
 SpecEnd

@@ -40,7 +40,7 @@
     for (FGFieldDefinition fieldDefinition in [self.definition initializerFieldDefinitions]) {
         if (![[NSNull null] isEqual:fieldDefinition]) {
             id value = fieldDefinition();
-            if ([value isKindOfClass:FGValue.class]) {
+            if ([value isKindOfClass:[FGValue class]]) {
                 [self setValueFromValue:value
                                   index:index
                              invocation:inv];
@@ -78,7 +78,7 @@
         [inv setTarget:object];
 
         id fieldValue = fieldDefinition();
-        if ([fieldValue isKindOfClass:FGValue.class]) {
+        if ([fieldValue isKindOfClass:[FGValue class]]) {
             [self setValueFromValue:fieldValue
                               index:2
                          invocation:inv];

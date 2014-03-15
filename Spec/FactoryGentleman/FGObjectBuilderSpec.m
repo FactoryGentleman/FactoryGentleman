@@ -56,12 +56,12 @@ SpecBegin(FGObjectBuilder)
                                                                                                     fieldNames:[NSOrderedSet orderedSet]];
             FGFactoryDefinition *definition = [[FGFactoryDefinition alloc] initWithInitializerDefinition:initializerDefinition
                                                                                         fieldDefinitions:definedFields];
-            subject = [[FGObjectBuilder alloc] initWithObjectClass:ExampleMutableObject.class
+            subject = [[FGObjectBuilder alloc] initWithObjectClass:[ExampleMutableObject class]
                                                         definition:definition];
         });
 
         it(@"returns a new instance of the class", ^{
-            expect([subject build]).to.beKindOf(ExampleMutableObject.class);
+            expect([subject build]).to.beKindOf([ExampleMutableObject class]);
         });
 
         it(@"new instance has object values defined", ^{
@@ -93,12 +93,12 @@ SpecBegin(FGObjectBuilder)
                                                                                                     fieldNames:fieldNames];
             FGFactoryDefinition *definition = [[FGFactoryDefinition alloc] initWithInitializerDefinition:initializerDefinition
                                                                                         fieldDefinitions:definedFields];
-            subject = [[FGObjectBuilder alloc] initWithObjectClass:ExampleImmutableObject.class
+            subject = [[FGObjectBuilder alloc] initWithObjectClass:[ExampleImmutableObject class]
                                                       definition:definition];
         });
 
         it(@"returns a new instance of the class", ^{
-            expect([subject build]).to.beKindOf(ExampleImmutableObject.class);
+            expect([subject build]).to.beKindOf([ExampleImmutableObject class]);
         });
 
         it(@"new instance has object values defined", ^{

@@ -6,7 +6,7 @@ SpecBegin(FGFactoryDefinitionRegistry)
 
     before(^{
         subject = [[FGFactoryDefinitionRegistry alloc] init];
-        requestedClass = NSString.class;
+        requestedClass = [NSString class];
     });
 
     context(@"when no factory definition registered for requested class", ^{

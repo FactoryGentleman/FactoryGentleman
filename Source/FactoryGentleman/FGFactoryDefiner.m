@@ -12,7 +12,7 @@
 + (void)initialize
 {
     Class selfClass = (Class) self;
-    if (selfClass != FGFactoryDefiner.class) {
+    if (selfClass != [FGFactoryDefiner class]) {
         [[self new] registerDefinitions];
     }
 }
@@ -38,15 +38,21 @@
 
 - (void)registerDefinitions
 {
-    [self.factoryDefinitionRegistry
-            registerFactoryDefinition:[self definition]
-                             forClass:self.objectClass];
+    NSAssert(NO, @"Override in subclass");
 }
 
-- (FGFactoryDefinition *)definition
+- (void)registerBaseDefinition:(FGFactoryDefinition *)baseDefinition
+                 traitDefiners:(NSDictionary *)traitDefiners
 {
-    NSAssert(NO, @"Override in subclass");
-    return nil;
+    [self.factoryDefinitionRegistry registerFactoryDefinition:baseDefinition
+                                                     forClass:self.objectClass];
+    for (NSString *trait in traitDefiners) {
+        id (^traitDefinition)() = [traitDefiners objectForKey:trait];
+        FGFactoryDefinition *hmm = traitDefinition();
+        [self.factoryDefinitionRegistry registerFactoryDefinition:hmm
+                                                         forClass:self.objectClass
+                                                            trait:trait];
+    }
 }
 
 @end
