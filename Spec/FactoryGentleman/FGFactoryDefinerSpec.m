@@ -56,10 +56,12 @@ SpecBegin(FGFactoryDefiner)
         __block NSDictionary *traitDefiners;
 
         before(^{
-            baseDefinition = [[FGFactoryDefinition alloc] initWithInitializerDefinition:nil
-                                                                       fieldDefinitions:@{}];
-            traitDefinition = [[FGFactoryDefinition alloc] initWithInitializerDefinition:nil
-                                                                       fieldDefinitions:@{}];
+            baseDefinition = [[FGFactoryDefinition alloc] initWithConstructor:nil
+                                                        initializerDefinition:nil
+                                                             fieldDefinitions:@{}];
+            traitDefinition = [[FGFactoryDefinition alloc] initWithConstructor:nil
+                                                         initializerDefinition:nil
+                                                              fieldDefinitions:@{}];
             traitDefiners = @{ @"foo" : ^{ return traitDefinition; } };
         });
 

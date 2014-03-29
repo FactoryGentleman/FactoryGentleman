@@ -4,6 +4,7 @@
 
 SpecBegin(FGFactoryDefinition)
     __block FGFactoryDefinition *subject;
+    __block id originalConstructor;
     __block FGInitializerDefinition *originalInitializer;
     __block FGFieldDefinition originalDefinition;
     __block FGFieldDefinition originalBothDefinition;
@@ -12,6 +13,7 @@ SpecBegin(FGFactoryDefinition)
         originalDefinition = ^id { return nil; };
         originalBothDefinition = ^id { return nil; };
 
+        originalConstructor = NSNumber.class;
         originalInitializer = [[FGInitializerDefinition alloc] initWithSelector:@selector(initWithObjectClass:)
                                                                      fieldNames:[NSOrderedSet orderedSetWithObject:@"original"]];
 
@@ -19,8 +21,9 @@ SpecBegin(FGFactoryDefinition)
                 @"original" : originalDefinition,
                 @"both" : originalBothDefinition
         };
-        subject = [[FGFactoryDefinition alloc] initWithInitializerDefinition:originalInitializer
-                                                            fieldDefinitions:originalFieldDefinitions];
+        subject = [[FGFactoryDefinition alloc] initWithConstructor:originalConstructor
+                                             initializerDefinition:originalInitializer
+                                                  fieldDefinitions:originalFieldDefinitions];
     });
 
     describe(@"-mergedWithDefinition:", ^{
@@ -42,8 +45,9 @@ SpecBegin(FGFactoryDefinition)
                     @"given" : givenDefinition,
                     @"both" : givenBothDefinition,
             };
-            givenFactoryDefinition = [[FGFactoryDefinition alloc] initWithInitializerDefinition:nil
-                                                                               fieldDefinitions:givenFieldDefinitions];
+            givenFactoryDefinition = [[FGFactoryDefinition alloc] initWithConstructor:nil
+                                                                initializerDefinition:nil
+                                                                     fieldDefinitions:givenFieldDefinitions];
         });
 
         it(@"new definition contains original fields", ^{
@@ -60,8 +64,9 @@ SpecBegin(FGFactoryDefinition)
 
         context(@"when given definition has NO initializer", ^{
             before(^{
-                givenFactoryDefinition = [[FGFactoryDefinition alloc] initWithInitializerDefinition:nil
-                                                                                   fieldDefinitions:givenFieldDefinitions];
+                givenFactoryDefinition = [[FGFactoryDefinition alloc] initWithConstructor:nil
+                                                                    initializerDefinition:nil
+                                                                         fieldDefinitions:givenFieldDefinitions];
             });
 
             it(@"new definition chooses original initializer", ^{
@@ -75,12 +80,40 @@ SpecBegin(FGFactoryDefinition)
             before(^{
                 givenInitializer = [[FGInitializerDefinition alloc] initWithSelector:@selector(init)
                                                                           fieldNames:[NSOrderedSet orderedSet]];
-                givenFactoryDefinition = [[FGFactoryDefinition alloc] initWithInitializerDefinition:givenInitializer
-                                                                                   fieldDefinitions:givenFieldDefinitions];
+                givenFactoryDefinition = [[FGFactoryDefinition alloc] initWithConstructor:nil
+                                                                    initializerDefinition:givenInitializer
+                                                                         fieldDefinitions:givenFieldDefinitions];
             });
 
             it(@"new definition chooses original intiializer", ^{
                 expect([subject mergedWithDefinition:givenFactoryDefinition].initializerDefinition).to.equal(givenInitializer);
+            });
+        });
+
+        context(@"when given definition has NO initializer", ^{
+            before(^{
+                givenFactoryDefinition = [[FGFactoryDefinition alloc] initWithConstructor:nil
+                                                                    initializerDefinition:nil
+                                                                         fieldDefinitions:givenFieldDefinitions];
+            });
+
+            it(@"new definition chooses original initializer", ^{
+                expect([subject mergedWithDefinition:givenFactoryDefinition].constructor).to.equal(originalConstructor);
+            });
+        });
+
+        context(@"when given definition has initializer", ^{
+            __block id givenConstructor;
+
+            before(^{
+                givenConstructor = NSString.class;
+                givenFactoryDefinition = [[FGFactoryDefinition alloc] initWithConstructor:givenConstructor
+                                                                    initializerDefinition:nil
+                                                                         fieldDefinitions:givenFieldDefinitions];
+            });
+
+            it(@"new definition chooses original intiializer", ^{
+                expect([subject mergedWithDefinition:givenFactoryDefinition].constructor).to.equal(givenConstructor);
             });
         });
     });

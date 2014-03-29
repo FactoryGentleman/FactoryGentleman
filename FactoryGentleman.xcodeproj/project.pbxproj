@@ -19,6 +19,8 @@
 		F80320413DB004C88B1CC618 /* FGValue.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032CD8AAA638736CA9D347 /* FGValue.m */; };
 		F8032048B29B1E32E1E38CF5 /* FGFactoryDefinerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032F1736CE0338C9B98006 /* FGFactoryDefinerSpec.m */; };
 		F80321471EC2DF82B2DC7BA4 /* FGObjectBuilderSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032C2695EC435C553E0DD6 /* FGObjectBuilderSpec.m */; };
+		F8032176C6B537021C018393 /* FriendshipSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F80320F699AEEF42761356A1 /* FriendshipSpec.m */; };
+		F80321B64941EA36CD42219D /* FriendshipFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F803278DD981B8C1DB4B4506 /* FriendshipFactory.m */; };
 		F803222CB288A9D1A8F78A60 /* AddressSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F803284AE0FB711A7F6D492C /* AddressSpec.m */; };
 		F8032324C17DB6D87733BF3F /* FGObjectBuilderSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032C2695EC435C553E0DD6 /* FGObjectBuilderSpec.m */; };
 		F803246118E11AA911A35E7C /* AddressFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F80322B6710F0DB670F8AA92 /* AddressFactory.m */; };
@@ -32,12 +34,16 @@
 		F80326DCED8183A6DA01E6DF /* FGFactoryDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = F803258EA10C03D7AF00814F /* FGFactoryDefinition.m */; };
 		F80326FB605095132940CAB4 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F803282B7E256FFAE5860E40 /* User.m */; };
 		F803270D1309D857C818123F /* UserFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032DDD114FD64AAFE9607C /* UserFactory.m */; };
+		F80327B7BCD62DDF82E31886 /* FriendshipFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F803278DD981B8C1DB4B4506 /* FriendshipFactory.m */; };
 		F8032825A065D8A5892BAF9B /* FGObjectBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = F80326692E4A0E90C7992A92 /* FGObjectBuilder.m */; };
 		F80328D3D81EC34EEC021227 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F803282B7E256FFAE5860E40 /* User.m */; };
 		F80328EE33846CEC218D89D6 /* FGFactoryDefinitionRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = F803275983A2D0CE41DEEC20 /* FGFactoryDefinitionRegistry.m */; };
 		F80328F1E4A687B9706B8318 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = F80323ABFB4959EFA006938C /* Address.m */; };
+		F8032993C122B686C3D76824 /* Friendship.m in Sources */ = {isa = PBXBuildFile; fileRef = F80329922A32BDB0F33636E3 /* Friendship.m */; };
 		F80329A98AE11ACB3B8824A5 /* AddressFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F80322B6710F0DB670F8AA92 /* AddressFactory.m */; };
+		F80329E7E09E97E32A5BE72B /* FriendshipSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F80320F699AEEF42761356A1 /* FriendshipSpec.m */; };
 		F8032A07767B36CEA715DE3A /* FGFactoryDefiner.m in Sources */ = {isa = PBXBuildFile; fileRef = F80323E4EE6B3173A13D2427 /* FGFactoryDefiner.m */; };
+		F8032A0CD8EF37A982D86D28 /* Friendship.m in Sources */ = {isa = PBXBuildFile; fileRef = F80329922A32BDB0F33636E3 /* Friendship.m */; };
 		F8032AAF102E19D5CD21DE25 /* FGFactoryDefinerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032F1736CE0338C9B98006 /* FGFactoryDefinerSpec.m */; };
 		F8032ABD3980447A2B363063 /* FGFactoryGentleman.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032792DF35461EB84AB7D2 /* FGFactoryGentleman.m */; };
 		F8032B2A017B7EE2286392BD /* FGFactoryDefiner.m in Sources */ = {isa = PBXBuildFile; fileRef = F80323E4EE6B3173A13D2427 /* FGFactoryDefiner.m */; };
@@ -70,6 +76,7 @@
 		5BD363EB1830FF0B0024169A /* FactoryGentleman-iOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FactoryGentleman-iOS-Prefix.pch"; sourceTree = "<group>"; };
 		5ED3EC466AC84D26A1B7AFC8 /* libPods-FactoryGentleman-Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FactoryGentleman-Mac.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8032090C714E2BBE6F64943 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		F80320F699AEEF42761356A1 /* FriendshipSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendshipSpec.m; sourceTree = "<group>"; };
 		F803213DD3CBDACD8EC1F272 /* FGInitializerDefinitionSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGInitializerDefinitionSpec.m; sourceTree = "<group>"; };
 		F803224032DA8BC2204510D9 /* FGInitializerDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGInitializerDefinition.m; sourceTree = "<group>"; };
 		F80322A14C1056A3C96A31BE /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
@@ -86,14 +93,17 @@
 		F80326692E4A0E90C7992A92 /* FGObjectBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGObjectBuilder.m; sourceTree = "<group>"; };
 		F80326CE89FC2BE0DACEFAEB /* FGInitializerDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGInitializerDefinition.h; sourceTree = "<group>"; };
 		F803275983A2D0CE41DEEC20 /* FGFactoryDefinitionRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGFactoryDefinitionRegistry.m; sourceTree = "<group>"; };
+		F803278DD981B8C1DB4B4506 /* FriendshipFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendshipFactory.m; sourceTree = "<group>"; };
 		F8032792DF35461EB84AB7D2 /* FGFactoryGentleman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGFactoryGentleman.m; sourceTree = "<group>"; };
 		F803282B7E256FFAE5860E40 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		F803284AE0FB711A7F6D492C /* AddressSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressSpec.m; sourceTree = "<group>"; };
+		F80329922A32BDB0F33636E3 /* Friendship.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friendship.m; sourceTree = "<group>"; };
 		F8032B9AC2731A0BDB3B4553 /* FGFactoryDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGFactoryDefinition.h; sourceTree = "<group>"; };
 		F8032C2695EC435C553E0DD6 /* FGObjectBuilderSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGObjectBuilderSpec.m; sourceTree = "<group>"; };
 		F8032CD8AAA638736CA9D347 /* FGValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGValue.m; sourceTree = "<group>"; };
 		F8032CED40773AEF0E335082 /* UserSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSpec.m; sourceTree = "<group>"; };
 		F8032DDD114FD64AAFE9607C /* UserFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserFactory.m; sourceTree = "<group>"; };
+		F8032DE289574ADB6FF8A29E /* Friendship.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friendship.h; sourceTree = "<group>"; };
 		F8032E280A2D8D32BF8170B0 /* FGFactoryDefinitionRegistrySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGFactoryDefinitionRegistrySpec.m; sourceTree = "<group>"; };
 		F8032F1736CE0338C9B98006 /* FGFactoryDefinerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGFactoryDefinerSpec.m; sourceTree = "<group>"; };
 		F8032F93EF903F2DE003C805 /* FGFactoryDefinitionSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGFactoryDefinitionSpec.m; sourceTree = "<group>"; };
@@ -194,6 +204,7 @@
 			children = (
 				F8032DDD114FD64AAFE9607C /* UserFactory.m */,
 				F80322B6710F0DB670F8AA92 /* AddressFactory.m */,
+				F803278DD981B8C1DB4B4506 /* FriendshipFactory.m */,
 			);
 			path = Factories;
 			sourceTree = "<group>";
@@ -212,6 +223,7 @@
 			children = (
 				F803284AE0FB711A7F6D492C /* AddressSpec.m */,
 				F8032CED40773AEF0E335082 /* UserSpec.m */,
+				F80320F699AEEF42761356A1 /* FriendshipSpec.m */,
 			);
 			path = Spec;
 			sourceTree = "<group>";
@@ -267,6 +279,8 @@
 				F8032090C714E2BBE6F64943 /* User.h */,
 				F803282B7E256FFAE5860E40 /* User.m */,
 				F80325C8A100CE3181A56232 /* Helpers.h */,
+				F80329922A32BDB0F33636E3 /* Friendship.m */,
+				F8032DE289574ADB6FF8A29E /* Friendship.h */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -459,6 +473,9 @@
 				F8032CBA3B97DE5DC8A0C56E /* FGInitializerDefinitionSpec.m in Sources */,
 				F803249217B8070F4DD9CE76 /* FGFactoryDefinitionSpec.m in Sources */,
 				F80320413DB004C88B1CC618 /* FGValue.m in Sources */,
+				F80327B7BCD62DDF82E31886 /* FriendshipFactory.m in Sources */,
+				F8032A0CD8EF37A982D86D28 /* Friendship.m in Sources */,
+				F8032176C6B537021C018393 /* FriendshipSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +501,9 @@
 				F8032E851DE37327A678003C /* FGInitializerDefinitionSpec.m in Sources */,
 				F80326C37B34F1E5DB7B2F92 /* FGFactoryDefinitionSpec.m in Sources */,
 				F80326C0FA1D64503420102A /* FGValue.m in Sources */,
+				F80321B64941EA36CD42219D /* FriendshipFactory.m in Sources */,
+				F8032993C122B686C3D76824 /* Friendship.m in Sources */,
+				F80329E7E09E97E32A5BE72B /* FriendshipSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

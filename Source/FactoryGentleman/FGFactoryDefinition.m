@@ -2,12 +2,14 @@
 
 @implementation FGFactoryDefinition
 
-- (instancetype)initWithInitializerDefinition:(FGInitializerDefinition *)initializerDefinition
-                             fieldDefinitions:(NSDictionary *)fieldDefinitions
+- (instancetype)initWithConstructor:(id)constructor
+              initializerDefinition:(FGInitializerDefinition *)initializerDefinition
+                   fieldDefinitions:(NSDictionary *)fieldDefinitions;
 {
     self = [super init];
     if (self) {
         NSParameterAssert(fieldDefinitions);
+        _constructor = constructor;
         _initializerDefinition = initializerDefinition;
         _fieldDefinitions = fieldDefinitions;
     }
@@ -16,19 +18,22 @@
 
 - (instancetype)mergedWithDefinition:(FGFactoryDefinition *)otherDefinition
 {
+    id constructor = [self mergedConstructorWith:otherDefinition.constructor];
     FGInitializerDefinition *initializerDefinition = [self mergedInitializerDefinitionWith:otherDefinition.initializerDefinition];
     NSDictionary *fieldDefinitions = [self mergedFieldDefinitionsWith:otherDefinition.fieldDefinitions];
-    return [[FGFactoryDefinition alloc] initWithInitializerDefinition:initializerDefinition
-                                                     fieldDefinitions:fieldDefinitions];
+    return [[FGFactoryDefinition alloc] initWithConstructor:constructor
+                                      initializerDefinition:initializerDefinition
+                                           fieldDefinitions:fieldDefinitions];
+}
+
+- (id)mergedConstructorWith:(id)otherConstructor
+{
+    return otherConstructor ? otherConstructor : self.constructor;
 }
 
 - (FGInitializerDefinition *)mergedInitializerDefinitionWith:(FGInitializerDefinition *)otherInitializerDefinition
 {
-    if (otherInitializerDefinition) {
-        return otherInitializerDefinition;
-    } else {
-        return self.initializerDefinition;
-    }
+    return otherInitializerDefinition ? otherInitializerDefinition : self.initializerDefinition;
 }
 
 - (NSDictionary *)mergedFieldDefinitionsWith:(NSDictionary *)otherFieldDefinitions

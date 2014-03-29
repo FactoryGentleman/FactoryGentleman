@@ -25,11 +25,4 @@
 #define FGBuildTraitWith(__OBJECT_CLASS__, __TRAIT__, __EXTRA_DEFINITION_BLOCK__) \
 [FGFactoryGentleman buildForObjectClass:[__OBJECT_CLASS__ class] \
                                   trait:FGF(__TRAIT__ ) \
-                     withFactoryDefiner:^FGFactoryDefinition *{ \
-    __block FGInitializerDefinition *initializerDefinition = nil; \
-    __block NSMutableDictionary *fieldDefinitions = [[NSMutableDictionary alloc] init]; \
-    void (^defineBlock)() = __EXTRA_DEFINITION_BLOCK__; \
-    defineBlock(); \
-    return [[FGFactoryDefinition alloc] initWithInitializerDefinition:initializerDefinition \
-                                                     fieldDefinitions:fieldDefinitions]; \
-}]
+                     withFactoryDefiner:FG_DefineBlock(__EXTRA_DEFINITION_BLOCK__)]

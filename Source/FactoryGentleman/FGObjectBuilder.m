@@ -1,7 +1,5 @@
 #import "FGObjectBuilder.h"
 
-#import <objc/message.h>
-
 #import "FGValue.h"
 
 @implementation FGObjectBuilder
@@ -21,20 +19,28 @@
 
 - (id)build
 {
-    id object = [self createObjectInstance];
+    id object = [self createObjectInstanceWithConstructor:[self objectConstructor]];
     [self setFieldDefinitionsOnObject:object];
     return object;
 }
 
-- (id)createObjectInstance
+- (id)objectConstructor
 {
-    __strong id alloced = [self.objectClass alloc];
+    if (self.definition.constructor) {
+        return self.definition.constructor;
+    } else {
+        __autoreleasing id constructor = [self.objectClass alloc];
+        return constructor;
+    }
+}
 
-    NSMethodSignature *methodSignature = [alloced methodSignatureForSelector:self.definition.initializerDefinition.selector];
+- (id)createObjectInstanceWithConstructor:(id)constructor
+{
+    NSMethodSignature *methodSignature = [constructor methodSignatureForSelector:self.definition.initializerDefinition.selector];
     NSInvocation *inv = [NSInvocation invocationWithMethodSignature:methodSignature];
 
     [inv setSelector:self.definition.initializerDefinition.selector];
-    [inv setTarget:alloced];
+    [inv setTarget:constructor];
 
     NSUInteger index = 2;
     for (FGFieldDefinition fieldDefinition in [self.definition initializerFieldDefinitions]) {
@@ -52,8 +58,10 @@
     }
 
     [inv invoke];
+    __autoreleasing id object;
+    [inv getReturnValue:&object];
 
-    return alloced;
+    return object;
 }
 
 - (void)setFieldDefinitionsOnObject:(id)object

@@ -21,8 +21,9 @@ SpecBegin(FGFactoryDefinitionRegistry)
         before(^{
             FGInitializerDefinition *initializerDefinition = [[FGInitializerDefinition alloc] initWithSelector:@selector(init)
                                                                                                     fieldNames:[NSOrderedSet orderedSet]];
-            registeredDefinition = [[FGFactoryDefinition alloc] initWithInitializerDefinition:initializerDefinition
-                                                                             fieldDefinitions:@{}];
+            registeredDefinition = [[FGFactoryDefinition alloc] initWithConstructor:nil
+                                                              initializerDefinition:initializerDefinition
+                                                                   fieldDefinitions:@{}];
         });
 
         before(^{

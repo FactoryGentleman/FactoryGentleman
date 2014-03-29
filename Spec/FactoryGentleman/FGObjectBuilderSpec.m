@@ -33,6 +33,20 @@
 
 @end
 
+@interface ExampleImmutableObjectCreator : NSObject
++ (ExampleImmutableObject *)exampleImmutableObjectWithFloat:(float)immutableFloatProperty;
+@end
+
+@implementation ExampleImmutableObjectCreator
+
++ (ExampleImmutableObject *)exampleImmutableObjectWithFloat:(float)immutableFloatProperty
+{
+    return [[ExampleImmutableObject alloc] initWithImmutableStringProperty:@"some sort of string"
+                                                    immutableFloatProperty:immutableFloatProperty];
+}
+
+@end
+
 SpecBegin(FGObjectBuilder)
     __block FGObjectBuilder *subject;
 
@@ -54,8 +68,9 @@ SpecBegin(FGObjectBuilder)
 
             FGInitializerDefinition *initializerDefinition = [[FGInitializerDefinition alloc] initWithSelector:@selector(init)
                                                                                                     fieldNames:[NSOrderedSet orderedSet]];
-            FGFactoryDefinition *definition = [[FGFactoryDefinition alloc] initWithInitializerDefinition:initializerDefinition
-                                                                                        fieldDefinitions:definedFields];
+            FGFactoryDefinition *definition = [[FGFactoryDefinition alloc] initWithConstructor:nil
+                                                                         initializerDefinition:initializerDefinition
+                                                                              fieldDefinitions:definedFields];
             subject = [[FGObjectBuilder alloc] initWithObjectClass:[ExampleMutableObject class]
                                                         definition:definition];
         });
@@ -91,8 +106,9 @@ SpecBegin(FGObjectBuilder)
             NSOrderedSet *fieldNames = [NSOrderedSet orderedSetWithArray:@[ @"immutableStringProperty", @"immutableFloatProperty" ]];
             FGInitializerDefinition *initializerDefinition = [[FGInitializerDefinition alloc] initWithSelector:initializer
                                                                                                     fieldNames:fieldNames];
-            FGFactoryDefinition *definition = [[FGFactoryDefinition alloc] initWithInitializerDefinition:initializerDefinition
-                                                                                        fieldDefinitions:definedFields];
+            FGFactoryDefinition *definition = [[FGFactoryDefinition alloc] initWithConstructor:nil
+                                                                         initializerDefinition:initializerDefinition
+                                                                              fieldDefinitions:definedFields];
             subject = [[FGObjectBuilder alloc] initWithObjectClass:[ExampleImmutableObject class]
                                                       definition:definition];
         });
@@ -107,6 +123,39 @@ SpecBegin(FGObjectBuilder)
 
         it(@"new instance has primitive values defined", ^{
             expect([[subject build] immutableFloatProperty]).to.equal(3.5f);
+        });
+    });
+
+    context(@"when building objects using constructors", ^{
+        before(^{
+            SEL initializer = @selector(exampleImmutableObjectWithFloat:);
+            id (^floatProperty)() = ^id {
+                float floatValue = 1.2f;
+                return [FGValue value:&floatValue
+                         withObjCType:@encode(__typeof__ (floatValue))];
+            };
+
+            NSDictionary *definedFields = @{ @"immutableFloatProperty" : floatProperty };
+            NSOrderedSet *fieldNames = [NSOrderedSet orderedSetWithObject:@"immutableFloatProperty"];
+            FGInitializerDefinition *initializerDefinition = [[FGInitializerDefinition alloc] initWithSelector:initializer
+                                                                                                    fieldNames:fieldNames];
+            FGFactoryDefinition *definition = [[FGFactoryDefinition alloc] initWithConstructor:ExampleImmutableObjectCreator.class
+                                                                         initializerDefinition:initializerDefinition
+                                                                              fieldDefinitions:definedFields];
+            subject = [[FGObjectBuilder alloc] initWithObjectClass:[ExampleImmutableObject class]
+                                                      definition:definition];
+        });
+
+        it(@"returns a new instance of the class", ^{
+            expect([subject build]).to.beKindOf([ExampleImmutableObject class]);
+        });
+
+        it(@"new instance has object values defined", ^{
+            expect([[subject build] immutableStringProperty]).to.equal(@"some sort of string");
+        });
+
+        it(@"new instance has primitive values defined", ^{
+            expect([[subject build] immutableFloatProperty]).to.equal(1.2f);
         });
     });
 SpecEnd
