@@ -7,11 +7,11 @@ def needed_pods
 end
 
 target 'FactoryGentleman-iOS' do
-  platform :ios
+  platform :ios, :deployment_target => 5.0
   needed_pods
 end
 
 target 'FactoryGentleman-Mac' do
-  platform :osx
+  platform :osx, :deployment_target => 10.7
   needed_pods
 end
