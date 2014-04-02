@@ -68,22 +68,26 @@ With FactoryGentleman, you define the object's base fields in one file, and late
 Create an implementation file (*.m) with the factory definition:
 
 ```objective-c
-#import "FactoryDefiner.h"
+#import <FactoryGentleman/FGFactoryGentleman.h>
 
-FactoryBegin(User)
-    field(firstName, @"Bob");
-    field(lastName, @"Bradley");
-    int friends = 10;
-    field(friendCount, FGValue(friends));
-    field(title, @"Mr");
-    field(maidenName, @"Macallister");
-FactoryEnd
+#import "User.h"
+
+FGFactoryBegin(User)
+    FGField(firstName, @"Bob");
+    FGField(lastName, @"Bradley");
+    NSInteger friends = 10;
+    FGField(friendCount, FGValue(friends));
+    FGField(title, @"Mr");
+    FGField(maidenName, @"Macallister");
+FGFactoryEnd
 ```
 
 ### Using the factory in your tests
 
 ```objective-c
-#import "FactoryGentleman.h"
+#import <FactoryGentleman/FGFactoryGentleman.h>
+
+#import "User.h"
 
 SpecBegin(User)
     __block User *subject;
@@ -101,7 +105,9 @@ SpecBegin(User)
 ### Overriding fields
 
 ```objective-c
-#import "FactoryGentleman.h"
+#import <FactoryGentleman/FGFactoryGentleman.h>
+
+#import "User.h"
 
 SpecBegin(User)
     __block User *subject;
@@ -109,7 +115,7 @@ SpecBegin(User)
     context(@"when user has no first name", ^{
         before(^{
             subject = FGBuildWith(User, ^{
-              field(firstName, nil);
+              FGField(firstName, nil);
             });
         });
 
@@ -125,15 +131,19 @@ SpecBegin(User)
 You can define objects with immutable (i.e. readonly) properties via listing initializer selector together with the field names needed:
 
 ```objective-c
-FactoryBegin(User)
-    field(firstName, @"Bob");
-    field(lastName, @"Bradley");
-    int friends = 10;
-    field(friendCount, FGValue(friends);
-    field(title, @"Mr");
-    field(maidenName, @"Macallister");
-    initWith(initWithFirstName:lastName:, f(firstName), f(lastName));
-FactoryEnd
+#import <FactoryGentleman/FGFactoryGentleman.h>
+
+#import "User.h"
+
+FGFactoryBegin(User)
+    FGField(firstName, @"Bob");
+    FGField(lastName, @"Bradley");
+    NSUInteger friends = 10;
+    FGField(friendCount, FGValue(friends);
+    FGField(title, @"Mr");
+    FGField(maidenName, @"Macallister");
+    FGInitWith(initWithFirstName:lastName:, FGF(firstName), FGF(lastName));
+FGFactoryEnd
 ```
 
 ### Associative Objects
@@ -141,14 +151,18 @@ FactoryEnd
 You can define associative objects (objects that themselves have a factory definition) by giving in the name of the factory required:
 
 ```objective-c
-FactoryBegin(User)
-    field(firstName, @"Bob");
-    field(lastName, @"Bradley");
-    field(friendCount, @10);
-    field(title, @"Mr");
-    field(maidenName, @"Macallister");
-    assocField(address, Address);
-FactoryEnd
+#import <FactoryGentleman/FGFactoryGentleman.h>
+
+#import "User.h"
+
+FGFactoryBegin(User)
+    FGField(firstName, @"Bob");
+    FGField(lastName, @"Bradley");
+    FGField(friendCount, @10);
+    FGField(title, @"Mr");
+    FGField(maidenName, @"Macallister");
+    FGAssocField(address, Address);
+FGFactoryEnd
 ```
 
 ## How to install
@@ -159,6 +173,7 @@ Add `pod "FactoryGentleman"` to your Podfile
 
   - [Michael England](https://github.com/michaelengland) @ [SoundCloud](https://github.com/soundcloud)
   - [Slavko Krucaj](https://github.com/SlavkoKrucaj) @ [SoundCloud](https://github.com/soundcloud)
+  - [Vincent Garrigues](https://github.com/garriguv) @ [SoundCloud](https://github.com/soundcloud)
 
 ## License
 
