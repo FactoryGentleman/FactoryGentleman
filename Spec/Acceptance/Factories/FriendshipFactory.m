@@ -1,4 +1,4 @@
-#import "FGFactoryGentleman.h"
+#import "FactoryGentleman.h"
 
 #import "Friendship.h"
 

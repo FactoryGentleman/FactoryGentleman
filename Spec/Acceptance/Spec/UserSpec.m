@@ -1,6 +1,6 @@
 #import "User.h"
 
-#import "FGFactoryGentleman.h"
+#import "FactoryGentleman.h"
 
 SpecBegin(User)
     __block User *subject;

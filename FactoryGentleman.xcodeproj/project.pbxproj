@@ -100,6 +100,7 @@
 		F80329922A32BDB0F33636E3 /* Friendship.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friendship.m; sourceTree = "<group>"; };
 		F8032B9AC2731A0BDB3B4553 /* FGFactoryDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGFactoryDefinition.h; sourceTree = "<group>"; };
 		F8032C2695EC435C553E0DD6 /* FGObjectBuilderSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGObjectBuilderSpec.m; sourceTree = "<group>"; };
+		F8032C699ACE5AA27265F17D /* FactoryGentleman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactoryGentleman.h; sourceTree = "<group>"; };
 		F8032CD8AAA638736CA9D347 /* FGValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGValue.m; sourceTree = "<group>"; };
 		F8032CED40773AEF0E335082 /* UserSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSpec.m; sourceTree = "<group>"; };
 		F8032DDD114FD64AAFE9607C /* UserFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserFactory.m; sourceTree = "<group>"; };
@@ -257,6 +258,7 @@
 				F80326CE89FC2BE0DACEFAEB /* FGInitializerDefinition.h */,
 				F8032CD8AAA638736CA9D347 /* FGValue.m */,
 				F8032313B8D8794B42538B0C /* FGValue.h */,
+				F8032C699ACE5AA27265F17D /* FactoryGentleman.h */,
 			);
 			path = FactoryGentleman;
 			sourceTree = "<group>";

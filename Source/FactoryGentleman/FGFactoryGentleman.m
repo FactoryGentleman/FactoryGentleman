@@ -1,6 +1,7 @@
-#import "FGFactoryGentleman.h"
+#import "FactoryGentleman.h"
 
 #import "FGObjectBuilder.h"
+#import "FGFactoryDefinitionRegistry.h"
 
 @implementation FGFactoryGentleman
 

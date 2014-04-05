@@ -1,5 +1,4 @@
 #import "FGFactoryDefiner.h"
-#import "FGFactoryDefinitionRegistry.h"
 
 @interface FGFactoryGentleman : NSObject
 + (id)buildForObjectClass:(Class)objectClass;
