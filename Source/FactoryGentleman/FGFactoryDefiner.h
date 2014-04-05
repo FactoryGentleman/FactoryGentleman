@@ -45,6 +45,9 @@
 #define FGAssocField(__FIELD_NAME__, __CLASS__) \
     FGField(__FIELD_NAME__, [FGFactoryGentleman buildForObjectClass:[__CLASS__ class]])
 
+#define FGAssocFieldTrait(__FIELD_NAME__, __CLASS__, __TRAIT__) \
+    FGField(__FIELD_NAME__, [FGFactoryGentleman buildForObjectClass:[__CLASS__ class] trait:FGF(__TRAIT__)])
+
 #define FGField(__FIELD_NAME__, __FIELD_VALUE__) \
     [fieldDefinitions setObject:^id { return (__FIELD_VALUE__); } forKey:FGF(__FIELD_NAME__)]
 

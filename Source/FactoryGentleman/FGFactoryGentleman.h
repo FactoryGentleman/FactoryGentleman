@@ -15,7 +15,8 @@
 [FGFactoryGentleman buildForObjectClass:[__OBJECT_CLASS__ class]]
 
 #define FGBuildTrait(__OBJECT_CLASS__, __TRAIT__) \
-[FGFactoryGentleman buildForObjectClass:[__OBJECT_CLASS__ class] trait:FGF(__TRAIT__)]
+[FGFactoryGentleman buildForObjectClass:[__OBJECT_CLASS__ class] \
+                                  trait:FGF(__TRAIT__)]
 
 #define FGBuildWith(__OBJECT_CLASS__, __EXTRA_DEFINITION_BLOCK__) \
 [FGFactoryGentleman buildForObjectClass:[__OBJECT_CLASS__ class] \

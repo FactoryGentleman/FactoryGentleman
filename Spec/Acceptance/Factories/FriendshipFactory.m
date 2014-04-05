@@ -4,7 +4,7 @@
 
 FGFactoryBegin(Friendship)
     FGAssocField(fromUser, User);
-    FGAssocField(toUser, User);
+    FGAssocFieldTrait(toUser, User, homeless);
     FGInitFrom(FriendshipFactory.class);
     FGInitWith(friendshipFromUser:toUser:, FGF(fromUser), FGF(toUser));
 FGFactoryEnd
