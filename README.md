@@ -68,7 +68,7 @@ With FactoryGentleman, you define the object's base fields in one file, and late
 Create an implementation file (*.m) with the factory definition:
 
 ```objective-c
-#import <FactoryGentleman/FGFactoryGentleman.h>
+#import <FactoryGentleman/FactoryGentleman.h>
 
 #import "User.h"
 
@@ -85,7 +85,7 @@ FGFactoryEnd
 ### Using the factory in your tests
 
 ```objective-c
-#import <FactoryGentleman/FGFactoryGentleman.h>
+#import <FactoryGentleman/FactoryGentleman.h>
 
 #import "User.h"
 
@@ -105,7 +105,7 @@ SpecBegin(User)
 ### Overriding fields
 
 ```objective-c
-#import <FactoryGentleman/FGFactoryGentleman.h>
+#import <FactoryGentleman/FactoryGentleman.h>
 
 #import "User.h"
 
@@ -126,12 +126,35 @@ SpecBegin(User)
 });
 ```
 
+### Complex and Sequential Fields
+
+You can define a field with some more complex state-dependent values using blocks:
+
+```objective-c
+#import <FactoryGentleman/FactoryGentleman.h>
+
+#import "User.h"
+
+FGFactoryBegin(User)
+    __block int currentId = 0;
+    FGFieldBy(resourceId, ^{
+        return @(++currentId);
+    });
+    FGField(firstName, @"Bob");
+    FGField(lastName, @"Bradley");
+    NSInteger friends = 10;
+    FGField(friendCount, FGValue(friends));
+    FGField(title, @"Mr");
+    FGField(maidenName, @"Macallister");
+FGFactoryEnd
+```
+
 ### Immutable Properties
 
 You can define objects with immutable (i.e. readonly) properties via listing initializer selector together with the field names needed:
 
 ```objective-c
-#import <FactoryGentleman/FGFactoryGentleman.h>
+#import <FactoryGentleman/FactoryGentleman.h>
 
 #import "User.h"
 
@@ -151,7 +174,7 @@ FGFactoryEnd
 You can define associative objects (objects that themselves have a factory definition) by giving in the name of the factory required:
 
 ```objective-c
-#import <FactoryGentleman/FGFactoryGentleman.h>
+#import <FactoryGentleman/FactoryGentleman.h>
 
 #import "User.h"
 
@@ -163,6 +186,46 @@ FGFactoryBegin(User)
     FGField(maidenName, @"Macallister");
     FGAssocField(address, Address);
 FGFactoryEnd
+```
+
+### Traits
+
+For objects with different traits, you can define them within the base definition:
+
+```objective-c
+#import <FactoryGentleman/FactoryGentleman.h>
+
+#import "User.h"
+
+FGFactoryBegin(User)
+    FGField(firstName, @"Bob");
+    FGField(lastName, @"Bradley");
+    FGField(friendCount, @10);
+    FGField(title, @"Mr");
+    FGField(maidenName, @"Macallister");
+    FGAssocField(address, Address);
+    
+    FGTrait(homeless, ^{
+        FGField(address, nil);
+    });
+FGFactoryEnd
+```
+
+These can then be used using the corresponding build macros:
+
+```objective-c
+subject = FGBuildTrait(User, homeless);
+```
+```objective-c
+subject = FGBuildTraitWith(User, homeless, ^{
+    FGField(firstName, @"Brian");
+});
+```
+
+as well as the associative definition:
+
+```objective-c
+FGAssocFieldTrait(user, User, homeless);
 ```
 
 ## How to install
