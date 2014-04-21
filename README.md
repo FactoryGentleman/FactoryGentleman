@@ -73,12 +73,12 @@ Create an implementation file (*.m) with the factory definition:
 #import "User.h"
 
 FGFactoryBegin(User)
-    FGField(firstName, @"Bob");
-    FGField(lastName, @"Bradley");
+    [builder field:@"firstName" value:@"Bob"];
+    [builder field:@"lastName" value:@"Bradley"];
     NSInteger friends = 10;
-    FGField(friendCount, FGValue(friends));
-    FGField(title, @"Mr");
-    FGField(maidenName, @"Macallister");
+    [builder field:@"friendCount" value:FGValue(friends)];
+    [builder field:@"title" value:@"Mr"];
+    [builder field:@"maidenName" value:@"Macallister"];
 FGFactoryEnd
 ```
 
@@ -115,7 +115,7 @@ SpecBegin(User)
     context(@"when user has no first name", ^{
         before(^{
             subject = FGBuildWith(User, ^{
-              FGField(firstName, nil);
+                [builder field:@"firstName" value:nil];
             });
         });
 
@@ -137,15 +137,15 @@ You can define a field with some more complex state-dependent values using block
 
 FGFactoryBegin(User)
     __block int currentId = 0;
-    FGFieldBy(resourceId, ^{
+    [builder field:@"resourceId" by:^{
         return @(++currentId);
-    });
-    FGField(firstName, @"Bob");
-    FGField(lastName, @"Bradley");
+    }];
+    [builder field:@"firstName" value:@"Bob"];
+    [builder field:@"lastName" value:@"Bradley"];
     NSInteger friends = 10;
-    FGField(friendCount, FGValue(friends));
-    FGField(title, @"Mr");
-    FGField(maidenName, @"Macallister");
+    [builder field:@"friendCount" value:FGValue(friends)];
+    [builder field:@"title" value:@"Mr"];
+    [builder field:@"maidenName" value:@"Macallister"];
 FGFactoryEnd
 ```
 
@@ -159,13 +159,13 @@ You can define objects with immutable (i.e. readonly) properties via listing ini
 #import "User.h"
 
 FGFactoryBegin(User)
-    FGField(firstName, @"Bob");
-    FGField(lastName, @"Bradley");
-    NSUInteger friends = 10;
-    FGField(friendCount, FGValue(friends);
-    FGField(title, @"Mr");
-    FGField(maidenName, @"Macallister");
-    FGInitWith(initWithFirstName:lastName:, FGF(firstName), FGF(lastName));
+    [builder field:@"firstName" value:@"Bob"];
+    [builder field:@"lastName" value:@"Bradley"];
+    NSInteger friends = 10;
+    [builder field:@"friendCount" value:FGValue(friends)];
+    [builder field:@"title" value:@"Mr"];
+    [builder field:@"maidenName" value:@"Macallister"];
+    [builder initWith:@selector(initWithFirstName:lastName:) fieldNames:@[ @"firstName", @"lastName" ]];
 FGFactoryEnd
 ```
 
@@ -179,12 +179,12 @@ You can define associative objects (objects that themselves have a factory defin
 #import "User.h"
 
 FGFactoryBegin(User)
-    FGField(firstName, @"Bob");
-    FGField(lastName, @"Bradley");
-    FGField(friendCount, @10);
-    FGField(title, @"Mr");
-    FGField(maidenName, @"Macallister");
-    FGAssocField(address, Address);
+    [builder field:@"firstName" value:@"Bob"];
+    [builder field:@"lastName" value:@"Bradley"];
+    [builder field:@"friendCount" value:@10];
+    [builder field:@"title" value:@"Mr"];
+    [builder field:@"maidenName" value:@"Macallister"];
+    [builder field:@"address" assoc:Address.class];
 FGFactoryEnd
 ```
 
@@ -198,16 +198,16 @@ For objects with different traits, you can define them within the base definitio
 #import "User.h"
 
 FGFactoryBegin(User)
-    FGField(firstName, @"Bob");
-    FGField(lastName, @"Bradley");
-    FGField(friendCount, @10);
-    FGField(title, @"Mr");
-    FGField(maidenName, @"Macallister");
-    FGAssocField(address, Address);
-    
-    FGTrait(homeless, ^{
-        FGField(address, nil);
-    });
+    [builder field:@"firstName" value:@"Bob"];
+    [builder field:@"lastName" value:@"Bradley"];
+    [builder field:@"friendCount" value:@10];
+    [builder field:@"title" value:@"Mr"];
+    [builder field:@"maidenName" value:@"Macallister"];
+    [builder field:@"address" assoc:Address.class];
+
+    traitDefiners[@"homeless"] = ^(FGDefinitionBuilder *homelessBuilder) {
+        [homelessBuilder field:@"address" value:nil];
+    };
 FGFactoryEnd
 ```
 
@@ -218,7 +218,7 @@ subject = FGBuildTrait(User, homeless);
 ```
 ```objective-c
 subject = FGBuildTraitWith(User, homeless, ^{
-    FGField(firstName, @"Brian");
+    [builder field:@"firstName" value:@"Brian"];
 });
 ```
 
