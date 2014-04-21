@@ -9,10 +9,8 @@ SpecBegin(Friendship)
     before(^{
         fromUser = FGBuild(User);
         toUser = FGBuild(User);
-        subject = FGBuildWith(Friendship, ^(FGDefinitionBuilder *builder) {
-            [builder field:@"fromUser" value:fromUser];
-            [builder field:@"toUser" value:toUser];
-        });
+        NSDictionary *values = @{ @"fromUser" : fromUser, @"toUser" : toUser };
+        subject = FGBuildWith(Friendship, values);
     });
 
     describe(@"-users", ^{

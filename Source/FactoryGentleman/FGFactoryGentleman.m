@@ -27,12 +27,17 @@
 }
 
 + (id)buildForObjectClass:(Class)objectClass
-       withFactoryDefiner:(void (^)(FGDefinitionBuilder *))factoryDefiner
+       withFactoryDefiner:(id)factoryDefiner
 {
     NSParameterAssert(objectClass);
     NSParameterAssert(factoryDefiner);
     FGFactoryDefinition *baseDefinition = [self definitionForObjectClass:objectClass];
-    FGFactoryDefinition *overriddenDefinition = [self overriddenDefinitionFromDefiner:factoryDefiner];
+    FGFactoryDefinition *overriddenDefinition;
+    if ([factoryDefiner isKindOfClass:NSDictionary.class]) {
+        overriddenDefinition = [self overriddenDefinitionFromDefinitionDictionary:factoryDefiner];
+    } else {
+        overriddenDefinition = [self overriddenDefinitionFromDefiner:factoryDefiner];
+    }
     FGFactoryDefinition *finalDefinition = [baseDefinition mergedWithDefinition:overriddenDefinition];
     return [[[FGObjectBuilder alloc] initWithObjectClass:objectClass
                                               definition:finalDefinition] build];
@@ -40,7 +45,7 @@
 
 + (id)buildForObjectClass:(Class)objectClass
                     trait:(NSString *)trait
-       withFactoryDefiner:(void (^)(FGDefinitionBuilder *))factoryDefiner
+       withFactoryDefiner:(id)factoryDefiner
 {
     NSParameterAssert(objectClass);
     NSParameterAssert(trait);
@@ -48,7 +53,12 @@
     FGFactoryDefinition *baseDefinition = [self definitionForObjectClass:objectClass];
     FGFactoryDefinition *traitDefinition = [self definitionForObjectClass:objectClass
                                                                     trait:trait];
-    FGFactoryDefinition *overriddenDefinition = [self overriddenDefinitionFromDefiner:factoryDefiner];
+    FGFactoryDefinition *overriddenDefinition;
+    if ([factoryDefiner isKindOfClass:NSDictionary.class]) {
+        overriddenDefinition = [self overriddenDefinitionFromDefinitionDictionary:factoryDefiner];
+    } else {
+        overriddenDefinition = [self overriddenDefinitionFromDefiner:factoryDefiner];
+    }
     FGFactoryDefinition *finalDefinition = [[baseDefinition mergedWithDefinition:traitDefinition]
             mergedWithDefinition:overriddenDefinition];
     return [[[FGObjectBuilder alloc] initWithObjectClass:objectClass
@@ -77,8 +87,16 @@
 {
     FGDefinitionBuilder *builder = [FGDefinitionBuilder builder];
     factoryDefiner(builder);
-    FGFactoryDefinition *overriddenDefinition = [builder build];
-    return overriddenDefinition;
+    return [builder build];
+}
+
++ (FGFactoryDefinition *)overriddenDefinitionFromDefinitionDictionary:(NSDictionary *)definitionDictionary
+{
+    FGDefinitionBuilder *builder = [FGDefinitionBuilder builder];
+    for (NSString *fieldName in definitionDictionary) {
+        [builder field:fieldName value:definitionDictionary[fieldName]];
+    }
+    return [builder build];
 }
 
 @end

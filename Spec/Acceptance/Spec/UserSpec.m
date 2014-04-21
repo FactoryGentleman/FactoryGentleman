@@ -52,9 +52,7 @@ SpecBegin(User)
             Address *address = FGBuildWith(Address, ^(FGDefinitionBuilder *builder) {
                 [builder field:@"street" value:nil];
             });
-            subject = FGBuildWith(User, ^(FGDefinitionBuilder *builder) {
-                [builder field:@"address" value:address];
-            });
+            subject = FGBuildWith(User, @{ @"address" : address });
         });
 
         it(@"is NOT valid", ^{
@@ -113,9 +111,7 @@ SpecBegin(User)
     context(@"when has friends", ^{
         before(^{
             NSUInteger friendCount = 2;
-            subject = FGBuildWith(User, ^(FGDefinitionBuilder *builder) {
-                [builder field:@"friendCount" value:FGValue(friendCount)];
-            });
+            subject = FGBuildWith(User, @{ @"friendCount" : FGValue(friendCount) });
         });
 
         it(@"is NOT lonely", ^{
@@ -126,9 +122,7 @@ SpecBegin(User)
     context(@"when has NO friends", ^{
         before(^{
             NSUInteger friendCount = 0;
-            subject = FGBuildTraitWith(User, homeless, ^(FGDefinitionBuilder *builder) {
-                [builder field:@"friendCount" value:FGValue(friendCount)];
-            });
+            subject = FGBuildTraitWith(User, homeless, @{ @"friendCount" : FGValue(friendCount) });
         });
 
         it(@"is lonely", ^{

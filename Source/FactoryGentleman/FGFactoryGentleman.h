@@ -5,10 +5,10 @@
 + (id)buildForObjectClass:(Class)objectClass
                     trait:(NSString *)trait;
 + (id)buildForObjectClass:(Class)objectClass
-       withFactoryDefiner:(void (^)(FGDefinitionBuilder *))factoryDefiner;
+       withFactoryDefiner:(id)factoryDefiner;
 + (id)buildForObjectClass:(Class)objectClass
                     trait:(NSString *)trait
-       withFactoryDefiner:(void (^)(FGDefinitionBuilder *))factoryDefiner;
+       withFactoryDefiner:(id)factoryDefiner;
 @end
 
 #define FGBuild(__OBJECT_CLASS__) \
