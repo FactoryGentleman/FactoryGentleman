@@ -1,6 +1,7 @@
 #import "FGObjectBuilder.h"
 
 #import "FGValue.h"
+#import "FGNilValue.h"
 
 @implementation FGObjectBuilder
 
@@ -50,7 +51,7 @@
                 [self setValueFromValue:value
                                   index:index
                              invocation:inv];
-            } else if (value) {
+            } else if (value && ![value isKindOfClass:[FGNilValue class]]) {
                 [inv setArgument:&value atIndex:index];
             }
         }
@@ -95,7 +96,7 @@
             [self setValueFromValue:fieldValue
                               index:2
                          invocation:inv];
-        } else if (fieldValue) {
+        } else if (fieldValue && ![fieldValue isKindOfClass:[FGNilValue class]]) {
             [inv setArgument:&fieldValue atIndex:2];
         }
 

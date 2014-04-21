@@ -17,9 +17,7 @@ SpecBegin(Address)
 
     context(@"has no house number", ^{
         before(^{
-            subject = FGBuildWith(Address, ^(FGDefinitionBuilder *builder) {
-                [builder field:@"houseNumber" value:nil];
-            });
+            subject = FGBuildWith(Address, @{ @"houseNumber" : FGNil });
         });
 
         it(@"is NOT valid", ^{
@@ -29,9 +27,7 @@ SpecBegin(Address)
 
     context(@"has no street", ^{
         before(^{
-            subject = FGBuildWith(Address, ^(FGDefinitionBuilder *builder) {
-                [builder field:@"street" value:nil];
-            });
+            subject = FGBuildWith(Address, @{ @"street" : FGNil });
         });
 
         it(@"is NOT valid", ^{
@@ -41,9 +37,7 @@ SpecBegin(Address)
 
     context(@"has no city", ^{
         before(^{
-            subject = FGBuildWith(Address, ^(FGDefinitionBuilder *builder) {
-                [builder field:@"city" value:nil];
-            });
+            subject = FGBuildWith(Address, @{ @"city" : FGNil });
         });
 
         it(@"is NOT valid", ^{

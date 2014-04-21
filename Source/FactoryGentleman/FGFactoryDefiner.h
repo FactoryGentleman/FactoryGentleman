@@ -1,5 +1,6 @@
 #import "FGFactoryDefinition.h"
 #import "FGDefinitionBuilder.h"
+#import "FGNilValue.h"
 #import "FGValue.h"
 
 @interface FGFactoryDefiner : NSObject
@@ -33,4 +34,8 @@
 \
 @end
 
-#define FGValue(__VALUE__) [FGValue value:&__VALUE__ withObjCType:@encode(__typeof__(__VALUE__))]
+#define FGValue(__VALUE__) \
+    [FGValue value:&__VALUE__ withObjCType:@encode(__typeof__(__VALUE__))]
+
+#define FGNil \
+    [FGNilValue nilValue]
