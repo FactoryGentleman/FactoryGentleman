@@ -36,10 +36,10 @@
 
 - (id)createObjectInstanceWithConstructor:(id)constructor
 {
-    NSMethodSignature *methodSignature = [constructor methodSignatureForSelector:self.definition.initializerDefinition.selector];
+    NSMethodSignature *methodSignature = [constructor methodSignatureForSelector:[self definitionSelector]];
     NSInvocation *inv = [NSInvocation invocationWithMethodSignature:methodSignature];
 
-    [inv setSelector:self.definition.initializerDefinition.selector];
+    [inv setSelector:[self definitionSelector]];
     [inv setTarget:constructor];
 
     NSUInteger index = 2;
@@ -62,6 +62,11 @@
     [inv getReturnValue:&object];
 
     return object;
+}
+
+- (SEL)definitionSelector
+{
+    return self.definition.initializerDefinition.selector ? self.definition.initializerDefinition.selector : @selector(init);
 }
 
 - (void)setFieldDefinitionsOnObject:(id)object

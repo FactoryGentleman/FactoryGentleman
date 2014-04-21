@@ -52,20 +52,17 @@ SpecBegin(FGFactoryDefiner)
 
     describe(@"-registerBaseDefinition:traitDefiners:", ^{
         __block FGFactoryDefinition *baseDefinition;
-        __block FGFactoryDefinition *traitDefinition;
         __block NSDictionary *traitDefiners;
 
         before(^{
             baseDefinition = [[FGFactoryDefinition alloc] initWithConstructor:nil
                                                         initializerDefinition:nil
                                                              fieldDefinitions:@{}];
-            traitDefinition = [[FGFactoryDefinition alloc] initWithConstructor:nil
-                                                         initializerDefinition:nil
-                                                              fieldDefinitions:@{}];
-            traitDefiners = @{ @"foo" : ^{ return traitDefinition; } };
+
+            traitDefiners = @{ @"foo" : ^(FGDefinitionBuilder *builder) {} };
         });
 
-        it(@"registers the definition", ^{
+        it(@"registers the base definition", ^{
             [[factoryDefinitionRegistry expect] registerFactoryDefinition:baseDefinition
                                                                  forClass:[NSString class]];
 
@@ -75,8 +72,8 @@ SpecBegin(FGFactoryDefiner)
             [factoryDefinitionRegistry verify];
         });
 
-        it(@"registers the definition", ^{
-            [[factoryDefinitionRegistry expect] registerFactoryDefinition:traitDefinition
+        it(@"registers the trait definitions", ^{
+            [[factoryDefinitionRegistry expect] registerFactoryDefinition:OCMOCK_ANY
                                                                  forClass:[NSString class]
                                                                     trait:@"foo"];
 

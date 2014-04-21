@@ -47,9 +47,11 @@
     [self.factoryDefinitionRegistry registerFactoryDefinition:baseDefinition
                                                      forClass:self.objectClass];
     for (NSString *trait in traitDefiners) {
-        id (^traitDefinition)() = [traitDefiners objectForKey:trait];
-        FGFactoryDefinition *hmm = traitDefinition();
-        [self.factoryDefinitionRegistry registerFactoryDefinition:hmm
+        void (^traitDefiner)(FGDefinitionBuilder *) = [traitDefiners objectForKey:trait];
+        FGDefinitionBuilder *builder = [FGDefinitionBuilder builder];
+        traitDefiner(builder);
+        FGFactoryDefinition *traitDefinition = [builder build];
+        [self.factoryDefinitionRegistry registerFactoryDefinition:traitDefinition
                                                          forClass:self.objectClass
                                                             trait:trait];
     }

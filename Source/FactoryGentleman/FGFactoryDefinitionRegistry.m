@@ -31,12 +31,15 @@
 
 - (FGFactoryDefinition *)factoryDefinitionForObjectClass:(Class)objectClass
 {
+    NSParameterAssert(objectClass);
     return [self.factories objectForKey:[self keyForObjectClass:objectClass]];
 }
 
 - (FGFactoryDefinition *)factoryDefinitionForObjectClass:(Class)objectClass
                                                    trait:(NSString *)trait
 {
+    NSParameterAssert(objectClass);
+    NSParameterAssert(trait);
     return [self.factories objectForKey:[self keyForObjectClass:objectClass
                                                           trait:trait]];
 }
@@ -46,6 +49,8 @@
 - (void)registerFactoryDefinition:(id)factoryDefinition
                          forClass:(Class)objectClass
 {
+    NSParameterAssert(factoryDefinition);
+    NSParameterAssert(objectClass);
     [self.factories setObject:factoryDefinition
                        forKey:[self keyForObjectClass:objectClass]];
 }
@@ -54,6 +59,9 @@
                          forClass:(Class)objectClass
                             trait:(NSString *)trait
 {
+    NSParameterAssert(factoryDefinition);
+    NSParameterAssert(objectClass);
+    NSParameterAssert(trait);
     [self.factories setObject:factoryDefinition
                        forKey:[self keyForObjectClass:objectClass
                                                 trait:trait]];

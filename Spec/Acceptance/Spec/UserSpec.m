@@ -49,11 +49,11 @@ SpecBegin(User)
 
     context(@"has first name, last name & invalid address", ^{
         before(^{
-            Address *address = FGBuildWith(Address, ^{
-                FGField(street, nil);
+            Address *address = FGBuildWith(Address, ^(FGDefinitionBuilder *builder) {
+                [builder field:@"street" value:nil];
             });
-            subject = FGBuildWith(User, ^{
-                FGField(address, address);
+            subject = FGBuildWith(User, ^(FGDefinitionBuilder *builder) {
+                [builder field:@"address" value:address];
             });
         });
 
@@ -72,8 +72,8 @@ SpecBegin(User)
 
     context(@"has no first name", ^{
         before(^{
-            subject = FGBuildWith(User, ^{
-                FGField(firstName, nil);
+            subject = FGBuildWith(User, ^(FGDefinitionBuilder *builder) {
+                [builder field:@"firstName" value:nil];
             });
         });
 
@@ -92,8 +92,8 @@ SpecBegin(User)
 
     context(@"has no last name", ^{
         before(^{
-            subject = FGBuildWith(User, ^{
-                FGField(lastName, nil);
+            subject = FGBuildWith(User, ^(FGDefinitionBuilder *builder) {
+                [builder field:@"lastName" value:nil];
             });
         });
 
@@ -113,8 +113,8 @@ SpecBegin(User)
     context(@"when has friends", ^{
         before(^{
             NSUInteger friendCount = 2;
-            subject = FGBuildWith(User, ^{
-                FGField(friendCount, FGValue(friendCount));
+            subject = FGBuildWith(User, ^(FGDefinitionBuilder *builder) {
+                [builder field:@"friendCount" value:FGValue(friendCount)];
             });
         });
 
@@ -126,8 +126,8 @@ SpecBegin(User)
     context(@"when has NO friends", ^{
         before(^{
             NSUInteger friendCount = 0;
-            subject = FGBuildTraitWith(User, homeless, ^{
-                FGField(friendCount, FGValue(friendCount));
+            subject = FGBuildTraitWith(User, homeless, ^(FGDefinitionBuilder *builder) {
+                [builder field:@"friendCount" value:FGValue(friendCount)];
             });
         });
 

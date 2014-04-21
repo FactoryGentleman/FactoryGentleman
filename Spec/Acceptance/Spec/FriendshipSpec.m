@@ -9,9 +9,9 @@ SpecBegin(Friendship)
     before(^{
         fromUser = FGBuild(User);
         toUser = FGBuild(User);
-        subject = FGBuildWith(Friendship, ^{
-            FGField(fromUser, fromUser);
-            FGField(toUser, toUser);
+        subject = FGBuildWith(Friendship, ^(FGDefinitionBuilder *builder) {
+            [builder field:@"fromUser" value:fromUser];
+            [builder field:@"toUser" value:toUser];
         });
     });
 

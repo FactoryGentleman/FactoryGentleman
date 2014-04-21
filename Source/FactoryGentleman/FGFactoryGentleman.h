@@ -5,10 +5,10 @@
 + (id)buildForObjectClass:(Class)objectClass
                     trait:(NSString *)trait;
 + (id)buildForObjectClass:(Class)objectClass
-       withFactoryDefiner:(FGFactoryDefinition *(^)())factoryDefiner;
+       withFactoryDefiner:(void (^)(FGDefinitionBuilder *))factoryDefiner;
 + (id)buildForObjectClass:(Class)objectClass
                     trait:(NSString *)trait
-       withFactoryDefiner:(FGFactoryDefinition *(^)())factoryDefiner;
+       withFactoryDefiner:(void (^)(FGDefinitionBuilder *))factoryDefiner;
 @end
 
 #define FGBuild(__OBJECT_CLASS__) \
@@ -16,13 +16,13 @@
 
 #define FGBuildTrait(__OBJECT_CLASS__, __TRAIT__) \
 [FGFactoryGentleman buildForObjectClass:[__OBJECT_CLASS__ class] \
-                                  trait:FGF(__TRAIT__)]
+                                  trait:@#__TRAIT__]
 
 #define FGBuildWith(__OBJECT_CLASS__, __EXTRA_DEFINITION_BLOCK__) \
 [FGFactoryGentleman buildForObjectClass:[__OBJECT_CLASS__ class] \
-                     withFactoryDefiner:FG_DefineBlock(__EXTRA_DEFINITION_BLOCK__)]
+                     withFactoryDefiner:__EXTRA_DEFINITION_BLOCK__]
 
 #define FGBuildTraitWith(__OBJECT_CLASS__, __TRAIT__, __EXTRA_DEFINITION_BLOCK__) \
 [FGFactoryGentleman buildForObjectClass:[__OBJECT_CLASS__ class] \
-                                  trait:FGF(__TRAIT__ ) \
-                     withFactoryDefiner:FG_DefineBlock(__EXTRA_DEFINITION_BLOCK__)]
+                                  trait:@#__TRAIT__ \
+                     withFactoryDefiner:__EXTRA_DEFINITION_BLOCK__]
