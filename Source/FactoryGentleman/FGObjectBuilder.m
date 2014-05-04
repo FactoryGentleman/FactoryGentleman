@@ -84,23 +84,58 @@
            value:(id (^)())fieldDefinition
         onObject:(id)object
 {
-    SEL setter = [self setterForField:field];
+    if (fieldDefinition) {
+        id fieldValue = fieldDefinition();
+        NSInvocation *invocation = [self setterInvocationForField:field
+                                                         onObject:object];
+        if (invocation) {
+            if ([fieldValue isKindOfClass:[FGValue class]]) {
+                [self setValueFromValue:fieldValue
+                                  index:2
+                             invocation:invocation];
+            } else if (fieldValue && ![fieldValue isKindOfClass:[FGNilValue class]]) {
+                [invocation setArgument:&fieldValue
+                                atIndex:2];
+            }
+
+            [invocation invoke];
+
+        #ifdef FG_ALLOW_READONLY
+        } else {
+
+            @try {
+                if ([fieldValue isKindOfClass:[FGValue class]]) {
+                    [object setValue:[fieldValue wrappedValue]
+                              forKey:field];
+                } else if (fieldValue && ![fieldValue isKindOfClass:[FGNilValue class]]) {
+                    [object setValue:fieldValue
+                              forKey:field];
+                }
+            } @catch (NSException *e) {}
+
+        #endif
+        }
+    }
+}
+
+- (NSInvocation *)setterInvocationForField:(NSString *)field
+                                  onObject:(id)object
+{
+    return [self invocationForSetter:[self setterForField:field]
+                            onObject:object];
+}
+
+- (NSInvocation *)invocationForSetter:(SEL)setter
+                             onObject:(id)object
+{
     NSMethodSignature *methodSignature = [object methodSignatureForSelector:setter];
-    if (methodSignature && fieldDefinition) {
+    if (methodSignature) {
         NSInvocation *inv = [NSInvocation invocationWithMethodSignature:methodSignature];
         [inv setSelector:setter];
         [inv setTarget:object];
-
-        id fieldValue = fieldDefinition();
-        if ([fieldValue isKindOfClass:[FGValue class]]) {
-            [self setValueFromValue:fieldValue
-                              index:2
-                         invocation:inv];
-        } else if (fieldValue && ![fieldValue isKindOfClass:[FGNilValue class]]) {
-            [inv setArgument:&fieldValue atIndex:2];
-        }
-
-        [inv invoke];
+        return inv;
+    } else {
+        return nil;
     }
 }
 

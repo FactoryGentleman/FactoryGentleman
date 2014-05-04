@@ -225,6 +225,12 @@ as well as the associative definition:
 FGAssocFieldTrait(user, User, homeless);
 ```
 
+### Readonly Properties
+
+You can define values for readonly properties (non-primitive), although this
+functionality is not available by default. In order to set them you'll have to
+define `FG_ALLOW_READONLY` in your prefix header.
+
 ## How to install
 
 Add `pod "FactoryGentleman"` to your Podfile
