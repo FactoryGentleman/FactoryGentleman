@@ -75,8 +75,7 @@ Create an implementation file (*.m) with the factory definition:
 FGFactoryBegin(User)
     [builder field:@"firstName" value:@"Bob"];
     [builder field:@"lastName" value:@"Bradley"];
-    NSInteger friends = 10;
-    [builder field:@"friendCount" value:FGValue(friends)];
+    [builder field:@"friendCount" integerValue:10];
     [builder field:@"title" value:@"Mr"];
     [builder field:@"maidenName" value:@"Macallister"];
 FGFactoryEnd
@@ -142,8 +141,7 @@ FGFactoryBegin(User)
     }];
     [builder field:@"firstName" value:@"Bob"];
     [builder field:@"lastName" value:@"Bradley"];
-    NSInteger friends = 10;
-    [builder field:@"friendCount" value:FGValue(friends)];
+    [builder field:@"friendCount" integerValue:10];
     [builder field:@"title" value:@"Mr"];
     [builder field:@"maidenName" value:@"Macallister"];
 FGFactoryEnd
@@ -161,8 +159,7 @@ You can define objects with immutable (i.e. readonly) properties via listing ini
 FGFactoryBegin(User)
     [builder field:@"firstName" value:@"Bob"];
     [builder field:@"lastName" value:@"Bradley"];
-    NSInteger friends = 10;
-    [builder field:@"friendCount" value:FGValue(friends)];
+    [builder field:@"friendCount" integerValue:10];
     [builder field:@"title" value:@"Mr"];
     [builder field:@"maidenName" value:@"Macallister"];
     [builder initWith:@selector(initWithFirstName:lastName:) fieldNames:@[ @"firstName", @"lastName" ]];

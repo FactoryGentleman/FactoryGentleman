@@ -106,8 +106,9 @@ SpecBegin(User)
 
     context(@"when has friends", ^{
         before(^{
-            NSUInteger friendCount = 2;
-            subject = FGBuildWith(User, @{ @"friendCount" : FGValue(friendCount) });
+            subject = FGBuildWith(User, ^(FGDefinitionBuilder *builder) {
+                [builder field:@"friendCount" unsignedIntegerValue:2];
+            });
         });
 
         it(@"is NOT lonely", ^{
@@ -117,8 +118,9 @@ SpecBegin(User)
 
     context(@"when has NO friends", ^{
         before(^{
-            NSUInteger friendCount = 0;
-            subject = FGBuildTraitWith(User, homeless, @{ @"friendCount" : FGValue(friendCount) });
+            subject = FGBuildTraitWith(User, homeless, ^(FGDefinitionBuilder *builder) {
+                [builder field:@"friendCount" unsignedIntegerValue:0];
+            });
         });
 
         it(@"is lonely", ^{

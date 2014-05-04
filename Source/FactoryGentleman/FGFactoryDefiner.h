@@ -33,9 +33,3 @@
 } \
 \
 @end
-
-#define FGValue(__VALUE__) \
-    [FGValue value:&__VALUE__ withObjCType:@encode(__typeof__(__VALUE__))]
-
-#define FGNil \
-    [FGNilValue nilValue]

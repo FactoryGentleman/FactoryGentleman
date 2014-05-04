@@ -30,6 +30,96 @@
 
 #pragma mark - Definition
 
+- (FGDefinitionBuilder *)field:(NSString *)fieldName boolValue:(BOOL)boolValue
+{
+    [self field:fieldName value:FGValue(boolValue)];
+    return self;
+}
+
+- (FGDefinitionBuilder *)field:(NSString *)fieldName charValue:(char)charValue
+{
+    [self field:fieldName value:FGValue(charValue)];
+    return self;
+}
+
+- (FGDefinitionBuilder *)field:(NSString *)fieldName intValue:(int)intValue
+{
+    [self field:fieldName value:FGValue(intValue)];
+    return self;
+}
+
+- (FGDefinitionBuilder *)field:(NSString *)fieldName shortValue:(short)shortValue
+{
+    [self field:fieldName value:FGValue(shortValue)];
+    return self;
+}
+
+- (FGDefinitionBuilder *)field:(NSString *)fieldName longValue:(long)longValue
+{
+    [self field:fieldName value:FGValue(longValue)];
+    return self;
+}
+
+- (FGDefinitionBuilder *)field:(NSString *)fieldName longLongValue:(long long)longLongValue
+{
+    [self field:fieldName value:FGValue(longLongValue)];
+    return self;
+}
+
+- (FGDefinitionBuilder *)field:(NSString *)fieldName integerValue:(NSInteger)integerValue
+{
+    [self field:fieldName value:FGValue(integerValue)];
+    return self;
+}
+
+- (FGDefinitionBuilder *)field:(NSString *)fieldName unsignedCharValue:(unsigned char)unsignedCharValue
+{
+    [self field:fieldName value:FGValue(unsignedCharValue)];
+    return self;
+}
+
+- (FGDefinitionBuilder *)field:(NSString *)fieldName unsignedIntValue:(unsigned int)unsignedIntValue
+{
+    [self field:fieldName value:FGValue(unsignedIntValue)];
+    return self;
+}
+
+- (FGDefinitionBuilder *)field:(NSString *)fieldName unsignedShortValue:(unsigned short)unsignedShortValue
+{
+    [self field:fieldName value:FGValue(unsignedShortValue)];
+    return self;
+}
+
+- (FGDefinitionBuilder *)field:(NSString *)fieldName unsignedLongValue:(unsigned long)unsignedLongValue
+{
+    [self field:fieldName value:FGValue(unsignedLongValue)];
+    return self;
+}
+
+- (FGDefinitionBuilder *)field:(NSString *)fieldName unsignedLongLongValue:(unsigned long long)unsignedLongLongValue
+{
+    [self field:fieldName value:FGValue(unsignedLongLongValue)];
+    return self;
+}
+
+- (FGDefinitionBuilder *)field:(NSString *)fieldName unsignedIntegerValue:(NSUInteger)unsignedIntegerValue
+{
+    [self field:fieldName value:FGValue(unsignedIntegerValue)];
+    return self;
+}
+
+- (FGDefinitionBuilder *)field:(NSString *)fieldName floatValue:(float)floatValue
+{
+    [self field:fieldName value:FGValue(floatValue)];
+    return self;
+}
+
+- (FGDefinitionBuilder *)field:(NSString *)fieldName doubleValue:(double)doubleValue
+{
+    [self field:fieldName value:FGValue(doubleValue)];
+    return self;
+}
+
 - (FGDefinitionBuilder *)field:(NSString *)fieldName value:(id)value
 {
     [self.fieldDefinitions setObject:^{ return value; } forKey:fieldName];
