@@ -376,8 +376,6 @@
 			mainGroup = F8032FF22D757A04F68F92B2;
 			productRefGroup = F80323D0C8CA47CCD80C9E93 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-			);
 			projectRoot = "";
 			targets = (
 				5BD363C71830FEBE0024169A /* FactoryGentleman-Mac */,
@@ -736,12 +734,14 @@
 		F803254704B98E194D3198F1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 			};
 			name = Release;
 		};
 		F80329F76FA9B18DC749BF3D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 			};
 			name = Debug;
 		};
