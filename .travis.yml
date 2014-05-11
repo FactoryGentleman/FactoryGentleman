@@ -2,7 +2,7 @@ language: objective-c
 before_install:
     - brew update
     - brew upgrade xctool
-    - easy_install cpp-coveralls
+    - sudo easy_install cpp-coveralls
     - gem install cocoapods
 script:
     - xctool test -scheme FactoryGentleman-Mac -workspace FactoryGentleman.xcworkspace
