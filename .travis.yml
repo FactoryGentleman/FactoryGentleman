@@ -5,7 +5,7 @@ before_install:
     - sudo easy_install cpp-coveralls
     - gem install cocoapods
 script:
-    - xctool test -scheme FactoryGentleman-Mac -workspace FactoryGentleman.xcworkspace
-    - xctool test -scheme FactoryGentleman-iOS -workspace FactoryGentleman.xcworkspace -sdk iphonesimulator
+    - xctool test -scheme FactoryGentleman-Mac -workspace FactoryGentleman.xcworkspace ONLY_ACTIVE_ARCH=NO GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES
+    - xctool test -scheme FactoryGentleman-iOS -workspace FactoryGentleman.xcworkspace -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES
 after_success:
-    - coveralls -e Spec
+    - coveralls -e Spec -e Pods
