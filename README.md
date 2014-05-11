@@ -1,4 +1,4 @@
-# FactoryGentleman
+# FactoryGentleman [![Build Status](https://travis-ci.org/soundcloud/FactoryGentleman.svg?branch=master)](https://travis-ci.org/soundcloud/FactoryGentleman)
 
 A simple library to help define model factories for use when testing your iOS/Mac applications. Heavily based on [FactoryGirl](https://github.com/thoughtbot/factory_girl) for Ruby.
 
