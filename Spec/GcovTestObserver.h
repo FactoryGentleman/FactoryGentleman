@@ -1,0 +1,2 @@
+@interface GcovTestObserver : XCTestObserver
+@end
