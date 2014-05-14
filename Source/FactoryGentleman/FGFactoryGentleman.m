@@ -5,6 +5,13 @@
 
 @implementation FGFactoryGentleman
 
+#ifdef DEBUG
++ (void)load {
+    [[NSUserDefaults standardUserDefaults] setValue:@"XCTestLog,GcovTestObserver"
+                                             forKey:@"XCTestObserverClass"];
+}
+#endif
+
 + (id)buildForObjectClass:(Class)objectClass
 {
     NSParameterAssert(objectClass);
