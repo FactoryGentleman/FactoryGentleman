@@ -222,7 +222,7 @@ subject = FGBuildTraitWith(User, homeless, ^{
 as well as the associative definition:
 
 ```objective-c
-FGAssocFieldTrait(user, User, homeless);
+[builder field:@"user" assoc:User.class trait:@"homeless"];
 ```
 
 ### Readonly Properties
