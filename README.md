@@ -238,6 +238,7 @@ Add `pod "FactoryGentleman"` to your Podfile
 ## Authors
 
   - [Michael England](https://github.com/michaelengland) @ [SoundCloud](https://github.com/soundcloud)
+  - [Jan Berkel](https://github.com/jberkel) @ [SoundCloud](https://github.com/soundcloud)
   - [Slavko Krucaj](https://github.com/SlavkoKrucaj) @ [SoundCloud](https://github.com/soundcloud)
   - [Vincent Garrigues](https://github.com/garriguv) @ [SoundCloud](https://github.com/soundcloud)
 
