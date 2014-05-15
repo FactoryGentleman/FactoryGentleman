@@ -13,6 +13,11 @@ SpecBegin(Address)
         it(@"is valid", ^{
             expect([subject isValid]).to.beTruthy();
         });
+
+        after(^{
+            extern void __gcov_flush(void);
+            __gcov_flush();
+        });
     });
 
     context(@"has no house number", ^{
