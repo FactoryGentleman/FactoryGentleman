@@ -116,6 +116,7 @@ xcuserdata
 #         xcschememanagement.plist
 #
 #
+*.xcworkspace
 
 ####
 # Xcode 4 - Deprecated classes

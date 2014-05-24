@@ -1,0 +1,17 @@
+def needed_pods
+  pod 'FactoryGentleman', :path => '../'
+
+  pod 'Specta'
+  pod 'Expecta'
+  pod 'OCMock'
+end
+
+target 'FactoryGentlemanSpec-iOS' do
+  platform :ios, :deployment_target => 5.0
+  needed_pods
+end
+
+target 'FactoryGentlemanSpec-Mac' do
+  platform :osx, :deployment_target => 10.7
+  needed_pods
+end

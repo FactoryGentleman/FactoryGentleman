@@ -11,8 +11,8 @@ Pod::Spec.new do |s|
   }
   s.source = { :git => 'git@github.com:soundcloud/FactoryGentleman.git', :tag => s.version.to_s }
 
-  s.source_files = 'Source/FactoryGentleman/*.{h,m}'
-  s.public_header_files = 'Source/FactoryGentleman/*.h'
+  s.source_files = 'Classes/FactoryGentleman/*.{h,m}'
+  s.public_header_files = 'Classes/FactoryGentleman/*.h'
 
   s.requires_arc = true
 end

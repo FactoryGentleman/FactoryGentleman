@@ -4,5 +4,6 @@ before_install:
     - brew upgrade xctool
     - sudo easy_install cpp-coveralls
     - gem install cocoapods
-script: make test
-after_success: make coverage
+    - gem install rake
+script: rake ci
+after_success: rake coverage
