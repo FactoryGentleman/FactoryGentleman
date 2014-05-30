@@ -45,7 +45,7 @@ SpecBegin(SomeClass)
 });
 ```
 
-This is OK for a while, but we realise then that we need multiple sligtly different fixtures for different tests. The ModelFixtures class then ends up littered with extra methods to help like this:
+This is OK for a while, but we realise then that we need multiple slightly different fixtures for different tests. The `ModelFixtures` class then ends up littered with extra methods to help like this:
 
 ```objective-c
 @interface ModelFixtures : NSObject
