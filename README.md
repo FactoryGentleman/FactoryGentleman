@@ -92,7 +92,7 @@ SpecBegin(User)
     __block User *subject;
 
     before(^{
-        subject = FGBuild(User);
+        subject = FGBuild(User.class);
     });
 
     it(@"is valid", ^{
@@ -102,6 +102,8 @@ SpecBegin(User)
 ```
 
 ### Overriding fields
+
+You can override fields when building the objects by passing either the builder block:
 
 ```objective-c
 #import <FactoryGentleman/FactoryGentleman.h>
@@ -113,9 +115,31 @@ SpecBegin(User)
 
     context(@"when user has no first name", ^{
         before(^{
-            subject = FGBuildWith(User, ^{
+            subject = FGBuildWith(User.class, ^(FGDefinitionBuilder *builder) {
                 [builder field:@"firstName" value:nil];
             });
+        });
+
+        it(@"is NOT valid", ^{
+            expect([subject isValid]).to.beFalsy();
+        });
+    });
+});
+```
+
+or by passing a dictionary of the values:
+
+```objective-c
+#import <FactoryGentleman/FactoryGentleman.h>
+
+#import "User.h"
+
+SpecBegin(User)
+    __block User *subject;
+
+    context(@"when user has no first name", ^{
+        before(^{
+            subject = FGBuildWith(User.class, @{ @"firstName" : @"" });
         });
 
         it(@"is NOT valid", ^{
@@ -211,10 +235,10 @@ FGFactoryEnd
 These can then be used using the corresponding build macros:
 
 ```objective-c
-subject = FGBuildTrait(User, homeless);
+subject = FGBuildTrait(User.class, @"homeless");
 ```
 ```objective-c
-subject = FGBuildTraitWith(User, homeless, ^{
+subject = FGBuildTraitWith(User.class, @"homeless", ^(FGDefinitionBuilder *builder) {
     [builder field:@"firstName" value:@"Brian"];
 });
 ```
