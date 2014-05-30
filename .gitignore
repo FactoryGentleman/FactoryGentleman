@@ -15,6 +15,10 @@
 #########################
 
 #####
+# Coveralls
+.coveralls.yml
+
+#####
 # Cocoapods
 Pods/
 
