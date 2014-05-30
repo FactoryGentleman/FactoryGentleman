@@ -1,4 +1,4 @@
-# 1.1.0 / Unreleased
+# 1.1.0 / 2014-05-30
 
  * [FEATURE] #17 Add inline primitives to builder
  * [FEATURE] #10 Allow readonly setters
