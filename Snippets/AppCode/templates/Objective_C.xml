@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templateSet group="Objective-C">
+  <template name="fgb" value="FGBuild($CLASS_NAME$.class);$END$" description="FGBuild" toReformat="false" toShortenFQNames="true">
+    <variable name="CLASS_NAME" expression="" defaultValue="Class" alwaysStopAt="true" />
+    <context>
+      <option name="OC_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="fgbw" value="FGBuildWith($CLASS_NAME$.class, @{ @&quot;$FIELD$&quot; : @&quot;$VALUE$&quot; });$END$" description="FGBuildWith" toReformat="false" toShortenFQNames="true">
+    <variable name="CLASS_NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="FIELD" expression="" defaultValue="Key" alwaysStopAt="true" />
+    <variable name="VALUE" expression="" defaultValue="Value" alwaysStopAt="true" />
+    <context>
+      <option name="OC_DECLARATION" value="false" />
+      <option name="OC_STATEMENT" value="true" />
+    </context>
+  </template>
+</templateSet>
+

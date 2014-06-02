@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>fg</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeExpression</string>
+		<string>ClassImplementation</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>#import &lt;FactoryGentleman/FactoryGentleman.h&gt;
+        
+#import "&lt;#ClassName#&gt;.h"
+        
+FGFactoryBegin(&lt;#ClassName#&gt;)
+    [builder field:@"&lt;#key#&gt;" value:@"&lt;#value#&gt;"];
+FGFactoryEnd</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>3A9AB640-6E26-4D6A-8B4E-3E9DCAF1DF3B</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>Template for Factory Gentleman Classes</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>FactoryGentleman</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>
