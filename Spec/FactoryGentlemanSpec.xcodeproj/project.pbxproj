@@ -13,20 +13,38 @@
 		5BD363DE1830FF0B0024169A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD363CA1830FEBE0024169A /* XCTest.framework */; };
 		5BD363E01830FF0B0024169A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD363DF1830FF0B0024169A /* Foundation.framework */; };
 		5BD363E21830FF0B0024169A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD363E11830FF0B0024169A /* UIKit.framework */; };
+		F803200AA9EA7005F5F9AEB8 /* FGNilValue.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032A30121AC434F70B7A1A /* FGNilValue.m */; };
+		F803206CF5BDDB8F7E7D9484 /* FGDefinitionBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = F803290515ADAA593ACE1255 /* FGDefinitionBuilder.m */; };
 		F803210E456FBBF9C167DA81 /* FGFactoryDefinitionRegistrySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032AADECDDE45F5BB29AB4 /* FGFactoryDefinitionRegistrySpec.m */; };
 		F80321564C0B607D37F267E3 /* FGFactoryDefinerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F80328CBE296CE1B315AF35E /* FGFactoryDefinerSpec.m */; };
+		F803220AEB95F1FE9E52E907 /* FGFactoryDefinitionRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = F80327A8345CA6002920305A /* FGFactoryDefinitionRegistry.m */; };
+		F803225DE9D02FEE0B26B6A0 /* FGFactoryDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032DAF9324498D4131D336 /* FGFactoryDefinition.m */; };
 		F803235847772E6829FC37E2 /* FGFactoryDefinitionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F80324B9B40D0819D0BDCE29 /* FGFactoryDefinitionSpec.m */; };
+		F8032395C823EAB4B8BF9968 /* FGNilValue.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032A30121AC434F70B7A1A /* FGNilValue.m */; };
 		F80324902ACA9584EC38755D /* FGInitializerDefinitionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032D265D0A03179E9792CA /* FGInitializerDefinitionSpec.m */; };
+		F80324CBB1F8CC3DD985C291 /* FGObjectBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = F80327E3D13F9D198EDCBEFD /* FGObjectBuilder.m */; };
+		F80325B9967A55910DA94E99 /* FGValue.m in Sources */ = {isa = PBXBuildFile; fileRef = F803296B1CAACE7D1F03FFBD /* FGValue.m */; };
+		F803264CB7E1D3BCA389B454 /* FGFactoryDefinitionRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = F80327A8345CA6002920305A /* FGFactoryDefinitionRegistry.m */; };
 		F80326E9C285C86E8C6C9005 /* FGDefinitionBuilderSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F80321C881438BA743C51AE2 /* FGDefinitionBuilderSpec.m */; };
 		F80327CAA11AF89A4260BA74 /* FGInitializerDefinitionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032D265D0A03179E9792CA /* FGInitializerDefinitionSpec.m */; };
+		F8032843D2405386D05F4C89 /* FGDefinitionBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = F803290515ADAA593ACE1255 /* FGDefinitionBuilder.m */; };
+		F803294FCAA772A30E19DFD4 /* FGInitializerDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = F803250BC97465C8E0DD6DC1 /* FGInitializerDefinition.m */; };
 		F80329B2EFAD1DFAC88D8F6C /* FGDefinitionBuilderSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F80321C881438BA743C51AE2 /* FGDefinitionBuilderSpec.m */; };
 		F80329F6F63446C9467C6917 /* FGObjectBuilderSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F80324AAA46C493A1F1149DD /* FGObjectBuilderSpec.m */; };
+		F8032AD6079E59BFC45AFA9F /* FGFactoryDefiner.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032B0C2D76DBFA865B7CE9 /* FGFactoryDefiner.m */; };
 		F8032AD71A710D607FA9EF06 /* FGFactoryDefinitionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F80324B9B40D0819D0BDCE29 /* FGFactoryDefinitionSpec.m */; };
 		F8032AE5D9B47F4D1302A126 /* GcovTestObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = F80329F03218E0E4AF941E03 /* GcovTestObserver.m */; };
+		F8032B6CA2F467D205AD513D /* FGFactoryGentleman.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032F1164FED4BB9A5DB35F /* FGFactoryGentleman.m */; };
 		F8032BA31747AD59F9F579BD /* FGObjectBuilderSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F80324AAA46C493A1F1149DD /* FGObjectBuilderSpec.m */; };
 		F8032BDBDB9A0BDBC4F562C4 /* GcovTestObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = F80329F03218E0E4AF941E03 /* GcovTestObserver.m */; };
+		F8032C9ED67FE226F8E04B79 /* FGFactoryDefiner.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032B0C2D76DBFA865B7CE9 /* FGFactoryDefiner.m */; };
 		F8032CD4387C63C2A8C7136C /* FGFactoryDefinerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F80328CBE296CE1B315AF35E /* FGFactoryDefinerSpec.m */; };
 		F8032CD5E90111E905E9D0D5 /* FGFactoryDefinitionRegistrySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032AADECDDE45F5BB29AB4 /* FGFactoryDefinitionRegistrySpec.m */; };
+		F8032CDD4541DFA5AA9FF4F7 /* FGObjectBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = F80327E3D13F9D198EDCBEFD /* FGObjectBuilder.m */; };
+		F8032CEE8D37A6B1E17D9AA9 /* FGFactoryDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032DAF9324498D4131D336 /* FGFactoryDefinition.m */; };
+		F8032D5FA083163C65081C0B /* FGInitializerDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = F803250BC97465C8E0DD6DC1 /* FGInitializerDefinition.m */; };
+		F8032DD6E23F113E74476FCA /* FGFactoryGentleman.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032F1164FED4BB9A5DB35F /* FGFactoryGentleman.m */; };
+		F8032F0E44349272ACDB7BC2 /* FGValue.m in Sources */ = {isa = PBXBuildFile; fileRef = F803296B1CAACE7D1F03FFBD /* FGValue.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,17 +58,36 @@
 		5BD363E11830FF0B0024169A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		5ED3EC466AC84D26A1B7AFC8 /* libPods-FactoryGentlemanSpec-Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FactoryGentlemanSpec-Mac.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F80321C881438BA743C51AE2 /* FGDefinitionBuilderSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGDefinitionBuilderSpec.m; sourceTree = "<group>"; };
+		F8032481FCD8860F273E3640 /* FGNilValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGNilValue.h; sourceTree = "<group>"; };
 		F80324AAA46C493A1F1149DD /* FGObjectBuilderSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGObjectBuilderSpec.m; sourceTree = "<group>"; };
 		F80324B9B40D0819D0BDCE29 /* FGFactoryDefinitionSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGFactoryDefinitionSpec.m; sourceTree = "<group>"; };
+		F803250BC97465C8E0DD6DC1 /* FGInitializerDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGInitializerDefinition.m; sourceTree = "<group>"; };
 		F803250C4D8818C7E528B486 /* FactoryGentlemanSpec-iOS-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = "FactoryGentlemanSpec-iOS-Info.plist"; sourceTree = "<group>"; };
+		F803263A73B2B1332B836C53 /* FGFactoryDefiner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGFactoryDefiner.h; sourceTree = "<group>"; };
 		F803276E12EFB175336E8810 /* GcovTestObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GcovTestObserver.h; sourceTree = "<group>"; };
+		F80327A8345CA6002920305A /* FGFactoryDefinitionRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGFactoryDefinitionRegistry.m; sourceTree = "<group>"; };
+		F80327E3D13F9D198EDCBEFD /* FGObjectBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGObjectBuilder.m; sourceTree = "<group>"; };
+		F803284E8513FB7F4E613048 /* FGFactoryGentleman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGFactoryGentleman.h; sourceTree = "<group>"; };
 		F80328CBE296CE1B315AF35E /* FGFactoryDefinerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGFactoryDefinerSpec.m; sourceTree = "<group>"; };
+		F803290515ADAA593ACE1255 /* FGDefinitionBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGDefinitionBuilder.m; sourceTree = "<group>"; };
+		F803296B1CAACE7D1F03FFBD /* FGValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGValue.m; sourceTree = "<group>"; };
 		F80329F03218E0E4AF941E03 /* GcovTestObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GcovTestObserver.m; sourceTree = "<group>"; };
+		F8032A30121AC434F70B7A1A /* FGNilValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGNilValue.m; sourceTree = "<group>"; };
 		F8032AADECDDE45F5BB29AB4 /* FGFactoryDefinitionRegistrySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGFactoryDefinitionRegistrySpec.m; sourceTree = "<group>"; };
+		F8032B0C2D76DBFA865B7CE9 /* FGFactoryDefiner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGFactoryDefiner.m; sourceTree = "<group>"; };
+		F8032BEF02D7D7FE71DA2CDA /* FGFactoryDefinitionRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGFactoryDefinitionRegistry.h; sourceTree = "<group>"; };
+		F8032CA4E970FD9A1F8E00C0 /* FGFactoryDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGFactoryDefinition.h; sourceTree = "<group>"; };
 		F8032CA7FE80241D983191AD /* FactoryGentlemanSpec-Mac-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = "FactoryGentlemanSpec-Mac-Info.plist"; sourceTree = "<group>"; };
 		F8032CCEFBF777D4966A66B3 /* FactoryGentlemanSpec-iOS-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FactoryGentlemanSpec-iOS-Prefix.pch"; sourceTree = "<group>"; };
 		F8032D265D0A03179E9792CA /* FGInitializerDefinitionSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGInitializerDefinitionSpec.m; sourceTree = "<group>"; };
 		F8032D827B28D6DCC354C3C1 /* FactoryGentlemanSpec-Mac-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FactoryGentlemanSpec-Mac-Prefix.pch"; sourceTree = "<group>"; };
+		F8032D8F5F61313A7B790ADF /* FGInitializerDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGInitializerDefinition.h; sourceTree = "<group>"; };
+		F8032DAF9324498D4131D336 /* FGFactoryDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGFactoryDefinition.m; sourceTree = "<group>"; };
+		F8032E251C08135B31C00D6E /* FGValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGValue.h; sourceTree = "<group>"; };
+		F8032E30207AD1022FE75617 /* FGDefinitionBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGDefinitionBuilder.h; sourceTree = "<group>"; };
+		F8032EB98D33BE19D12D3B4E /* FactoryGentleman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactoryGentleman.h; sourceTree = "<group>"; };
+		F8032F1164FED4BB9A5DB35F /* FGFactoryGentleman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGFactoryGentleman.m; sourceTree = "<group>"; };
+		F8032F4E0AA1644025AA56B6 /* FGObjectBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGObjectBuilder.h; sourceTree = "<group>"; };
 		FB7925B639C14423A95D4F24 /* Pods-FactoryGentlemanSpec-Mac.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FactoryGentlemanSpec-Mac.xcconfig"; path = "Pods/Pods-FactoryGentlemanSpec-Mac.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,6 +143,41 @@
 				F803250C4D8818C7E528B486 /* FactoryGentlemanSpec-iOS-Info.plist */,
 			);
 			path = "FactoryGentlemanSpec-iOS";
+			sourceTree = "<group>";
+		};
+		F8032080427B0D01E888D706 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				F803226E217D9E0512A06BF0 /* FactoryGentleman */,
+			);
+			name = Classes;
+			path = ../Classes;
+			sourceTree = "<group>";
+		};
+		F803226E217D9E0512A06BF0 /* FactoryGentleman */ = {
+			isa = PBXGroup;
+			children = (
+				F8032E251C08135B31C00D6E /* FGValue.h */,
+				F803296B1CAACE7D1F03FFBD /* FGValue.m */,
+				F8032481FCD8860F273E3640 /* FGNilValue.h */,
+				F8032A30121AC434F70B7A1A /* FGNilValue.m */,
+				F8032F4E0AA1644025AA56B6 /* FGObjectBuilder.h */,
+				F80327E3D13F9D198EDCBEFD /* FGObjectBuilder.m */,
+				F8032EB98D33BE19D12D3B4E /* FactoryGentleman.h */,
+				F803263A73B2B1332B836C53 /* FGFactoryDefiner.h */,
+				F8032B0C2D76DBFA865B7CE9 /* FGFactoryDefiner.m */,
+				F803284E8513FB7F4E613048 /* FGFactoryGentleman.h */,
+				F8032F1164FED4BB9A5DB35F /* FGFactoryGentleman.m */,
+				F8032E30207AD1022FE75617 /* FGDefinitionBuilder.h */,
+				F803290515ADAA593ACE1255 /* FGDefinitionBuilder.m */,
+				F8032CA4E970FD9A1F8E00C0 /* FGFactoryDefinition.h */,
+				F8032DAF9324498D4131D336 /* FGFactoryDefinition.m */,
+				F8032D8F5F61313A7B790ADF /* FGInitializerDefinition.h */,
+				F803250BC97465C8E0DD6DC1 /* FGInitializerDefinition.m */,
+				F8032BEF02D7D7FE71DA2CDA /* FGFactoryDefinitionRegistry.h */,
+				F80327A8345CA6002920305A /* FGFactoryDefinitionRegistry.m */,
+			);
+			path = FactoryGentleman;
 			sourceTree = "<group>";
 		};
 		F80323D0C8CA47CCD80C9E93 /* Products */ = {
@@ -167,6 +239,7 @@
 				FB7925B639C14423A95D4F24 /* Pods-FactoryGentlemanSpec-Mac.xcconfig */,
 				3070F311A5D6497887EB49F0 /* Pods-FactoryGentlemanSpec-iOS.xcconfig */,
 				F803294514954BBE6D65E427 /* Spec */,
+				F8032080427B0D01E888D706 /* Classes */,
 			);
 			sourceTree = "<group>";
 		};
@@ -328,6 +401,15 @@
 				F80327CAA11AF89A4260BA74 /* FGInitializerDefinitionSpec.m in Sources */,
 				F803210E456FBBF9C167DA81 /* FGFactoryDefinitionRegistrySpec.m in Sources */,
 				F8032BDBDB9A0BDBC4F562C4 /* GcovTestObserver.m in Sources */,
+				F8032F0E44349272ACDB7BC2 /* FGValue.m in Sources */,
+				F8032395C823EAB4B8BF9968 /* FGNilValue.m in Sources */,
+				F8032CDD4541DFA5AA9FF4F7 /* FGObjectBuilder.m in Sources */,
+				F8032AD6079E59BFC45AFA9F /* FGFactoryDefiner.m in Sources */,
+				F8032B6CA2F467D205AD513D /* FGFactoryGentleman.m in Sources */,
+				F8032843D2405386D05F4C89 /* FGDefinitionBuilder.m in Sources */,
+				F803225DE9D02FEE0B26B6A0 /* FGFactoryDefinition.m in Sources */,
+				F8032D5FA083163C65081C0B /* FGInitializerDefinition.m in Sources */,
+				F803264CB7E1D3BCA389B454 /* FGFactoryDefinitionRegistry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +424,15 @@
 				F80324902ACA9584EC38755D /* FGInitializerDefinitionSpec.m in Sources */,
 				F8032CD5E90111E905E9D0D5 /* FGFactoryDefinitionRegistrySpec.m in Sources */,
 				F8032AE5D9B47F4D1302A126 /* GcovTestObserver.m in Sources */,
+				F80325B9967A55910DA94E99 /* FGValue.m in Sources */,
+				F803200AA9EA7005F5F9AEB8 /* FGNilValue.m in Sources */,
+				F80324CBB1F8CC3DD985C291 /* FGObjectBuilder.m in Sources */,
+				F8032C9ED67FE226F8E04B79 /* FGFactoryDefiner.m in Sources */,
+				F8032DD6E23F113E74476FCA /* FGFactoryGentleman.m in Sources */,
+				F803206CF5BDDB8F7E7D9484 /* FGDefinitionBuilder.m in Sources */,
+				F8032CEE8D37A6B1E17D9AA9 /* FGFactoryDefinition.m in Sources */,
+				F803294FCAA772A30E19DFD4 /* FGInitializerDefinition.m in Sources */,
+				F803220AEB95F1FE9E52E907 /* FGFactoryDefinitionRegistry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

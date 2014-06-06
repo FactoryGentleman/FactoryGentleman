@@ -25,6 +25,6 @@ task :test do
 end
 
 task :coverage do
-  options = subfolders.map { |subfolder| "-E '.*/#{subfolder}/.*'" }.join(' ')
-  sh "coveralls #{options}"
+  excludes = ['.*/Classes/.*\.h'] + subfolders.map { |subfolder| ".*/#{subfolder}/.*" }
+  sh "coveralls #{excludes.map { |exclude| "-E '#{exclude}'" }.join(' ')}"
 end

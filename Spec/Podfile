@@ -1,6 +1,4 @@
 def needed_pods
-  pod 'FactoryGentleman', :path => '../'
-
   pod 'Specta'
   pod 'Expecta'
   pod 'OCMock'
