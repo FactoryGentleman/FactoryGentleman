@@ -12,5 +12,4 @@
     #import <OCMock/OCMock.h>
 
     #define FG_ALLOW_READONLY
-    #import <FactoryGentleman/FactoryGentleman.h>
 #endif

@@ -1,4 +1,4 @@
-#import <FactoryGentleman/FGFactoryDefinitionRegistry.h>
+#import "FGFactoryDefinitionRegistry.h"
 
 SpecBegin(FGFactoryDefinitionRegistry)
     __block FGFactoryDefinitionRegistry *subject;

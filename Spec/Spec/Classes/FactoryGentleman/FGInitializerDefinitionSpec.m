@@ -1,3 +1,5 @@
+#import "FGInitializerDefinition.h"
+
 SpecBegin(FGInitializerDefinition)
     __block FGInitializerDefinition *subject;
     __block SEL selector;

@@ -1,3 +1,7 @@
+#import "FGDefinitionBuilder.h"
+
+#import "FGFactoryGentleman.h"
+
 SpecBegin(FGDefinitionBuilder)
     __block FGDefinitionBuilder *subject;
             
@@ -195,7 +199,7 @@ SpecBegin(FGDefinitionBuilder)
         before(^{
             assocClass = [NSString class];
             factoryGentlemanClass = [OCMockObject mockForClass:[FGFactoryGentleman class]];
-            [[[factoryGentlemanClass stub] andReturn:@"value"] buildForObjectClass:assocClass readonly:NO];
+            [[[factoryGentlemanClass stub] andReturn:@"value"] buildForObjectClass:assocClass readonly:YES];
         });
 
         after(^{
@@ -219,7 +223,7 @@ SpecBegin(FGDefinitionBuilder)
             assocClass = [NSString class];
             trait = @"trait";
             factoryGentlemanClass = [OCMockObject mockForClass:[FGFactoryGentleman class]];
-            [[[factoryGentlemanClass stub] andReturn:@"value"] buildForObjectClass:assocClass readonly:NO trait:trait];
+            [[[factoryGentlemanClass stub] andReturn:@"value"] buildForObjectClass:assocClass readonly:YES trait:trait];
         });
 
         after(^{

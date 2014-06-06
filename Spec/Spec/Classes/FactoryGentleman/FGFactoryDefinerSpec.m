@@ -1,4 +1,6 @@
-#import <FactoryGentleman/FGFactoryDefinitionRegistry.h>
+#import "FGFactoryDefiner.h"
+
+#import "FGFactoryDefinitionRegistry.h"
 
 @interface FGFactoryDefiner (Spec)
 - (instancetype)initWithObjectClass:(Class)objectClass

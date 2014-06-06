@@ -1,4 +1,5 @@
-#import <FactoryGentleman/FGObjectBuilder.h>
+#import "FGObjectBuilder.h"
+#import "FGDefinitionBuilder.h"
 
 @interface ExampleMutableObject : NSObject
 @property (nonatomic) NSArray *mutableArrayProperty;

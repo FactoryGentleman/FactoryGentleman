@@ -1,3 +1,5 @@
+#import "FGFactoryDefinition.h"
+
 SpecBegin(FGFactoryDefinition)
     __block FGFactoryDefinition *subject;
     __block id originalConstructor;
