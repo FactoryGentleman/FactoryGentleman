@@ -119,7 +119,7 @@ SpecBegin(FGFactoryDefinition)
 
     describe(@"-initializerFieldDefinitions", ^{
         it(@"returns the field definitions used by the initializer", ^{
-            expect([subject initializerFieldDefinitions]).to.equal([NSOrderedSet orderedSetWithObjects:originalDefinition]);
+            expect([subject initializerFieldDefinitions]).to.equal([NSOrderedSet orderedSetWithObjects:originalDefinition, [NSNull null], nil]);
         });
     });
 

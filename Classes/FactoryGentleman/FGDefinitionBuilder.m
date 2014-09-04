@@ -4,7 +4,6 @@
 
 @interface FGDefinitionBuilder ()
 @property (nonatomic, readonly) NSMutableDictionary *fieldDefinitions;
-@property (nonatomic, readonly) NSMutableDictionary *traitDefiners;
 @property (nonatomic) id constructor;
 @property (nonatomic) FGInitializerDefinition *initializerDefinition;
 @end
@@ -18,7 +17,6 @@
     self = [super init];
     if (self) {
         _fieldDefinitions = [[NSMutableDictionary alloc] init];
-        _traitDefiners = [[NSMutableDictionary alloc] init];
     }
     return self;
 }

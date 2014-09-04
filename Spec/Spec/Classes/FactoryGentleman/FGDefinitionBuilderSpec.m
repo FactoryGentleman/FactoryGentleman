@@ -1,6 +1,8 @@
 #import "FGDefinitionBuilder.h"
 
-#import "FGFactoryGentleman.h"
+FGFactoryBegin(NSString)
+    traitDefiners[@"trait"] = ^(FGDefinitionBuilder *traitBuilder) {};
+FGFactoryEnd
 
 SpecBegin(FGDefinitionBuilder)
     __block FGDefinitionBuilder *subject;
@@ -193,48 +195,34 @@ SpecBegin(FGDefinitionBuilder)
     });
 
     describe(@"-field:assoc:", ^{
-        __block id factoryGentlemanClass;
         __block Class assocClass;
 
         before(^{
             assocClass = [NSString class];
-            factoryGentlemanClass = [OCMockObject mockForClass:[FGFactoryGentleman class]];
-            [[[factoryGentlemanClass stub] andReturn:@"value"] buildForObjectClass:assocClass readonly:YES];
-        });
-
-        after(^{
-            [factoryGentlemanClass stopMocking];
         });
 
         it(@"defines an associatve field with class given", ^{
             FGFactoryDefinition *definition = [[subject field:@"field" assoc:assocClass] build];
             id (^fieldDefinition)() = definition.fieldDefinitions[@"field"];
             expect(fieldDefinition).toNot.beNil();
-            expect(fieldDefinition()).to.equal(@"value");
+            expect(fieldDefinition()).to.equal(@"");
         });
     });
 
     describe(@"-field:assoc:trait:", ^{
-        __block id factoryGentlemanClass;
         __block Class assocClass;
         __block NSString *trait;
 
         before(^{
             assocClass = [NSString class];
             trait = @"trait";
-            factoryGentlemanClass = [OCMockObject mockForClass:[FGFactoryGentleman class]];
-            [[[factoryGentlemanClass stub] andReturn:@"value"] buildForObjectClass:assocClass readonly:YES trait:trait];
-        });
-
-        after(^{
-            [factoryGentlemanClass stopMocking];
         });
 
         it(@"defines an associatve field with class and trait given", ^{
             FGFactoryDefinition *definition = [[subject field:@"field" assoc:assocClass trait:trait] build];
             id (^fieldDefinition)() = definition.fieldDefinitions[@"field"];
             expect(fieldDefinition).toNot.beNil();
-            expect(fieldDefinition()).to.equal(@"value");
+            expect(fieldDefinition()).to.equal(@"");
         });
     });
 
