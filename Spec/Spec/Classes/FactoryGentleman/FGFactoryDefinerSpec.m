@@ -37,7 +37,7 @@ SpecBegin(FGFactoryDefiner)
 
     before(^{
         definedClass = [NSString class];
-        factoryDefinitionRegistry = [OCMockObject niceMockForClass:[FGFactoryDefinitionRegistry class]];
+        factoryDefinitionRegistry = mock([FGFactoryDefinitionRegistry class]);
         subject = [[MutableObjectFactoryDefiner alloc] initWithObjectClass:definedClass
                                                  factoryDefinitionRegistry:factoryDefinitionRegistry];
     });
@@ -63,24 +63,20 @@ SpecBegin(FGFactoryDefiner)
         });
 
         it(@"registers the base definition", ^{
-            [[factoryDefinitionRegistry expect] registerFactoryDefinition:baseDefinition
-                                                                 forClass:[NSString class]];
-
             [subject registerBaseDefinition:baseDefinition
                               traitDefiners:traitDefiners];
 
-            [factoryDefinitionRegistry verify];
+            [verify(factoryDefinitionRegistry) registerFactoryDefinition:baseDefinition
+                                                                forClass:[NSString class]];
         });
 
         it(@"registers the trait definitions", ^{
-            [[factoryDefinitionRegistry expect] registerFactoryDefinition:OCMOCK_ANY
-                                                                 forClass:[NSString class]
-                                                                    trait:@"foo"];
-
             [subject registerBaseDefinition:baseDefinition
                               traitDefiners:traitDefiners];
 
-            [factoryDefinitionRegistry verify];
+            [verify(factoryDefinitionRegistry) registerFactoryDefinition:anything()
+                                                                forClass:[NSString class]
+                                                                   trait:@"foo"];
         });
     });
 SpecEnd

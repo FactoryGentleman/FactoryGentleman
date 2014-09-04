@@ -1,15 +1,15 @@
 def needed_pods
   pod 'Specta'
   pod 'Expecta'
-  pod 'OCMock'
+  pod 'OCMockito'
 end
 
 target 'FactoryGentlemanSpec-iOS' do
-  platform :ios, :deployment_target => 5.0
+  platform :ios, :deployment_target => 6.0
   needed_pods
 end
 
 target 'FactoryGentlemanSpec-Mac' do
-  platform :osx, :deployment_target => 10.7
+  platform :osx, :deployment_target => 10.8
   needed_pods
 end
