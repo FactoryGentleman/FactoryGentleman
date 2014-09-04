@@ -24,7 +24,7 @@ SpecBegin(FGInitializerDefinition)
             __block NSString *firstFieldName, *secondFieldName;
 
             before(^{
-                selector = @selector(initWithFirstName:lastName:);
+                selector = @selector(dictionaryWithCapacity:);
                 firstFieldName = @"first";
                 secondFieldName = @"second";
                 subject = [FGInitializerDefinition definitionWithSelector:selector, firstFieldName, secondFieldName];

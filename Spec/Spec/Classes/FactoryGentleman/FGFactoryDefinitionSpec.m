@@ -12,8 +12,9 @@ SpecBegin(FGFactoryDefinition)
         originalBothDefinition = ^id { return nil; };
 
         originalConstructor = NSNumber.class;
-        originalInitializer = [[FGInitializerDefinition alloc] initWithSelector:@selector(initWithObjectClass:)
-                                                                     fieldNames:[NSOrderedSet orderedSetWithObject:@"original"]];
+        originalInitializer = [[FGInitializerDefinition alloc] initWithSelector:@selector(dictionaryWithCapacity:)
+                                                                     fieldNames:[NSOrderedSet
+                                                                             orderedSetWithObjects:@"original", @"not given", nil]];
 
         NSDictionary *originalFieldDefinitions = @{
                 @"original" : originalDefinition,
@@ -118,7 +119,7 @@ SpecBegin(FGFactoryDefinition)
 
     describe(@"-initializerFieldDefinitions", ^{
         it(@"returns the field definitions used by the initializer", ^{
-            expect([subject initializerFieldDefinitions]).to.equal([NSOrderedSet orderedSetWithObject:originalDefinition]);
+            expect([subject initializerFieldDefinitions]).to.equal([NSOrderedSet orderedSetWithObjects:originalDefinition]);
         });
     });
 
