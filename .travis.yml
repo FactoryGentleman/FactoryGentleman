@@ -1,7 +1,7 @@
 language: objective-c
 before_install:
     - brew update
-    - brew upgrade xctool
+    - if brew outdated | grep -qx xctool; then brew upgrade xctool; fi
     - sudo easy_install cpp-coveralls
     - gem install cocoapods
     - gem install rake
