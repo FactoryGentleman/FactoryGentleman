@@ -27,6 +27,8 @@
 - (FGDefinitionBuilder *)initWith:(SEL)selector fieldNames:(NSArray *)fieldNames;
 
 - (FGFactoryDefinition *)build;
+
+- (void)setObject:(id)obj forKeyedSubscript:(id<NSCopying>)key;
 @end
 
 #define FGValue(__VALUE__) \

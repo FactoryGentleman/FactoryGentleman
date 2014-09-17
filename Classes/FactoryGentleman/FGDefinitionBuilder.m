@@ -158,11 +158,20 @@
     return self;
 }
 
+#pragma mark - Building
+
 - (FGFactoryDefinition *)build
 {
     return [[FGFactoryDefinition alloc] initWithConstructor:self.constructor
                                       initializerDefinition:self.initializerDefinition
                                            fieldDefinitions:self.fieldDefinitions];
+}
+
+#pragma mark - Subscripting
+
+- (void)setObject:(id)obj forKeyedSubscript:(id <NSCopying>)key
+{
+    [self field:(NSString *)key value:obj];
 }
 
 @end

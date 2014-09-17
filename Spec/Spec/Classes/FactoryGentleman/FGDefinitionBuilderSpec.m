@@ -10,7 +10,17 @@ SpecBegin(FGDefinitionBuilder)
     before(^{
         subject = [FGDefinitionBuilder builder];
     });
-            
+
+    describe(@"[]=", ^{
+        it(@"defines a field with value given", ^{
+            subject[@"field"] = @"value";
+            FGFactoryDefinition *definition = [subject build];
+            id (^fieldDefinition)() = definition.fieldDefinitions[@"field"];
+            expect(fieldDefinition).toNot.beNil();
+            expect(fieldDefinition()).to.equal(@"value");
+        });
+    });
+
     describe(@"-field:boolValue:", ^{
         it(@"defines a field with value given", ^{
             FGFactoryDefinition *definition = [[subject field:@"field" boolValue:YES] build];
