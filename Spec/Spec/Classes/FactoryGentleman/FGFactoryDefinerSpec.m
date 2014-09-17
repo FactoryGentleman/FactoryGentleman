@@ -42,6 +42,12 @@ SpecBegin(FGFactoryDefiner)
                                                  factoryDefinitionRegistry:factoryDefinitionRegistry];
     });
 
+    it(@"base class is abstract", ^{
+        expect(^{
+            [[[FGFactoryDefiner alloc] init] registerDefinitions];
+        }).to.raiseAny();
+    });
+
     context(@"when mutable factory is defined", ^{
         it(@"registers a factory definition with field definitions given", ^{
             [subject registerDefinitions];
