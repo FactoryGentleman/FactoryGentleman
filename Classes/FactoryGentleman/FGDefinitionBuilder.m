@@ -143,9 +143,21 @@
     return self;
 }
 
+- (FGDefinitionBuilder *)field:(NSString *)fieldName assoc:(Class)fieldClass with:(id)definer
+{
+    [self field:fieldName by:^{ return FGBuildWith(fieldClass, definer); }];
+    return self;
+}
+
 - (FGDefinitionBuilder *)field:(NSString *)fieldName assoc:(Class)fieldClass trait:(NSString *)trait
 {
     [self field:fieldName by:^{ return FGBuildTrait(fieldClass, trait); }];
+    return self;
+}
+
+- (FGDefinitionBuilder *)field:(NSString *)fieldName assoc:(Class)fieldClass trait:(NSString *)trait with:(id)definer
+{
+    [self field:fieldName by:^{ return FGBuildTraitWith(fieldClass, trait, definer); }];
     return self;
 }
 

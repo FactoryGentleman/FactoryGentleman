@@ -21,7 +21,7 @@ SpecBegin(FGFactoryGentleman)
 
     describe(@"FGBuild", ^{
         before(^{
-            builtObject = FGBuild(BasicObject.class);
+            builtObject = FGBuild([BasicObject class]);
         });
 
         it(@"builds an object from the definition", ^{
@@ -32,7 +32,7 @@ SpecBegin(FGFactoryGentleman)
 
     describe(@"FGBuildTrait", ^{
         before(^{
-            builtObject = FGBuildTrait(BasicObject.class, @"different");
+            builtObject = FGBuildTrait([BasicObject class], @"different");
         });
 
         it(@"builds an object from the trait definition", ^{
@@ -44,7 +44,7 @@ SpecBegin(FGFactoryGentleman)
     describe(@"FGBuildWith", ^{
         context(@"when definer is dictionary", ^{
             before(^{
-                builtObject = FGBuildWith(BasicObject.class, @{ @"string" : @"overriden" });
+                builtObject = FGBuildWith([BasicObject class], @{ @"string" : @"overriden" });
             });
 
             it(@"builds an object from the overriden definition", ^{
@@ -55,7 +55,7 @@ SpecBegin(FGFactoryGentleman)
 
         context(@"when definer is block", ^{
             before(^{
-                builtObject = FGBuildWith(BasicObject.class, ^(FGDefinitionBuilder *builder) {
+                builtObject = FGBuildWith([BasicObject class], ^(FGDefinitionBuilder *builder) {
                     [builder field:@"string" value:@"overriden"];
                 });
             });
@@ -70,7 +70,7 @@ SpecBegin(FGFactoryGentleman)
     describe(@"FGBuildTraitWith", ^{
         context(@"when definer is dictionary", ^{
             before(^{
-                builtObject = FGBuildTraitWith(BasicObject.class, @"different", @{ @"string" : @"overriden" });
+                builtObject = FGBuildTraitWith([BasicObject class], @"different", @{ @"string" : @"overriden" });
             });
 
             it(@"builds an object from the overriden trait definition", ^{
@@ -81,7 +81,7 @@ SpecBegin(FGFactoryGentleman)
 
         context(@"when definer is block", ^{
             before(^{
-                builtObject = FGBuildTraitWith(BasicObject.class, @"different", ^(FGDefinitionBuilder *builder) {
+                builtObject = FGBuildTraitWith([BasicObject class], @"different", ^(FGDefinitionBuilder *builder) {
                     [builder field:@"string" value:@"overriden"];
                 });
             });

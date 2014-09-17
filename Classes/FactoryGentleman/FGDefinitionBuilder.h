@@ -22,7 +22,9 @@
 - (FGDefinitionBuilder *)field:(NSString *)fieldName value:(id)value;
 - (FGDefinitionBuilder *)field:(NSString *)fieldName by:(id (^)())fieldValueBlock;
 - (FGDefinitionBuilder *)field:(NSString *)fieldName assoc:(Class)fieldClass;
+- (FGDefinitionBuilder *)field:(NSString *)fieldName assoc:(Class)fieldClass with:(id)definer;
 - (FGDefinitionBuilder *)field:(NSString *)fieldName assoc:(Class)fieldClass trait:(NSString *)trait;
+- (FGDefinitionBuilder *)field:(NSString *)fieldName assoc:(Class)fieldClass trait:(NSString *)trait with:(id)definer;
 
 - (FGDefinitionBuilder *)initFrom:(id)constructor;
 - (FGDefinitionBuilder *)initWith:(SEL)selector fieldNames:(NSArray *)fieldNames;

@@ -1,7 +1,19 @@
 #import "FGDefinitionBuilder.h"
 
-FGFactoryBegin(NSString)
-    traitDefiners[@"trait"] = ^(FGDefinitionBuilder *traitBuilder) {};
+@interface SimpleObject : NSObject
+@property (nonatomic) NSString *first;
+@property (nonatomic) NSString *second;
+@end
+
+@implementation SimpleObject
+@end
+
+FGFactoryBegin(SimpleObject)
+    builder[@"first"] = @"foo";
+    builder[@"second"] = @"bar";
+    traitDefiners[@"trait"] = ^(FGDefinitionBuilder *traitBuilder) {
+        traitBuilder[@"second"] = @"hmm";
+    };
 FGFactoryEnd
 
 SpecBegin(FGDefinitionBuilder)
@@ -26,7 +38,7 @@ SpecBegin(FGDefinitionBuilder)
             FGFactoryDefinition *definition = [[subject nilField:@"field"] build];
             FGValue *(^fieldDefinition)() = definition.fieldDefinitions[@"field"];
             expect(fieldDefinition).toNot.beNil();
-            expect(fieldDefinition()).to.beKindOf(FGNilValue.class);
+            expect(fieldDefinition()).to.beKindOf([FGNilValue class]);
         });
     });
 
@@ -214,42 +226,75 @@ SpecBegin(FGDefinitionBuilder)
     });
 
     describe(@"-field:assoc:", ^{
-        __block Class assocClass;
+        it(@"defines an associatve field with class given", ^{
+            FGFactoryDefinition *definition = [[subject field:@"field" assoc:[SimpleObject class]] build];
+            SimpleObject *(^fieldDefinition)() = definition.fieldDefinitions[@"field"];
+            expect(fieldDefinition).toNot.beNil();
+            expect(fieldDefinition().first).to.equal(@"foo");
+            expect(fieldDefinition().second).to.equal(@"bar");
+        });
+    });
 
-        before(^{
-            assocClass = [NSString class];
+    describe(@"-field:assoc:with:", ^{
+        context(@"when definer is dictionary", ^{
+            it(@"defines an associatve field with class and definer given", ^{
+                FGFactoryDefinition *definition = [[subject field:@"field" assoc:[SimpleObject class] with:@{ @"first" : @"oh" }] build];
+                SimpleObject *(^fieldDefinition)() = definition.fieldDefinitions[@"field"];
+                expect(fieldDefinition).toNot.beNil();
+                expect(fieldDefinition().first).to.equal(@"oh");
+                expect(fieldDefinition().second).to.equal(@"bar");
+            });
         });
 
-        it(@"defines an associatve field with class given", ^{
-            FGFactoryDefinition *definition = [[subject field:@"field" assoc:assocClass] build];
-            id (^fieldDefinition)() = definition.fieldDefinitions[@"field"];
-            expect(fieldDefinition).toNot.beNil();
-            expect(fieldDefinition()).to.equal(@"");
+        context(@"when definer is block", ^{
+            it(@"defines an associatve field with class and definer given", ^{
+                FGFactoryDefinition *definition = [[subject field:@"field" assoc:[SimpleObject class] with:^(FGDefinitionBuilder *builder) {
+                    builder[@"first"] = @"oh";
+                }] build];
+                SimpleObject *(^fieldDefinition)() = definition.fieldDefinitions[@"field"];
+                expect(fieldDefinition).toNot.beNil();
+                expect(fieldDefinition().first).to.equal(@"oh");
+                expect(fieldDefinition().second).to.equal(@"bar");
+            });
         });
     });
 
     describe(@"-field:assoc:trait:", ^{
-        __block Class assocClass;
-        __block NSString *trait;
+        it(@"defines an associatve field with class and trait given", ^{
+            FGFactoryDefinition *definition = [[subject field:@"field" assoc:[SimpleObject class] trait:@"trait"] build];
+            SimpleObject *(^fieldDefinition)() = definition.fieldDefinitions[@"field"];
+            expect(fieldDefinition().first).to.equal(@"foo");
+            expect(fieldDefinition().second).to.equal(@"hmm");
+        });
+    });
 
-        before(^{
-            assocClass = [NSString class];
-            trait = @"trait";
+    describe(@"-field:assoc:trait:with:", ^{
+        context(@"when definer is dictionary", ^{
+            it(@"defines an associatve field with class, trait and definer given", ^{
+                FGFactoryDefinition *definition = [[subject field:@"field" assoc:[SimpleObject class] trait:@"trait" with:@{ @"first" : @"oh" }] build];
+                SimpleObject *(^fieldDefinition)() = definition.fieldDefinitions[@"field"];
+                expect(fieldDefinition().first).to.equal(@"oh");
+                expect(fieldDefinition().second).to.equal(@"hmm");
+            });
         });
 
-        it(@"defines an associatve field with class and trait given", ^{
-            FGFactoryDefinition *definition = [[subject field:@"field" assoc:assocClass trait:trait] build];
-            id (^fieldDefinition)() = definition.fieldDefinitions[@"field"];
-            expect(fieldDefinition).toNot.beNil();
-            expect(fieldDefinition()).to.equal(@"");
+        context(@"when definer is block", ^{
+            it(@"defines an associatve field with class, trait and definer given", ^{
+                FGFactoryDefinition *definition = [[subject field:@"field" assoc:[SimpleObject class] trait:@"trait" with:^(FGDefinitionBuilder *builder) {
+                    builder[@"first"] = @"oh";
+                }] build];
+                SimpleObject *(^fieldDefinition)() = definition.fieldDefinitions[@"field"];
+                expect(fieldDefinition().first).to.equal(@"oh");
+                expect(fieldDefinition().second).to.equal(@"hmm");
+            });
         });
     });
 
     describe(@"-initFrom:", ^{
-        __block Class constructor;
+        __block id constructor;
 
         before(^{
-            constructor = [NSString class];
+            constructor = [[NSObject alloc] init];
         });
 
         it(@"defines the constructor given", ^{

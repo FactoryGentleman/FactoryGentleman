@@ -38,7 +38,7 @@
     NSParameterAssert(factoryDefiner);
     FGFactoryDefinition *baseDefinition = [self definitionForObjectClass:objectClass];
     FGFactoryDefinition *overriddenDefinition;
-    if ([factoryDefiner isKindOfClass:NSDictionary.class]) {
+    if ([factoryDefiner isKindOfClass:[NSDictionary class]]) {
         overriddenDefinition = [self overriddenDefinitionFromDefinitionDictionary:factoryDefiner];
     } else {
         overriddenDefinition = [self overriddenDefinitionFromDefiner:factoryDefiner];
@@ -61,7 +61,7 @@
     FGFactoryDefinition *traitDefinition = [self definitionForObjectClass:objectClass
                                                                     trait:trait];
     FGFactoryDefinition *overriddenDefinition;
-    if ([factoryDefiner isKindOfClass:NSDictionary.class]) {
+    if ([factoryDefiner isKindOfClass:[NSDictionary class]]) {
         overriddenDefinition = [self overriddenDefinitionFromDefinitionDictionary:factoryDefiner];
     } else {
         overriddenDefinition = [self overriddenDefinitionFromDefiner:factoryDefiner];

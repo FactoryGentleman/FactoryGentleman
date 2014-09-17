@@ -167,7 +167,7 @@ SpecBegin(FGObjectBuilder)
             NSOrderedSet *fieldNames = [NSOrderedSet orderedSetWithObject:@"immutableFloatProperty"];
             FGInitializerDefinition *initializerDefinition = [[FGInitializerDefinition alloc] initWithSelector:initializer
                                                                                                     fieldNames:fieldNames];
-            FGFactoryDefinition *definition = [[FGFactoryDefinition alloc] initWithConstructor:ExampleImmutableObjectCreator.class
+            FGFactoryDefinition *definition = [[FGFactoryDefinition alloc] initWithConstructor:[ExampleImmutableObjectCreator class]
                                                                          initializerDefinition:initializerDefinition
                                                                               fieldDefinitions:definedFields];
             subject = [[FGObjectBuilder alloc] initWithObjectClass:[ExampleImmutableObject class]

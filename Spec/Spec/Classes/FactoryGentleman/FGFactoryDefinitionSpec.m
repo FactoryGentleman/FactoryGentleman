@@ -11,7 +11,7 @@ SpecBegin(FGFactoryDefinition)
         originalDefinition = ^id { return nil; };
         originalBothDefinition = ^id { return nil; };
 
-        originalConstructor = NSNumber.class;
+        originalConstructor = [NSNumber class];
         originalInitializer = [[FGInitializerDefinition alloc] initWithSelector:@selector(dictionaryWithCapacity:)
                                                                      fieldNames:[NSOrderedSet
                                                                              orderedSetWithObjects:@"original", @"not given", nil]];
@@ -105,7 +105,7 @@ SpecBegin(FGFactoryDefinition)
             __block id givenConstructor;
 
             before(^{
-                givenConstructor = NSString.class;
+                givenConstructor = [NSString class];
                 givenFactoryDefinition = [[FGFactoryDefinition alloc] initWithConstructor:givenConstructor
                                                                     initializerDefinition:nil
                                                                          fieldDefinitions:givenFieldDefinitions];
