@@ -28,6 +28,12 @@
 
 #pragma mark - Definition
 
+- (FGDefinitionBuilder *)nilField:(NSString *)fieldName
+{
+    [self field:fieldName value:FGNil];
+    return self;
+}
+
 - (FGDefinitionBuilder *)field:(NSString *)fieldName boolValue:(BOOL)boolValue
 {
     [self field:fieldName value:FGValue(boolValue)];
@@ -120,7 +126,7 @@
 
 - (FGDefinitionBuilder *)field:(NSString *)fieldName value:(id)value
 {
-    [self.fieldDefinitions setObject:^{ return value; } forKey:fieldName];
+    [self field:fieldName by:^{ return value; }];
     return self;
 }
 
@@ -133,15 +139,13 @@
 
 - (FGDefinitionBuilder *)field:(NSString *)fieldName assoc:(Class)fieldClass
 {
-    [self.fieldDefinitions setObject:^{ return FGBuild(fieldClass); }
-                              forKey:fieldName];
+    [self field:fieldName by:^{ return FGBuild(fieldClass); }];
     return self;
 }
 
 - (FGDefinitionBuilder *)field:(NSString *)fieldName assoc:(Class)fieldClass trait:(NSString *)trait
 {
-    [self.fieldDefinitions setObject:^{ return FGBuildTrait(fieldClass, trait); }
-                              forKey:fieldName];
+    [self field:fieldName by:^{ return FGBuildTrait(fieldClass, trait); }];
     return self;
 }
 

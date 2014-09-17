@@ -3,6 +3,7 @@
 @interface FGDefinitionBuilder : NSObject
 + (FGDefinitionBuilder *)builder;
 
+- (FGDefinitionBuilder *)nilField:(NSString *)fieldName;
 - (FGDefinitionBuilder *)field:(NSString *)fieldName boolValue:(BOOL)boolValue;
 - (FGDefinitionBuilder *)field:(NSString *)fieldName charValue:(char)charValue;
 - (FGDefinitionBuilder *)field:(NSString *)fieldName intValue:(int)intValue;

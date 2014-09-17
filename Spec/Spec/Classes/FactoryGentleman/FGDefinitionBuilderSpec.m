@@ -21,6 +21,15 @@ SpecBegin(FGDefinitionBuilder)
         });
     });
 
+    describe(@"-nilField:", ^{
+        it(@"defines a field with nil value", ^{
+            FGFactoryDefinition *definition = [[subject nilField:@"field"] build];
+            FGValue *(^fieldDefinition)() = definition.fieldDefinitions[@"field"];
+            expect(fieldDefinition).toNot.beNil();
+            expect(fieldDefinition()).to.beKindOf(FGNilValue.class);
+        });
+    });
+
     describe(@"-field:boolValue:", ^{
         it(@"defines a field with value given", ^{
             FGFactoryDefinition *definition = [[subject field:@"field" boolValue:YES] build];
