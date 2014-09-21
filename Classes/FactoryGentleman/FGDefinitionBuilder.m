@@ -21,153 +21,153 @@
     return self;
 }
 
-+ (FGDefinitionBuilder *)builder
++ (instancetype)builder
 {
     return [[[self class] alloc] init];
 }
 
 #pragma mark - Definition
 
-- (FGDefinitionBuilder *)nilField:(NSString *)fieldName
+- (instancetype)nilField:(NSString *)fieldName
 {
     [self field:fieldName value:FGNil];
     return self;
 }
 
-- (FGDefinitionBuilder *)field:(NSString *)fieldName boolValue:(BOOL)boolValue
+- (instancetype)field:(NSString *)fieldName boolValue:(BOOL)boolValue
 {
     [self field:fieldName value:FGValue(boolValue)];
     return self;
 }
 
-- (FGDefinitionBuilder *)field:(NSString *)fieldName charValue:(char)charValue
+- (instancetype)field:(NSString *)fieldName charValue:(char)charValue
 {
     [self field:fieldName value:FGValue(charValue)];
     return self;
 }
 
-- (FGDefinitionBuilder *)field:(NSString *)fieldName intValue:(int)intValue
+- (instancetype)field:(NSString *)fieldName intValue:(int)intValue
 {
     [self field:fieldName value:FGValue(intValue)];
     return self;
 }
 
-- (FGDefinitionBuilder *)field:(NSString *)fieldName shortValue:(short)shortValue
+- (instancetype)field:(NSString *)fieldName shortValue:(short)shortValue
 {
     [self field:fieldName value:FGValue(shortValue)];
     return self;
 }
 
-- (FGDefinitionBuilder *)field:(NSString *)fieldName longValue:(long)longValue
+- (instancetype)field:(NSString *)fieldName longValue:(long)longValue
 {
     [self field:fieldName value:FGValue(longValue)];
     return self;
 }
 
-- (FGDefinitionBuilder *)field:(NSString *)fieldName longLongValue:(long long)longLongValue
+- (instancetype)field:(NSString *)fieldName longLongValue:(long long)longLongValue
 {
     [self field:fieldName value:FGValue(longLongValue)];
     return self;
 }
 
-- (FGDefinitionBuilder *)field:(NSString *)fieldName integerValue:(NSInteger)integerValue
+- (instancetype)field:(NSString *)fieldName integerValue:(NSInteger)integerValue
 {
     [self field:fieldName value:FGValue(integerValue)];
     return self;
 }
 
-- (FGDefinitionBuilder *)field:(NSString *)fieldName unsignedCharValue:(unsigned char)unsignedCharValue
+- (instancetype)field:(NSString *)fieldName unsignedCharValue:(unsigned char)unsignedCharValue
 {
     [self field:fieldName value:FGValue(unsignedCharValue)];
     return self;
 }
 
-- (FGDefinitionBuilder *)field:(NSString *)fieldName unsignedIntValue:(unsigned int)unsignedIntValue
+- (instancetype)field:(NSString *)fieldName unsignedIntValue:(unsigned int)unsignedIntValue
 {
     [self field:fieldName value:FGValue(unsignedIntValue)];
     return self;
 }
 
-- (FGDefinitionBuilder *)field:(NSString *)fieldName unsignedShortValue:(unsigned short)unsignedShortValue
+- (instancetype)field:(NSString *)fieldName unsignedShortValue:(unsigned short)unsignedShortValue
 {
     [self field:fieldName value:FGValue(unsignedShortValue)];
     return self;
 }
 
-- (FGDefinitionBuilder *)field:(NSString *)fieldName unsignedLongValue:(unsigned long)unsignedLongValue
+- (instancetype)field:(NSString *)fieldName unsignedLongValue:(unsigned long)unsignedLongValue
 {
     [self field:fieldName value:FGValue(unsignedLongValue)];
     return self;
 }
 
-- (FGDefinitionBuilder *)field:(NSString *)fieldName unsignedLongLongValue:(unsigned long long)unsignedLongLongValue
+- (instancetype)field:(NSString *)fieldName unsignedLongLongValue:(unsigned long long)unsignedLongLongValue
 {
     [self field:fieldName value:FGValue(unsignedLongLongValue)];
     return self;
 }
 
-- (FGDefinitionBuilder *)field:(NSString *)fieldName unsignedIntegerValue:(NSUInteger)unsignedIntegerValue
+- (instancetype)field:(NSString *)fieldName unsignedIntegerValue:(NSUInteger)unsignedIntegerValue
 {
     [self field:fieldName value:FGValue(unsignedIntegerValue)];
     return self;
 }
 
-- (FGDefinitionBuilder *)field:(NSString *)fieldName floatValue:(float)floatValue
+- (instancetype)field:(NSString *)fieldName floatValue:(float)floatValue
 {
     [self field:fieldName value:FGValue(floatValue)];
     return self;
 }
 
-- (FGDefinitionBuilder *)field:(NSString *)fieldName doubleValue:(double)doubleValue
+- (instancetype)field:(NSString *)fieldName doubleValue:(double)doubleValue
 {
     [self field:fieldName value:FGValue(doubleValue)];
     return self;
 }
 
-- (FGDefinitionBuilder *)field:(NSString *)fieldName value:(id)value
+- (instancetype)field:(NSString *)fieldName value:(id)value
 {
     [self field:fieldName by:^{ return value; }];
     return self;
 }
 
-- (FGDefinitionBuilder *)field:(NSString *)fieldName by:(id (^)())fieldValueBlock
+- (instancetype)field:(NSString *)fieldName by:(id (^)())fieldValueBlock
 {
     [self.fieldDefinitions setObject:fieldValueBlock
                               forKey:fieldName];
     return self;
 }
 
-- (FGDefinitionBuilder *)field:(NSString *)fieldName assoc:(Class)fieldClass
+- (instancetype)field:(NSString *)fieldName assoc:(Class)fieldClass
 {
     [self field:fieldName by:^{ return FGBuild(fieldClass); }];
     return self;
 }
 
-- (FGDefinitionBuilder *)field:(NSString *)fieldName assoc:(Class)fieldClass with:(id)definer
+- (instancetype)field:(NSString *)fieldName assoc:(Class)fieldClass with:(id)definer
 {
     [self field:fieldName by:^{ return FGBuildWith(fieldClass, definer); }];
     return self;
 }
 
-- (FGDefinitionBuilder *)field:(NSString *)fieldName assoc:(Class)fieldClass trait:(NSString *)trait
+- (instancetype)field:(NSString *)fieldName assoc:(Class)fieldClass trait:(NSString *)trait
 {
     [self field:fieldName by:^{ return FGBuildTrait(fieldClass, trait); }];
     return self;
 }
 
-- (FGDefinitionBuilder *)field:(NSString *)fieldName assoc:(Class)fieldClass trait:(NSString *)trait with:(id)definer
+- (instancetype)field:(NSString *)fieldName assoc:(Class)fieldClass trait:(NSString *)trait with:(id)definer
 {
     [self field:fieldName by:^{ return FGBuildTraitWith(fieldClass, trait, definer); }];
     return self;
 }
 
-- (FGDefinitionBuilder *)initFrom:(id)constructor
+- (instancetype)initFrom:(id)constructor
 {
     self.constructor = constructor;
     return self;
 }
 
-- (FGDefinitionBuilder *)initWith:(SEL)selector fieldNames:(NSArray *)fieldNames
+- (instancetype)initWith:(SEL)selector fieldNames:(NSArray *)fieldNames
 {
     self.initializerDefinition = [[FGInitializerDefinition alloc] initWithSelector:selector
                                                                         fieldNames:[NSOrderedSet orderedSetWithArray:fieldNames]];

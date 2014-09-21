@@ -1,33 +1,33 @@
 #import "FGFactoryDefiner.h"
 
 @interface FGDefinitionBuilder : NSObject
-+ (FGDefinitionBuilder *)builder;
++ (instancetype)builder;
 
-- (FGDefinitionBuilder *)nilField:(NSString *)fieldName;
-- (FGDefinitionBuilder *)field:(NSString *)fieldName boolValue:(BOOL)boolValue;
-- (FGDefinitionBuilder *)field:(NSString *)fieldName charValue:(char)charValue;
-- (FGDefinitionBuilder *)field:(NSString *)fieldName intValue:(int)intValue;
-- (FGDefinitionBuilder *)field:(NSString *)fieldName shortValue:(short)shortValue;
-- (FGDefinitionBuilder *)field:(NSString *)fieldName longValue:(long)longValue;
-- (FGDefinitionBuilder *)field:(NSString *)fieldName longLongValue:(long long)longLongValue;
-- (FGDefinitionBuilder *)field:(NSString *)fieldName integerValue:(NSInteger)integerValue;
-- (FGDefinitionBuilder *)field:(NSString *)fieldName unsignedCharValue:(unsigned char)unsignedCharValue;
-- (FGDefinitionBuilder *)field:(NSString *)fieldName unsignedIntValue:(unsigned int)unsignedIntValue;
-- (FGDefinitionBuilder *)field:(NSString *)fieldName unsignedShortValue:(unsigned short)unsignedShortValue;
-- (FGDefinitionBuilder *)field:(NSString *)fieldName unsignedLongValue:(unsigned long)unsignedLongValue;
-- (FGDefinitionBuilder *)field:(NSString *)fieldName unsignedLongLongValue:(unsigned long long)unsignedLongLongValue;
-- (FGDefinitionBuilder *)field:(NSString *)fieldName unsignedIntegerValue:(NSUInteger)unsignedIntegerValue;
-- (FGDefinitionBuilder *)field:(NSString *)fieldName floatValue:(float)floatValue;
-- (FGDefinitionBuilder *)field:(NSString *)fieldName doubleValue:(double)doubleValue;
-- (FGDefinitionBuilder *)field:(NSString *)fieldName value:(id)value;
-- (FGDefinitionBuilder *)field:(NSString *)fieldName by:(id (^)())fieldValueBlock;
-- (FGDefinitionBuilder *)field:(NSString *)fieldName assoc:(Class)fieldClass;
-- (FGDefinitionBuilder *)field:(NSString *)fieldName assoc:(Class)fieldClass with:(id)definer;
-- (FGDefinitionBuilder *)field:(NSString *)fieldName assoc:(Class)fieldClass trait:(NSString *)trait;
-- (FGDefinitionBuilder *)field:(NSString *)fieldName assoc:(Class)fieldClass trait:(NSString *)trait with:(id)definer;
+- (instancetype)nilField:(NSString *)fieldName;
+- (instancetype)field:(NSString *)fieldName boolValue:(BOOL)boolValue;
+- (instancetype)field:(NSString *)fieldName charValue:(char)charValue;
+- (instancetype)field:(NSString *)fieldName intValue:(int)intValue;
+- (instancetype)field:(NSString *)fieldName shortValue:(short)shortValue;
+- (instancetype)field:(NSString *)fieldName longValue:(long)longValue;
+- (instancetype)field:(NSString *)fieldName longLongValue:(long long)longLongValue;
+- (instancetype)field:(NSString *)fieldName integerValue:(NSInteger)integerValue;
+- (instancetype)field:(NSString *)fieldName unsignedCharValue:(unsigned char)unsignedCharValue;
+- (instancetype)field:(NSString *)fieldName unsignedIntValue:(unsigned int)unsignedIntValue;
+- (instancetype)field:(NSString *)fieldName unsignedShortValue:(unsigned short)unsignedShortValue;
+- (instancetype)field:(NSString *)fieldName unsignedLongValue:(unsigned long)unsignedLongValue;
+- (instancetype)field:(NSString *)fieldName unsignedLongLongValue:(unsigned long long)unsignedLongLongValue;
+- (instancetype)field:(NSString *)fieldName unsignedIntegerValue:(NSUInteger)unsignedIntegerValue;
+- (instancetype)field:(NSString *)fieldName floatValue:(float)floatValue;
+- (instancetype)field:(NSString *)fieldName doubleValue:(double)doubleValue;
+- (instancetype)field:(NSString *)fieldName value:(id)value;
+- (instancetype)field:(NSString *)fieldName by:(id (^)())fieldValueBlock;
+- (instancetype)field:(NSString *)fieldName assoc:(Class)fieldClass;
+- (instancetype)field:(NSString *)fieldName assoc:(Class)fieldClass with:(id)definer;
+- (instancetype)field:(NSString *)fieldName assoc:(Class)fieldClass trait:(NSString *)trait;
+- (instancetype)field:(NSString *)fieldName assoc:(Class)fieldClass trait:(NSString *)trait with:(id)definer;
 
-- (FGDefinitionBuilder *)initFrom:(id)constructor;
-- (FGDefinitionBuilder *)initWith:(SEL)selector fieldNames:(NSArray *)fieldNames;
+- (instancetype)initFrom:(id)constructor;
+- (instancetype)initWith:(SEL)selector fieldNames:(NSArray *)fieldNames;
 
 - (FGFactoryDefinition *)build;
 
