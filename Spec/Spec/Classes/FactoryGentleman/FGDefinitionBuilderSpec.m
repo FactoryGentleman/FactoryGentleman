@@ -1,20 +1,6 @@
 #import "FGDefinitionBuilder.h"
 
-@interface SimpleObject : NSObject
-@property (nonatomic) NSString *first;
-@property (nonatomic) NSString *second;
-@end
-
-@implementation SimpleObject
-@end
-
-FGFactoryBegin(SimpleObject)
-    builder[@"first"] = @"foo";
-    builder[@"second"] = @"bar";
-    traitDefiners[@"trait"] = ^(FGDefinitionBuilder *traitBuilder) {
-        traitBuilder[@"second"] = @"hmm";
-    };
-FGFactoryEnd
+#import "SimpleObject.h"
 
 SpecBegin(FGDefinitionBuilder)
     __block FGDefinitionBuilder *subject;

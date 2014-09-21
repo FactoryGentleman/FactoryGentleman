@@ -1,68 +1,54 @@
 #import "FGFactoryGentleman.h"
 
-@interface BasicObject : NSObject
-@property (nonatomic) NSString *string;
-@property (nonatomic) NSString *extra;
-@end
-
-@implementation BasicObject
-@end
-
-FGFactoryBegin(BasicObject)
-    [builder field:@"string" value:@"basic"];
-    [builder field:@"extra" value:@"basic"];
-    traitDefiners[@"different"] = ^(FGDefinitionBuilder *differentBuilder) {
-        [differentBuilder field:@"extra" value:@"trait"];
-    };
-FGFactoryEnd
+#import "SimpleObject.h"
 
 SpecBegin(FGFactoryGentleman)
-    __block BasicObject *builtObject;
+    __block SimpleObject *builtObject;
 
     describe(@"FGBuild", ^{
         before(^{
-            builtObject = FGBuild([BasicObject class]);
+            builtObject = FGBuild([SimpleObject class]);
         });
 
         it(@"builds an object from the definition", ^{
-            expect(builtObject.string).to.equal(@"basic");
-            expect(builtObject.extra).to.equal(@"basic");
+            expect(builtObject.first).to.equal(@"foo");
+            expect(builtObject.second).to.equal(@"bar");
         });
     });
 
     describe(@"FGBuildTrait", ^{
         before(^{
-            builtObject = FGBuildTrait([BasicObject class], @"different");
+            builtObject = FGBuildTrait([SimpleObject class], @"trait");
         });
 
         it(@"builds an object from the trait definition", ^{
-            expect(builtObject.string).to.equal(@"basic");
-            expect(builtObject.extra).to.equal(@"trait");
+            expect(builtObject.first).to.equal(@"foo");
+            expect(builtObject.second).to.equal(@"hmm");
         });
     });
 
     describe(@"FGBuildWith", ^{
         context(@"when definer is dictionary", ^{
             before(^{
-                builtObject = FGBuildWith([BasicObject class], @{ @"string" : @"overriden" });
+                builtObject = FGBuildWith([SimpleObject class], @{ @"first" : @"overriden" });
             });
 
             it(@"builds an object from the overriden definition", ^{
-                expect(builtObject.string).to.equal(@"overriden");
-                expect(builtObject.extra).to.equal(@"basic");
+                expect(builtObject.first).to.equal(@"overriden");
+                expect(builtObject.second).to.equal(@"bar");
             });
         });
 
         context(@"when definer is block", ^{
             before(^{
-                builtObject = FGBuildWith([BasicObject class], ^(FGDefinitionBuilder *builder) {
-                    [builder field:@"string" value:@"overriden"];
+                builtObject = FGBuildWith([SimpleObject class], ^(FGDefinitionBuilder *builder) {
+                    [builder field:@"first" value:@"overriden"];
                 });
             });
 
             it(@"builds an object from the overriden definition", ^{
-                expect(builtObject.string).to.equal(@"overriden");
-                expect(builtObject.extra).to.equal(@"basic");
+                expect(builtObject.first).to.equal(@"overriden");
+                expect(builtObject.second).to.equal(@"bar");
             });
         });
     });
@@ -70,25 +56,25 @@ SpecBegin(FGFactoryGentleman)
     describe(@"FGBuildTraitWith", ^{
         context(@"when definer is dictionary", ^{
             before(^{
-                builtObject = FGBuildTraitWith([BasicObject class], @"different", @{ @"string" : @"overriden" });
+                builtObject = FGBuildTraitWith([SimpleObject class], @"trait", @{ @"first" : @"overriden" });
             });
 
             it(@"builds an object from the overriden trait definition", ^{
-                expect(builtObject.string).to.equal(@"overriden");
-                expect(builtObject.extra).to.equal(@"trait");
+                expect(builtObject.first).to.equal(@"overriden");
+                expect(builtObject.second).to.equal(@"hmm");
             });
         });
 
         context(@"when definer is block", ^{
             before(^{
-                builtObject = FGBuildTraitWith([BasicObject class], @"different", ^(FGDefinitionBuilder *builder) {
-                    [builder field:@"string" value:@"overriden"];
+                builtObject = FGBuildTraitWith([SimpleObject class], @"trait", ^(FGDefinitionBuilder *builder) {
+                    [builder field:@"first" value:@"overriden"];
                 });
             });
 
             it(@"builds an object from the overriden trait definition", ^{
-                expect(builtObject.string).to.equal(@"overriden");
-                expect(builtObject.extra).to.equal(@"trait");
+                expect(builtObject.first).to.equal(@"overriden");
+                expect(builtObject.second).to.equal(@"hmm");
             });
         });
     });
