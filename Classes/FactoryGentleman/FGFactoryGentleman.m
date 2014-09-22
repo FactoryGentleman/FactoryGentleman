@@ -1,4 +1,4 @@
-#import "FactoryGentleman.h"
+#import "FGFactoryGentleman.h"
 
 #import "FGObjectBuilder.h"
 #import "FGFactoryDefinitionRegistry.h"
@@ -6,17 +6,15 @@
 @implementation FGFactoryGentleman
 
 - (id)buildForObjectClass:(Class)objectClass
-                 readonly:(BOOL)readonly
 {
     NSParameterAssert(objectClass);
     FGFactoryDefinition *baseDefinition = [self definitionForObjectClass:objectClass];
     return [[[FGObjectBuilder alloc] initWithObjectClass:objectClass
-                                                readonly:readonly
+                                                readonly:FGAllowReadonly
                                               definition:baseDefinition] build];
 }
 
 - (id)buildForObjectClass:(Class)objectClass
-                 readonly:(BOOL)readonly
                     trait:(NSString *)trait
 {
     NSParameterAssert(objectClass);
@@ -26,12 +24,11 @@
                                                                     trait:trait];
     FGFactoryDefinition *finalDefinition = [baseDefinition mergedWithDefinition:traitDefinition];
     return [[[FGObjectBuilder alloc] initWithObjectClass:objectClass
-                                                readonly:(BOOL)readonly
+                                                readonly:FGAllowReadonly
                                               definition:finalDefinition] build];
 }
 
 - (id)buildForObjectClass:(Class)objectClass
-                 readonly:(BOOL)readonly
        withFactoryDefiner:(id)factoryDefiner
 {
     NSParameterAssert(objectClass);
@@ -45,12 +42,11 @@
     }
     FGFactoryDefinition *finalDefinition = [baseDefinition mergedWithDefinition:overriddenDefinition];
     return [[[FGObjectBuilder alloc] initWithObjectClass:objectClass
-                                                readonly:readonly
+                                                readonly:FGAllowReadonly
                                               definition:finalDefinition] build];
 }
 
 - (id)buildForObjectClass:(Class)objectClass
-                 readonly:(BOOL)readonly
                     trait:(NSString *)trait
        withFactoryDefiner:(id)factoryDefiner
 {
@@ -69,7 +65,7 @@
     FGFactoryDefinition *finalDefinition = [[baseDefinition mergedWithDefinition:traitDefinition]
             mergedWithDefinition:overriddenDefinition];
     return [[[FGObjectBuilder alloc] initWithObjectClass:objectClass
-                                                readonly:readonly
+                                                readonly:FGAllowReadonly
                                               definition:finalDefinition] build];
 }
 
@@ -117,28 +113,24 @@ BOOL FGAllowReadonly = NO;
 
 id FGBuild(Class objectClass)
 {
-    return [[[FGFactoryGentleman alloc] init] buildForObjectClass:objectClass
-                                                         readonly:FGAllowReadonly];
+    return [[[FGFactoryGentleman alloc] init] buildForObjectClass:objectClass];
 }
 
 id FGBuildTrait(Class objectClass, NSString *trait)
 {
     return [[[FGFactoryGentleman alloc] init] buildForObjectClass:objectClass
-                                                         readonly:FGAllowReadonly
                                                             trait:trait];
 }
 
 id FGBuildWith(Class objectClass, id factoryDefiner)
 {
     return [[[FGFactoryGentleman alloc] init] buildForObjectClass:objectClass
-                                                         readonly:FGAllowReadonly
                                                withFactoryDefiner:factoryDefiner];
 }
 
 id FGBuildTraitWith(Class objectClass, NSString *trait, id factoryDefiner)
 {
     return [[[FGFactoryGentleman alloc] init] buildForObjectClass:objectClass
-                                                         readonly:FGAllowReadonly
                                                             trait:trait
                                                withFactoryDefiner:factoryDefiner];
 }

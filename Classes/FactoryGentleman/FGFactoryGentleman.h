@@ -1,19 +1,17 @@
 #import "FGFactoryDefiner.h"
 
 @interface FGFactoryGentleman : NSObject
+- (id)buildForObjectClass:(Class)objectClass;
 - (id)buildForObjectClass:(Class)objectClass
-                 readonly:(BOOL)readonly;
-- (id)buildForObjectClass:(Class)objectClass
-                 readonly:(BOOL)readonly
                     trait:(NSString *)trait;
 - (id)buildForObjectClass:(Class)objectClass
-                 readonly:(BOOL)readonly
        withFactoryDefiner:(id)factoryDefiner;
 - (id)buildForObjectClass:(Class)objectClass
-                 readonly:(BOOL)readonly
                     trait:(NSString *)trait
        withFactoryDefiner:(id)factoryDefiner;
 @end
+
+extern BOOL FGAllowReadonly;
 
 extern id FGBuild(Class objectClass);
 extern id FGBuildTrait(Class objectClass, NSString *trait);
