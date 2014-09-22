@@ -73,11 +73,11 @@ Create an implementation file (*.m) with the factory definition:
 #import "User.h"
 
 FGFactoryBegin(User)
-    [builder field:@"firstName" value:@"Bob"];
-    [builder field:@"lastName" value:@"Bradley"];
+    builder[@"firstName"] = @"Bob";
+    builder[@"lastName"] = @"Bradley";
     [builder field:@"friendCount" integerValue:10];
-    [builder field:@"title" value:@"Mr"];
-    [builder field:@"maidenName" value:@"Macallister"];
+    builder[@"title"] = @"Mr";
+    builder[@"maidenName"] = @"Macallister";
 FGFactoryEnd
 ```
 
@@ -116,7 +116,7 @@ SpecBegin(User)
     context(@"when user has no first name", ^{
         before(^{
             subject = FGBuildWith(User.class, ^(FGDefinitionBuilder *builder) {
-                [builder field:@"firstName" value:nil];
+                [builder nilField:@"firstName"];
             });
         });
 
@@ -163,11 +163,11 @@ FGFactoryBegin(User)
     [builder field:@"resourceId" by:^{
         return @(++currentId);
     }];
-    [builder field:@"firstName" value:@"Bob"];
-    [builder field:@"lastName" value:@"Bradley"];
+    builder[@"firstName"] = @"Bob";
+    builder[@"lastName"] = @"Bradley";
     [builder field:@"friendCount" integerValue:10];
-    [builder field:@"title" value:@"Mr"];
-    [builder field:@"maidenName" value:@"Macallister"];
+    builder[@"title"] = @"Mr";
+    builder[@"maidenName"] = @"Macallister";
 FGFactoryEnd
 ```
 
@@ -181,11 +181,11 @@ You can define objects with immutable (i.e. readonly) properties via listing ini
 #import "User.h"
 
 FGFactoryBegin(User)
-    [builder field:@"firstName" value:@"Bob"];
-    [builder field:@"lastName" value:@"Bradley"];
+    builder[@"firstName"] = @"Bob";
+    builder[@"lastName"] = @"Bradley";
     [builder field:@"friendCount" integerValue:10];
-    [builder field:@"title" value:@"Mr"];
-    [builder field:@"maidenName" value:@"Macallister"];
+    builder[@"title"] = @"Mr";
+    builder[@"maidenName"] = @"Macallister";
     [builder initWith:@selector(initWithFirstName:lastName:) fieldNames:@[ @"firstName", @"lastName" ]];
 FGFactoryEnd
 ```
@@ -200,11 +200,11 @@ You can define associative objects (objects that themselves have a factory defin
 #import "User.h"
 
 FGFactoryBegin(User)
-    [builder field:@"firstName" value:@"Bob"];
-    [builder field:@"lastName" value:@"Bradley"];
-    [builder field:@"friendCount" value:@10];
-    [builder field:@"title" value:@"Mr"];
-    [builder field:@"maidenName" value:@"Macallister"];
+    builder[@"firstName"] = @"Bob";
+    builder[@"lastName"] = @"Bradley";
+    builder[@"friendCount"] = @10;
+    builder[@"title"] = @"Mr";
+    builder[@"maidenName"] = @"Macallister";
     [builder field:@"address" assoc:Address.class];
 FGFactoryEnd
 ```
@@ -219,15 +219,15 @@ For objects with different traits, you can define them within the base definitio
 #import "User.h"
 
 FGFactoryBegin(User)
-    [builder field:@"firstName" value:@"Bob"];
-    [builder field:@"lastName" value:@"Bradley"];
-    [builder field:@"friendCount" value:@10];
-    [builder field:@"title" value:@"Mr"];
-    [builder field:@"maidenName" value:@"Macallister"];
+    builder[@"firstName"] = @"Bob";
+    builder[@"lastName"] = @"Bradley";
+    builder[@"friendCount"] = @10;
+    builder[@"title"] = @"Mr";
+    builder[@"maidenName"] = @"Macallister";
     [builder field:@"address" assoc:Address.class];
 
     traitDefiners[@"homeless"] = ^(FGDefinitionBuilder *homelessBuilder) {
-        [homelessBuilder field:@"address" value:nil];
+        [homelessBuilder nilField:@"address"];
     };
 FGFactoryEnd
 ```
@@ -239,7 +239,7 @@ subject = FGBuildTrait(User.class, @"homeless");
 ```
 ```objective-c
 subject = FGBuildTraitWith(User.class, @"homeless", ^(FGDefinitionBuilder *builder) {
-    [builder field:@"firstName" value:@"Brian"];
+    builder[@"firstName"] = @"Brian";
 });
 ```
 
