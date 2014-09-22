@@ -1,3 +1,8 @@
+# 1.2.0 / 2014-09-23
+
+ * [FEATURE] #21 Allow definition subscripting
+ * [FEATURE] #20 Associative fields with on build
+
 # 1.1.0 / 2014-05-30
 
  * [FEATURE] #17 Add inline primitives to builder

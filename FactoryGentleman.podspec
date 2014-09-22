@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'FactoryGentleman'
-  s.version = '1.1.0'
+  s.version = '1.2.0'
   s.license = { :type => 'MIT', :file => 'LICENSE' }
   s.summary = 'A simple library to help define model factories for use when testing your iOS/Mac applications.'
 
