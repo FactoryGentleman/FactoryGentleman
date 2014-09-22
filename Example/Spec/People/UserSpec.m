@@ -48,7 +48,7 @@ SpecBegin(User)
     context(@"has first name, last name & invalid address", ^{
         before(^{
             Address *address = FGBuildWith(Address.class, ^(FGDefinitionBuilder *builder) {
-                [builder field:@"street" value:nil];
+                [builder nilField:@"street"];
             });
             subject = FGBuildWith(User.class, @{ @"address" : address });
         });
