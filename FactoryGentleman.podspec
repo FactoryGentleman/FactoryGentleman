@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
     'Michael England' => 'mg.england@gmail.com',
     'Slavko Krucaj' => 'slavko.krucaj@gmail.com'
   }
-  s.source = { :git => 'git@github.com:soundcloud/FactoryGentleman.git', :tag => s.version.to_s }
+  s.source = { :git => 'https://github.com/soundcloud/FactoryGentleman.git', :tag => s.version.to_s }
 
   s.source_files = 'Classes/FactoryGentleman/*.{h,m}'
   s.public_header_files = 'Classes/FactoryGentleman/*.h'
