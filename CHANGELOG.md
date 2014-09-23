@@ -1,3 +1,7 @@
+# 1.2.1 / 2014-09-24
+
+ * [BUGFIX] Use https > git in source definition
+
 # 1.2.0 / 2014-09-23
 
  * [FEATURE] #21 Allow definition subscripting
