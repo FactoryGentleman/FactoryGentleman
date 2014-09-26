@@ -1,15 +1,22 @@
+#import "FGFactoryDefinitionRegistry.h"
 #import "FGFactoryDefinition.h"
 #import "FGDefinitionBuilder.h"
 #import "FGNilValue.h"
 #import "FGValue.h"
 
 @interface FGFactoryDefiner : NSObject
+@property (nonatomic, readonly) Class objectClass;
+@property (nonatomic, readonly) FGFactoryDefinitionRegistry *factoryDefinitionRegistry;
+
 - (instancetype)initWithObjectClass:(Class)objectClass;
 
 - (void)registerDefinitions;
 
 - (void)registerBaseDefinition:(FGFactoryDefinition *)baseDefinition
                  traitDefiners:(NSDictionary *)traitDefiners;
+
+- (void)registerBaseDefinition:(FGFactoryDefinition *)baseDefinition;
+- (void)registerTraitDefiner:(NSString *)trait traitDefiner:(id)traitDefiner;
 @end
 
 #define FGFactoryBegin(__CLASS__) \

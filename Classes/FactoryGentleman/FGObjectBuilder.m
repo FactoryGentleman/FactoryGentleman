@@ -2,6 +2,7 @@
 
 #import "FGValue.h"
 #import "FGNilValue.h"
+#import "FGFieldHelper.h"
 
 @implementation FGObjectBuilder
 
@@ -77,7 +78,7 @@
     NSDictionary *setterFieldDefinitions = [self.definition setterFieldDefinitions];
     for (NSString *setterFieldName in setterFieldDefinitions) {
         [self setField:setterFieldName
-                 value:[setterFieldDefinitions objectForKey:setterFieldName]
+                 value:setterFieldDefinitions[setterFieldName]
               onObject:object];
     }
 }
@@ -118,7 +119,7 @@
 - (NSInvocation *)setterInvocationForField:(NSString *)field
                                   onObject:(id)object
 {
-    return [self invocationForSetter:[self setterForField:field]
+    return [self invocationForSetter:[FGFieldHelper setterForField:field]
                             onObject:object];
 }
 
@@ -147,18 +148,6 @@
     [[value wrappedValue] getValue:actualValue];
     [inv setArgument:actualValue atIndex:index];
     free(actualValue);
-}
-
-- (SEL)setterForField:(NSString *)field
-{
-    NSString *setterString = [NSString stringWithFormat:@"set%@:", [self camelcaseForField:field]];
-    return NSSelectorFromString(setterString);
-}
-
-- (NSString *)camelcaseForField:(NSString *)field
-{
-    return [field stringByReplacingCharactersInRange:NSMakeRange(0, 1)
-                                          withString:[[field substringToIndex:1] capitalizedString]];
 }
 
 @end

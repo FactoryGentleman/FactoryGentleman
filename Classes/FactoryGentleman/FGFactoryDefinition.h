@@ -12,7 +12,7 @@ typedef id (^FGFieldDefinition)();
               initializerDefinition:(FGInitializerDefinition *)initializerDefinition
                    fieldDefinitions:(NSDictionary *)fieldDefinitions;
 
-- (instancetype)mergedWithDefinition:(FGFactoryDefinition *)otherDefinition;
+- (instancetype)mergedWithDefinition:(id)other;
 
 - (NSOrderedSet *)initializerFieldDefinitions;
 - (NSDictionary *)setterFieldDefinitions;

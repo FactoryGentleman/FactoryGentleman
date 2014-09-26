@@ -1,7 +1,5 @@
 #import "FGFactoryDefiner.h"
 
-#import "FGFactoryDefinitionRegistry.h"
-
 @interface FGFactoryDefiner (Spec)
 - (instancetype)initWithObjectClass:(Class)objectClass
           factoryDefinitionRegistry:(FGFactoryDefinitionRegistry *)factoryDefinitionRegistry;
@@ -40,12 +38,6 @@ SpecBegin(FGFactoryDefiner)
         factoryDefinitionRegistry = mock([FGFactoryDefinitionRegistry class]);
         subject = [[MutableObjectFactoryDefiner alloc] initWithObjectClass:definedClass
                                                  factoryDefinitionRegistry:factoryDefinitionRegistry];
-    });
-
-    it(@"base class is abstract", ^{
-        expect(^{
-            [[[FGFactoryDefiner alloc] init] registerDefinitions];
-        }).to.raiseAny();
     });
 
     context(@"when mutable factory is defined", ^{

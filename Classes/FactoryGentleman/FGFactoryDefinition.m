@@ -16,8 +16,9 @@
     return self;
 }
 
-- (instancetype)mergedWithDefinition:(FGFactoryDefinition *)otherDefinition
+- (instancetype)mergedWithDefinition:(id)other
 {
+    FGFactoryDefinition *otherDefinition = other;
     id constructor = [self mergedConstructorWith:otherDefinition.constructor];
     FGInitializerDefinition *initializerDefinition = [self mergedInitializerDefinitionWith:otherDefinition.initializerDefinition];
     NSDictionary *fieldDefinitions = [self mergedFieldDefinitionsWith:otherDefinition.fieldDefinitions];
@@ -47,7 +48,7 @@
 {
     NSMutableOrderedSet *initializerFieldDefinitions = [[NSMutableOrderedSet alloc] init];
     for (NSString *initializerFieldName in self.initializerDefinition.fieldNames) {
-        id initializerDefinition = [self.fieldDefinitions objectForKey:initializerFieldName];
+        id initializerDefinition = self.fieldDefinitions[initializerFieldName];
         if (initializerDefinition) {
             [initializerFieldDefinitions addObject:initializerDefinition];
         } else {
@@ -62,7 +63,7 @@
     NSMutableDictionary *setterFieldDefinitions = [[NSMutableDictionary alloc] init];
     for (NSString *fieldName in self.fieldDefinitions) {
         if (![self.initializerDefinition.fieldNames containsObject:fieldName]) {
-            [setterFieldDefinitions setObject:[self.fieldDefinitions objectForKey:fieldName] forKey:fieldName];
+            setterFieldDefinitions[fieldName] = self.fieldDefinitions[fieldName];
         }
     }
     return setterFieldDefinitions;
