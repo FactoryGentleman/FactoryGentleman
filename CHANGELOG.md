@@ -1,3 +1,7 @@
+# 1.2.2 / 2014-09-26
+
+ * [ENHANCEMENT] Expose a little more of implementation & tidy for help with subprojects
+
 # 1.2.1 / 2014-09-24
 
  * [BUGFIX] Use https > git in source definition
