@@ -46,10 +46,13 @@
     [inv setSelector:[self definitionSelector]];
     [inv setTarget:constructor];
 
+    NSMutableArray *arguments = [NSMutableArray array];
     NSUInteger index = 2;
     for (FGFieldDefinition fieldDefinition in [self.definition initializerFieldDefinitions]) {
         if (![[NSNull null] isEqual:fieldDefinition]) {
             id value = fieldDefinition();
+            [arguments addObject:value];
+
             if ([value isKindOfClass:[FGValue class]]) {
                 [self setValueFromValue:value
                                   index:index
