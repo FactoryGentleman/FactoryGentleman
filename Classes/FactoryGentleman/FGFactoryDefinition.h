@@ -1,3 +1,5 @@
+#import <Foundation/Foundation.h>
+
 #import "FGInitializerDefinition.h"
 
 typedef id (^FGFieldDefinition)();

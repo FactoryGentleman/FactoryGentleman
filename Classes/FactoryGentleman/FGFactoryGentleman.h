@@ -1,3 +1,5 @@
+#import <Foundation/Foundation.h>
+
 #import "FGFactoryDefiner.h"
 
 @interface FGFactoryGentleman : NSObject

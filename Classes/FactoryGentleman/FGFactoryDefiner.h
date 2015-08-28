@@ -1,3 +1,5 @@
+#import <Foundation/Foundation.h>
+
 #import "FGFactoryDefinitionRegistry.h"
 #import "FGFactoryDefinition.h"
 #import "FGDefinitionBuilder.h"

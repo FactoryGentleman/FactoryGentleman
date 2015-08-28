@@ -1,3 +1,5 @@
+#import <Foundation/Foundation.h>
+
 @interface FGValue : NSObject
 @property (nonatomic, readonly) NSValue *wrappedValue;
 
