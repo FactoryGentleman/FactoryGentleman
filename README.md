@@ -1,4 +1,4 @@
-# FactoryGentleman [![Build Status](https://travis-ci.org/soundcloud/FactoryGentleman.svg?branch=master)](https://travis-ci.org/soundcloud/FactoryGentleman) [![coverage](https://img.shields.io/coveralls/soundcloud/FactoryGentleman.svg)](https://coveralls.io/r/soundcloud/FactoryGentleman) ![version](https://cocoapod-badges.herokuapp.com/v/FactoryGentleman/badge.png) ![platform](https://cocoapod-badges.herokuapp.com/p/FactoryGentleman/badge.png)
+# FactoryGentleman [![Build Status](https://travis-ci.org/FactoryGentleman/FactoryGentleman.svg?branch=master)](https://travis-ci.org/FactoryGentleman/FactoryGentleman) [![coverage](https://img.shields.io/coveralls/FactoryGentleman/FactoryGentleman.svg)](https://coveralls.io/r/FactoryGentleman/FactoryGentleman) ![version](https://cocoapod-badges.herokuapp.com/v/FactoryGentleman/badge.png) ![platform](https://cocoapod-badges.herokuapp.com/p/FactoryGentleman/badge.png)
 
 A simple library to help define model factories for use when testing your iOS/Mac applications. Heavily based on [FactoryGirl](https://github.com/thoughtbot/factory_girl) for Ruby.
 
@@ -261,10 +261,10 @@ Add `pod "FactoryGentleman"` to your Podfile
 
 ## Authors
 
-  - [Michael England](https://github.com/michaelengland) @ [SoundCloud](https://github.com/soundcloud)
-  - [Jan Berkel](https://github.com/jberkel) @ [SoundCloud](https://github.com/soundcloud)
-  - [Slavko Krucaj](https://github.com/SlavkoKrucaj) @ [SoundCloud](https://github.com/soundcloud)
-  - [Vincent Garrigues](https://github.com/garriguv) @ [SoundCloud](https://github.com/soundcloud)
+  - [Michael England](https://github.com/michaelengland)
+  - [Jan Berkel](https://github.com/jberkel)
+  - [Slavko Krucaj](https://github.com/SlavkoKrucaj)
+  - [Vincent Garrigues](https://github.com/garriguv)
 
 ## License
 
