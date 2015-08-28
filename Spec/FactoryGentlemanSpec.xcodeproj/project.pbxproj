@@ -306,6 +306,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5BD363EC1830FF0B0024169A /* Build configuration list for PBXNativeTarget "FactoryGentlemanSpec-iOS" */;
 			buildPhases = (
+				5BAA92EC1BC3F7B30032EA4D /* Clean Coverage */,
 				E7C3C1F95C5B43EEA0B1E5AF /* Check Pods Manifest.lock */,
 				5BD363D91830FF0B0024169A /* Sources */,
 				5BD363DA1830FF0B0024169A /* Frameworks */,
@@ -393,6 +394,20 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		5BAA92EC1BC3F7B30032EA4D /* Clean Coverage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Clean Coverage";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "INTERMEDIATES_DIR=\"${BUILD_DIR}/../Intermediates\"\n\nif [ -e \"${INTERMEDIATES_DIR}\" ]; then\nfind ${INTERMEDIATES_DIR} -type f -name \"*.gcda\" -exec rm -rf {} \\;\nfi\n";
 		};
 		764D3F9CF5074E22B8E7F4C0 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;

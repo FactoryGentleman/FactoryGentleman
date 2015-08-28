@@ -17,7 +17,6 @@
 		F803211730A81E90BFC5B337 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = F80323B165604E3F46B2BC88 /* Address.m */; };
 		F803214EE6CE506D14C7F1B4 /* UserSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032022E622DE77F6D91DA9 /* UserSpec.m */; };
 		F8032150E186EF68CB9C6474 /* FriendshipFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F80323A252742A4A52E40260 /* FriendshipFactory.m */; };
-		F80322B9634E8C2BC4509935 /* GcovTestObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032DE71181D8CA291EFB65 /* GcovTestObserver.m */; };
 		F803242D4B5B1931D9B43727 /* FriendshipSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032D8513678608AE79DA74 /* FriendshipSpec.m */; };
 		F80324D3F1DF741337546B79 /* AddressSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032FBBE9FAC22C8854BC6A /* AddressSpec.m */; };
 		F80325FC2560950DC36F21E2 /* AddressSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032FBBE9FAC22C8854BC6A /* AddressSpec.m */; };
@@ -30,7 +29,6 @@
 		F8032A537ECADB002E9FE026 /* Friendship.m in Sources */ = {isa = PBXBuildFile; fileRef = F803206BC305A063D7172758 /* Friendship.m */; };
 		F8032B520D767AEEE7EAC9EE /* UserFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F803285289ADD7CDACA6C9F1 /* UserFactory.m */; };
 		F8032C82505D89ECE4018778 /* FriendshipFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F80323A252742A4A52E40260 /* FriendshipFactory.m */; };
-		F8032D5C64F95310CFF9D296 /* GcovTestObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032DE71181D8CA291EFB65 /* GcovTestObserver.m */; };
 		F8032D91F5D8FD02B1FE49EE /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F803289CF36160237F16BF61 /* User.m */; };
 		F8032EEC50B96DC18C9B47EE /* UserFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F803285289ADD7CDACA6C9F1 /* UserFactory.m */; };
 /* End PBXBuildFile section */
@@ -62,9 +60,7 @@
 		F80327358DBB317A73DA95D7 /* PeopleSpec-iOS-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = "PeopleSpec-iOS-Info.plist"; sourceTree = "<group>"; };
 		F803285289ADD7CDACA6C9F1 /* UserFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserFactory.m; sourceTree = "<group>"; };
 		F803289CF36160237F16BF61 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		F80329EA138F493DB0947754 /* GcovTestObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GcovTestObserver.h; sourceTree = "<group>"; };
 		F8032D8513678608AE79DA74 /* FriendshipSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendshipSpec.m; sourceTree = "<group>"; };
-		F8032DE71181D8CA291EFB65 /* GcovTestObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GcovTestObserver.m; sourceTree = "<group>"; };
 		F8032FBBE9FAC22C8854BC6A /* AddressSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressSpec.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -156,15 +152,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F803247AF579E430473F791B /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				F80329EA138F493DB0947754 /* GcovTestObserver.h */,
-				F8032DE71181D8CA291EFB65 /* GcovTestObserver.m */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 		F8032695CBC2952315E4972E /* Factories */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,7 +176,6 @@
 			isa = PBXGroup;
 			children = (
 				F80326DB19A0E648E2C11C29 /* People */,
-				F803247AF579E430473F791B /* Helpers */,
 				F8032695CBC2952315E4972E /* Factories */,
 			);
 			path = Spec;
@@ -223,6 +209,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5BD363D71830FEBE0024169A /* Build configuration list for PBXNativeTarget "PeopleSpec-Mac" */;
 			buildPhases = (
+				5BAA92ED1BC3F7F30032EA4D /* Clean Coverage */,
 				4E7661CB571B498B8AB3CA99 /* Check Pods Manifest.lock */,
 				5BD363C41830FEBE0024169A /* Sources */,
 				5BD363C51830FEBE0024169A /* Frameworks */,
@@ -243,6 +230,7 @@
 			buildConfigurationList = 5BD363EC1830FF0B0024169A /* Build configuration list for PBXNativeTarget "PeopleSpec-iOS" */;
 			buildPhases = (
 				E7C3C1F95C5B43EEA0B1E5AF /* Check Pods Manifest.lock */,
+				5BAA92EE1BC3F8010032EA4D /* Clean Coverage */,
 				5BD363D91830FF0B0024169A /* Sources */,
 				5BD363DA1830FF0B0024169A /* Frameworks */,
 				5BD363DB1830FF0B0024169A /* Resources */,
@@ -330,6 +318,34 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		5BAA92ED1BC3F7F30032EA4D /* Clean Coverage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Clean Coverage";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "INTERMEDIATES_DIR=\"${BUILD_DIR}/../Intermediates\"\n\nif [ -e \"${INTERMEDIATES_DIR}\" ]; then\nfind ${INTERMEDIATES_DIR} -type f -name \"*.gcda\" -exec rm -rf {} \\;\nfi\n";
+		};
+		5BAA92EE1BC3F8010032EA4D /* Clean Coverage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Clean Coverage";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "INTERMEDIATES_DIR=\"${BUILD_DIR}/../Intermediates\"\n\nif [ -e \"${INTERMEDIATES_DIR}\" ]; then\nfind ${INTERMEDIATES_DIR} -type f -name \"*.gcda\" -exec rm -rf {} \\;\nfi\n";
+		};
 		764D3F9CF5074E22B8E7F4C0 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -373,7 +389,6 @@
 				F803214EE6CE506D14C7F1B4 /* UserSpec.m in Sources */,
 				F80325FC2560950DC36F21E2 /* AddressSpec.m in Sources */,
 				F803292FD255D261F3119759 /* FriendshipSpec.m in Sources */,
-				F8032D5C64F95310CFF9D296 /* GcovTestObserver.m in Sources */,
 				F8032EEC50B96DC18C9B47EE /* UserFactory.m in Sources */,
 				F8032A24720E452DDA304772 /* AddressFactory.m in Sources */,
 				F8032C82505D89ECE4018778 /* FriendshipFactory.m in Sources */,
@@ -390,7 +405,6 @@
 				F803282AECA77084D3C0ECA3 /* UserSpec.m in Sources */,
 				F80324D3F1DF741337546B79 /* AddressSpec.m in Sources */,
 				F803242D4B5B1931D9B43727 /* FriendshipSpec.m in Sources */,
-				F80322B9634E8C2BC4509935 /* GcovTestObserver.m in Sources */,
 				F8032B520D767AEEE7EAC9EE /* UserFactory.m in Sources */,
 				F80328F4B0014DFC1E054505 /* AddressFactory.m in Sources */,
 				F8032150E186EF68CB9C6474 /* FriendshipFactory.m in Sources */,
