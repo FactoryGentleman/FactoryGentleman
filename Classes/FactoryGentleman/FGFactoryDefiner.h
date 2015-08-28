@@ -1,3 +1,5 @@
+#import <Foundation/Foundation.h>
+
 #import "FGFactoryDefinitionRegistry.h"
 #import "FGFactoryDefinition.h"
 #import "FGDefinitionBuilder.h"
@@ -17,6 +19,8 @@
 
 - (void)registerBaseDefinition:(FGFactoryDefinition *)baseDefinition;
 - (void)registerTraitDefiner:(NSString *)trait traitDefiner:(id)traitDefiner;
+
++ (void)loadFactoryDefiners;
 @end
 
 #define FGFactoryBegin(__CLASS__) \

@@ -2,8 +2,20 @@
 
 #import "FGObjectBuilder.h"
 #import "FGFactoryDefinitionRegistry.h"
+#import "FGFactoryDefiner.h"
 
 @implementation FGFactoryGentleman
+
++ (void)initialize
+{
+    [super initialize];
+
+    // ensure all the factories are registered before building anything
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [FGFactoryDefiner loadFactoryDefiners];
+    });
+}
 
 - (id)buildForObjectClass:(Class)objectClass
 {

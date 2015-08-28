@@ -1,3 +1,5 @@
+#import <Foundation/Foundation.h>
+
 @interface FGInitializerDefinition : NSObject
 @property (nonatomic, readonly) SEL selector;
 @property (nonatomic, readonly) NSOrderedSet *fieldNames;
