@@ -36,15 +36,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3070F311A5D6497887EB49F0 /* Pods-PeopleSpec-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeopleSpec-iOS.xcconfig"; path = "Pods/Pods-PeopleSpec-iOS.xcconfig"; sourceTree = "<group>"; };
 		42AB4DBDC6BB4624AE50B7D1 /* libPods-PeopleSpec-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PeopleSpec-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4DB1BB1CD6314F1ABB37C890 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		5BD363C81830FEBE0024169A /* PeopleSpec-Mac.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PeopleSpec-Mac.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD363CA1830FEBE0024169A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		5BD363DD1830FF0B0024169A /* PeopleSpec-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PeopleSpec-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD363DF1830FF0B0024169A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5BD363E11830FF0B0024169A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		5ED3EC466AC84D26A1B7AFC8 /* libPods-PeopleSpec-Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PeopleSpec-Mac.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E6821907C0CB3A33CBDED57 /* Pods-PeopleSpec-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeopleSpec-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-PeopleSpec-iOS/Pods-PeopleSpec-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		BEB85FC7FF97ECA965985E9C /* Pods-PeopleSpec-Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeopleSpec-Mac.release.xcconfig"; path = "Pods/Target Support Files/Pods-PeopleSpec-Mac/Pods-PeopleSpec-Mac.release.xcconfig"; sourceTree = "<group>"; };
+		C39D491172CC989DC50AC47A /* Pods-PeopleSpec-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeopleSpec-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PeopleSpec-iOS/Pods-PeopleSpec-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		C83916678A3999EE7CE846AD /* Pods-PeopleSpec-Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeopleSpec-Mac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PeopleSpec-Mac/Pods-PeopleSpec-Mac.debug.xcconfig"; sourceTree = "<group>"; };
 		F8032022E622DE77F6D91DA9 /* UserSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSpec.m; sourceTree = "<group>"; };
 		F803206BC305A063D7172758 /* Friendship.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friendship.m; sourceTree = "<group>"; };
 		F803211EB692DA40E9D840F4 /* Friendship.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friendship.h; sourceTree = "<group>"; };
@@ -64,7 +66,6 @@
 		F8032D8513678608AE79DA74 /* FriendshipSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendshipSpec.m; sourceTree = "<group>"; };
 		F8032DE71181D8CA291EFB65 /* GcovTestObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GcovTestObserver.m; sourceTree = "<group>"; };
 		F8032FBBE9FAC22C8854BC6A /* AddressSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressSpec.m; sourceTree = "<group>"; };
-		FB7925B639C14423A95D4F24 /* Pods-PeopleSpec-Mac.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeopleSpec-Mac.xcconfig"; path = "Pods/Pods-PeopleSpec-Mac.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +120,17 @@
 				F80327358DBB317A73DA95D7 /* PeopleSpec-iOS-Info.plist */,
 			);
 			path = "PeopleSpec-iOS";
+			sourceTree = "<group>";
+		};
+		9DAF3C2CCA2ED86037587F28 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BEB85FC7FF97ECA965985E9C /* Pods-PeopleSpec-Mac.release.xcconfig */,
+				C83916678A3999EE7CE846AD /* Pods-PeopleSpec-Mac.debug.xcconfig */,
+				8E6821907C0CB3A33CBDED57 /* Pods-PeopleSpec-iOS.release.xcconfig */,
+				C39D491172CC989DC50AC47A /* Pods-PeopleSpec-iOS.debug.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		F80320528F7AB02694880405 /* People */ = {
@@ -198,11 +210,9 @@
 				5BD363E31830FF0B0024169A /* PeopleSpec-iOS */,
 				5BD363C91830FEBE0024169A /* Frameworks */,
 				F80323D0C8CA47CCD80C9E93 /* Products */,
-				4DB1BB1CD6314F1ABB37C890 /* Pods.xcconfig */,
-				FB7925B639C14423A95D4F24 /* Pods-PeopleSpec-Mac.xcconfig */,
-				3070F311A5D6497887EB49F0 /* Pods-PeopleSpec-iOS.xcconfig */,
 				F8032A68552502DEA787D34F /* Classes */,
 				F80329FAFC6E019248503E81 /* Spec */,
+				9DAF3C2CCA2ED86037587F28 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -302,7 +312,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-PeopleSpec-Mac-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PeopleSpec-Mac/Pods-PeopleSpec-Mac-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4E7661CB571B498B8AB3CA99 /* Check Pods Manifest.lock */ = {
@@ -332,7 +342,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-PeopleSpec-iOS-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PeopleSpec-iOS/Pods-PeopleSpec-iOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E7C3C1F95C5B43EEA0B1E5AF /* Check Pods Manifest.lock */ = {
@@ -392,7 +402,7 @@
 /* Begin XCBuildConfiguration section */
 		5BD363D51830FEBE0024169A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB7925B639C14423A95D4F24 /* Pods-PeopleSpec-Mac.xcconfig */;
+			baseConfigurationReference = BEB85FC7FF97ECA965985E9C /* Pods-PeopleSpec-Mac.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -433,7 +443,7 @@
 		};
 		5BD363D61830FEBE0024169A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB7925B639C14423A95D4F24 /* Pods-PeopleSpec-Mac.xcconfig */;
+			baseConfigurationReference = C83916678A3999EE7CE846AD /* Pods-PeopleSpec-Mac.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -480,7 +490,7 @@
 		};
 		5BD363ED1830FF0B0024169A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3070F311A5D6497887EB49F0 /* Pods-PeopleSpec-iOS.xcconfig */;
+			baseConfigurationReference = 8E6821907C0CB3A33CBDED57 /* Pods-PeopleSpec-iOS.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
@@ -523,7 +533,7 @@
 		};
 		5BD363EE1830FF0B0024169A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3070F311A5D6497887EB49F0 /* Pods-PeopleSpec-iOS.xcconfig */;
+			baseConfigurationReference = C39D491172CC989DC50AC47A /* Pods-PeopleSpec-iOS.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
