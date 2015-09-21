@@ -1,10 +1,12 @@
 #import "FGFactoryDefiner.h"
+#import <objc/runtime.h>
 
 @implementation FGFactoryDefiner
 
 + (void)initialize
 {
     [[self new] registerDefinitions];
+    [super initialize];
 }
 
 - (instancetype)initWithObjectClass:(Class)objectClass
@@ -55,6 +57,22 @@
     [self.factoryDefinitionRegistry registerFactoryDefinition:traitDefinition
                                                      forClass:self.objectClass
                                                         trait:trait];
+}
+
++ (void)loadFactoryDefiners
+{
+    Class factoryDefinerClass = [self class];
+    int numClasses = objc_getClassList(NULL, 0);
+    Class *classes = (__unsafe_unretained Class*)malloc(sizeof(Class) * numClasses);
+    objc_getClassList(classes, numClasses);
+
+    for (int i = 0; i < numClasses; i++) {
+        if (class_getSuperclass(classes[i]) == factoryDefinerClass) {
+            [classes[i] class];
+        }
+    }
+    
+    free(classes);
 }
 
 @end

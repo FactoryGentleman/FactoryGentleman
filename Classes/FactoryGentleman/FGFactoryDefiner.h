@@ -17,6 +17,8 @@
 
 - (void)registerBaseDefinition:(FGFactoryDefinition *)baseDefinition;
 - (void)registerTraitDefiner:(NSString *)trait traitDefiner:(id)traitDefiner;
+
++ (void)loadFactoryDefiners;
 @end
 
 #define FGFactoryBegin(__CLASS__) \
