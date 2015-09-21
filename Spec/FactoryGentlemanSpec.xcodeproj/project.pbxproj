@@ -286,6 +286,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5BD363D71830FEBE0024169A /* Build configuration list for PBXNativeTarget "FactoryGentlemanSpec-Mac" */;
 			buildPhases = (
+				7998D6421BAFFB9900D9E01F /* Clean Coverage */,
 				4E7661CB571B498B8AB3CA99 /* Check Pods Manifest.lock */,
 				5BD363C41830FEBE0024169A /* Sources */,
 				5BD363C51830FEBE0024169A /* Frameworks */,
@@ -407,6 +408,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FactoryGentlemanSpec-iOS/Pods-FactoryGentlemanSpec-iOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		7998D6421BAFFB9900D9E01F /* Clean Coverage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Clean Coverage";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "INTERMEDIATES_DIR=\"${BUILD_DIR}/../Intermediates\"\n\nif [ -e \"${INTERMEDIATES_DIR}\" ]; then\nfind ${INTERMEDIATES_DIR} -type f -name \"*.gcda\" -exec rm -rf {} \\;\nfi\n";
 		};
 		E7C3C1F95C5B43EEA0B1E5AF /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
