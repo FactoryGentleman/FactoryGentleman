@@ -42,10 +42,8 @@
 		F80329F6F63446C9467C6917 /* FGObjectBuilderSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F80324AAA46C493A1F1149DD /* FGObjectBuilderSpec.m */; };
 		F8032AD6079E59BFC45AFA9F /* FGFactoryDefiner.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032B0C2D76DBFA865B7CE9 /* FGFactoryDefiner.m */; };
 		F8032AD71A710D607FA9EF06 /* FGFactoryDefinitionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F80324B9B40D0819D0BDCE29 /* FGFactoryDefinitionSpec.m */; };
-		F8032AE5D9B47F4D1302A126 /* GcovTestObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = F80329F03218E0E4AF941E03 /* GcovTestObserver.m */; };
 		F8032B6CA2F467D205AD513D /* FGFactoryGentleman.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032F1164FED4BB9A5DB35F /* FGFactoryGentleman.m */; };
 		F8032BA31747AD59F9F579BD /* FGObjectBuilderSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F80324AAA46C493A1F1149DD /* FGObjectBuilderSpec.m */; };
-		F8032BDBDB9A0BDBC4F562C4 /* GcovTestObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = F80329F03218E0E4AF941E03 /* GcovTestObserver.m */; };
 		F8032C9ED67FE226F8E04B79 /* FGFactoryDefiner.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032B0C2D76DBFA865B7CE9 /* FGFactoryDefiner.m */; };
 		F8032CD4387C63C2A8C7136C /* FGFactoryDefinerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F80328CBE296CE1B315AF35E /* FGFactoryDefinerSpec.m */; };
 		F8032CD5E90111E905E9D0D5 /* FGFactoryDefinitionRegistrySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F8032AADECDDE45F5BB29AB4 /* FGFactoryDefinitionRegistrySpec.m */; };
@@ -428,7 +426,6 @@
 				F8032AD71A710D607FA9EF06 /* FGFactoryDefinitionSpec.m in Sources */,
 				F80327CAA11AF89A4260BA74 /* FGInitializerDefinitionSpec.m in Sources */,
 				F803210E456FBBF9C167DA81 /* FGFactoryDefinitionRegistrySpec.m in Sources */,
-				F8032BDBDB9A0BDBC4F562C4 /* GcovTestObserver.m in Sources */,
 				F8032F0E44349272ACDB7BC2 /* FGValue.m in Sources */,
 				F8032395C823EAB4B8BF9968 /* FGNilValue.m in Sources */,
 				F8032CDD4541DFA5AA9FF4F7 /* FGObjectBuilder.m in Sources */,
@@ -457,7 +454,6 @@
 				F803235847772E6829FC37E2 /* FGFactoryDefinitionSpec.m in Sources */,
 				F80324902ACA9584EC38755D /* FGInitializerDefinitionSpec.m in Sources */,
 				F8032CD5E90111E905E9D0D5 /* FGFactoryDefinitionRegistrySpec.m in Sources */,
-				F8032AE5D9B47F4D1302A126 /* GcovTestObserver.m in Sources */,
 				F80325B9967A55910DA94E99 /* FGValue.m in Sources */,
 				F803200AA9EA7005F5F9AEB8 /* FGNilValue.m in Sources */,
 				F80324CBB1F8CC3DD985C291 /* FGObjectBuilder.m in Sources */,
